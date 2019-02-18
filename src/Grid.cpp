@@ -2,7 +2,7 @@
  * Grid.cpp
  *
  *  Created on: Feb 9, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
  */
 
 #include <iostream>
@@ -10,13 +10,21 @@
 #include "Grid.h"
 #include "Cell.h"
 
-int n=0; //this initial value will be changed when the program is invoked
-Cell** myGridCells_ptr_array = (Cell**)nullptr;
+int n = 0; // This initial value will be changed when the program is invoked
 
+Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the array of pointers that is the gird
+
+/* Grid::Grid() is the constructor for the grid
+ *
+ */
 Grid::Grid() {
 	// TODO Auto-generated constructor stub
+
 	Grid(10); //calls general constructor with default value
 }
+/* Grid::Grid(int nSquaresOnASide) is the constructor for the grid
+ * @param int nSquaresOnASide is the number of squares for one side
+ */
 Grid::Grid(int nSquaresOnASide)
 {
 	n = nSquaresOnASide; //initialize size of grid
@@ -29,17 +37,28 @@ Grid::Grid(int nSquaresOnASide)
 		myGridCells_ptr_array[i] = new Cell[n]; // allocate memory for columns in each row
 	}
 }
-
+/* Grid::setCellOccupant() is a Function that sets the occupation status for a cell
+ * @param int r is the row of the grid
+ * @param int c is the column of the grid
+ * @param occupationStatus g is the occupation status that you are trying to pass on a given cell
+ * @return bool returns the status of if this function worked
+ */
 bool Grid::setCellOccupant(int r, int c, occupationStatus g)
 {
 	return myGridCells_ptr_array[r][c].setOccupant(g);
 }
-
+/* Grid::getCellOccupant() is a Function that gets the occupation status for a cell
+ * @param int r is the row of the grid
+ * @param int c is the column of the grid
+ * @return occupation status of a given cell
+ */
 occupationStatus Grid::getCellOccupant(int r, int c)
 {
 	return myGridCells_ptr_array[r][c].getOccupant();
 }
-
+/* Grid::~Grid() is the default destructor for a grid
+ *
+ */
 Grid::~Grid() {
 
 	for(int r=0; r < n; r++)
