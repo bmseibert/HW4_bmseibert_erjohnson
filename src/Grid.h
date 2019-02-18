@@ -17,6 +17,7 @@ public:
 	bool setCellOccupant(int r, int c, occupationStatus g);
 	occupationStatus getCellOccupant(int r, int c);
 	virtual ~Grid();
+	int Grid::getNumCells();
 };
 
 #endif /* GRID_H_ */

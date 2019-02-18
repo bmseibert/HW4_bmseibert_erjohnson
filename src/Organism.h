@@ -7,6 +7,7 @@
 
 #ifndef ORGANISM_H_
 #define ORGANISM_H_
+#include "Grid.h"
 
 class Organism {
 public:
@@ -17,6 +18,7 @@ public:
 	virtual bool breed()=0;
 	void setAmAnt(bool b);
 	virtual ~Organism();
+	int Organism::HowManyNeighborsEmpty(int row, int col, Grid g);
 };
 
 #endif /* ORGANISM_H_ */

@@ -18,10 +18,10 @@ Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the ar
  *
  */
 Grid::Grid() {
-	// TODO Auto-generated constructor stub
 
 	Grid(10); //calls general constructor with default value
 }
+
 /* Grid::Grid(int nSquaresOnASide) is the constructor for the grid
  * @param int nSquaresOnASide is the number of squares for one side
  */
@@ -56,6 +56,15 @@ occupationStatus Grid::getCellOccupant(int r, int c)
 {
 	return myGridCells_ptr_array[r][c].getOccupant();
 }
+
+/* Grid::getNumCells() is a Function that gets the occupation status for a cell
+ * @return the number of cells in the grid
+ */
+int Grid::getNumCells()
+{
+	return n;
+}
+
 /* Grid::~Grid() is the default destructor for a grid
  *
  */
