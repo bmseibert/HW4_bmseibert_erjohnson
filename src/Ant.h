@@ -2,7 +2,7 @@
  * Ant.h
  *
  *  Created on: Feb 10, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
  */
 
 #ifndef ANT_H_
@@ -14,10 +14,11 @@ class Ant: public Organism {
 private:
 	int row = 0;
 	int col = 0;
+	int breedCnt = 0; // breed counter happens once every three time steps
 
 public:
 	Ant();
-	Ant(int r, int c, int lifeCount);
+	Ant(int r, int c);
 	bool move();
 	bool breed();
 	 ~Ant();

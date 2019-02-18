@@ -14,6 +14,9 @@ class Doodlebug: public Organism {
 private:
 	int row = 0;
 	int col = 0;
+	int starveCnt = 0; //starving counter
+	int breedCnt = 0; //breeding counter
+
 public:
 	Doodlebug();
 	Doodlebug(int r, int c);

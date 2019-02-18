@@ -63,14 +63,14 @@ bool Tests2::gridTest()
 		std::cout << "Cell not initially empty" << std::endl;
 		ok1 = false;
 	}
-	//std::cout << "second grid test" << std::endl;
+	std::cout << "second grid test" << std::endl;
 	myGrid.setCellOccupant(2, 3, ant);
 	if(myGrid.getCellOccupant(2, 3)!=ant)
 	{
 		std::cout << "Cell not set to ant" << std::endl;
 		ok2 = false;
 	}
-	//std::cout << "third grid test" << std::endl;
+	std::cout << "third grid test" << std::endl;
 	myGrid.~Grid();
 	result = ok1 && ok2;
 	return result;

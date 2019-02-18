@@ -18,7 +18,7 @@ public:
 	virtual bool breed()=0;
 	void setAmAnt(bool b);
 	virtual ~Organism();
-	int Organism::HowManyNeighborsEmpty(int row, int col, Grid g);
+	int HowManyNeighborsEmpty(int row, int col, Grid g);
 };
 
 #endif /* ORGANISM_H_ */

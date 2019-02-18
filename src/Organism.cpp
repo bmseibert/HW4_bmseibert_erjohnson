@@ -45,7 +45,7 @@ void Organism::setAmAnt(bool b)
  * @param Grid g is the our grid
  * @return returns an integer number of neighbors between 0 and 4
  */
-int Organism::HowManyNeighborsEmpty(int row, int col, Grid g) {
+int Organism::HowManyNeighborsEmpty(int row, int col, Grid g) { //NEED TO REVISE TO HAVE IT PICK A RANDOM CELL
 	// gets the number of cells in a grid
 	int n = g.getNumCells();
 	// sets this value equal to the number of rows and the number of columns

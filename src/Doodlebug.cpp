@@ -20,8 +20,6 @@ Doodlebug::Doodlebug():Organism(false) {
 Doodlebug::Doodlebug(int r, int c):Organism(false) {
 	row = r; //row
 	col = c; //column
-	int starve = 0; //starving counter
-	int breed = 0; //breeding counter
 
 }
 /* Doodlebug::move() Function, used to make a doodlebug move
@@ -45,6 +43,7 @@ bool Doodlebug::breed()
 	bool status = true;
 	return status;
 }
+
 /* Doodlebug::eat() Function, used to make a doodlebug eat, also kills an ant
  * Eating takes precidence over the majority of actions
  * @param
