@@ -42,6 +42,15 @@ bool Tests2::doTests()
 	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10;
 	return results;
 }
+
+/** Test the Grid class by constructing a grid object and calling the
+ * getCellOccupant() method on a random cell, then using the setCellOccupant
+ * to ant, and checking if the getCellOccupant returns ant, then
+ * destructs the grid
+ *  @return true if the initialized grid does not have a occupant in a
+ *  random cell and if once you use the setter method, the occupant
+ *  status changes to the set enumeration (empty, ant or doodlebug)
+ */
 bool Tests2::gridTest()
 {
 	bool result = true;
@@ -66,6 +75,12 @@ bool Tests2::gridTest()
 	result = ok1 && ok2;
 	return result;
 }
+/** Test the Ant class by constructing a grid object and setting a cell
+ *  occupant to ant, then it creates an ant object
+ *  @return true if the initialized grid does not have a occupant in a
+ *  random cell and if once you use the setter method, the occupant
+ *  status changes to the set enumeration (empty, ant or doodlebug)
+ */
 bool Tests2::makeAntsTest()
 {
 	bool result = true;
