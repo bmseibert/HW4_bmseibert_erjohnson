@@ -2,7 +2,7 @@
  * Doodlebug.h
  *
  *  Created on: Feb 10, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
  */
 
 #ifndef DOODLEBUG_H_
