@@ -11,12 +11,17 @@
 #include "Organism.h"
 
 class Doodlebug: public Organism {
+private:
+	int row = 0;
+	int col = 0;
 public:
 	Doodlebug();
+	Doodlebug(int r, int c);
 	bool move();
 	bool breed();
 	bool eat();
 	virtual ~Doodlebug();
+
 };
 
 #endif /* DOODLEBUG_H_ */

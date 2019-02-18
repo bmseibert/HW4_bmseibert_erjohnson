@@ -17,10 +17,11 @@ private:
 
 public:
 	Ant();
-	Ant(int r=0, int c = 0);
+	Ant(int r, int c, int lifeCount);
 	bool move();
 	bool breed();
 	 ~Ant();
+
 };
 
 #endif /* ANT_H_ */

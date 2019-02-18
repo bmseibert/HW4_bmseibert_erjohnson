@@ -6,12 +6,22 @@
  */
 
 #include "Doodlebug.h"
-/* Doodlebug::Doodlebug():Organism() Constructor
+/* Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant
- *
  */
 Doodlebug::Doodlebug():Organism(false) {
-	// TODO Auto-generated constructor stub
+
+
+}
+/* Doodlebug::Doodlebug():Organism() Constructor
+ * @param false is set for the organism input to tell the organism that it is not an ant
+ * Doodlebug will have a Starve Counter and a Breed Counter it will also have a row and col for its location
+ */
+Doodlebug::Doodlebug(int r, int c):Organism(false) {
+	row = r; //row
+	col = c; //column
+	int starve = 0; //starving counter
+	int breed = 0; //breeding counter
 
 }
 /* Doodlebug::move() Function, used to make a doodlebug move

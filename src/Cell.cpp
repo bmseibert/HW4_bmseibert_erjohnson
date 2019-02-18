@@ -45,14 +45,7 @@ occupationStatus Cell::getOccupant()
 	// returns the result of the guest
 	return guest;
 }
-/* Cell::qetOccupant gets the occupant of cell
- * @return the occupation status of a cell
- */
-occupationStatus Cell::getOccupantInGrid(int r, int c)
-{
-	// returns the result of the guest
-	return guest;
-}
+
 /* Cell::~Cell is the destructor for a cell
  *
  */

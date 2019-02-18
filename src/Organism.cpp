@@ -14,7 +14,7 @@ bool amAnt = false;
  *
  */
 Organism::Organism() {
-	// TODO Auto-generated constructor stub
+	amAnt = false;
 
 }
 /* Organism::Organism() Secondary Constructor
@@ -84,6 +84,7 @@ int Organism::HowManyNeighborsEmpty(int row, int col, Grid g) {
 
 	return howManyN;
 }
+
 
 /* Organism::~Organism is the destructor
  *
