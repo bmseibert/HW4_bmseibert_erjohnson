@@ -2,7 +2,7 @@
  * Cell.h
  *
  *  Created on: Feb 9, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
  */
 
 #ifndef CELL_H_
