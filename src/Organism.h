@@ -10,6 +10,9 @@
 #include "Grid.h"
 
 class Organism {
+private:
+	bool amAnt = false;
+
 public:
 	Organism();
 	Organism(bool b);

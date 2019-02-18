@@ -14,7 +14,7 @@ bool amAnt = false;
  *
  */
 Organism::Organism() {
-	amAnt = false;
+
 
 }
 /* Organism::Organism() Secondary Constructor
