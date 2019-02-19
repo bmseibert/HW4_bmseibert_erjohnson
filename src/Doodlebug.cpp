@@ -67,10 +67,40 @@ int Doodlebug::getStarveCnt(){
  */
 bool Doodlebug::doodlebugStep(){
 	bool ok1 = true;
+	// FIRST
+	// Move
+	move();
 
+	// SECOND
+	// starve check
+	if (starveCnt > 2){
+		~Doodlebug();
+	}
+	// THIRD
+	// breed Check
+	if (breedCnt > 7){
+		breed();
+	}
+
+	// FOURTH
+	// modify values
+	increm();
 
 
 	return ok1;
+}
+/*
+ * Doodlebug Increment Function- used to increment the starve and breed counters
+ * @return bool result on if the function ran properly
+ */
+bool Doodlebug::increm(){
+	bool result = true;
+
+	//increments the counters
+	starveCnt++;
+	breedCnt++;
+
+	return result;
 }
 
 
