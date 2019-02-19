@@ -50,6 +50,7 @@ Production::Production(int argc, char* argv[]) {
 			printf("Usage: Ants should not be less than 0, received %d.\n", ants);
 			done = true;
 		}
+
 		// Get the number of TimeSteps Remaining
 		long ng_l = strtol(argv[4], &ptr, 10); //get the number of generations
 		timeStepsLeft = (int)ng_l;
@@ -58,6 +59,7 @@ Production::Production(int argc, char* argv[]) {
 			printf("Usage: timeStepsLeft should not be less than 0, received %d.\n", timeStepsLeft);
 			done = true;
 		}
+
 		// Get the number of the seed
 		long ng_l = strtol(argv[5], &ptr, 10); //get the number of generations
 		seed = (int)ng_l;
@@ -73,8 +75,6 @@ Production::Production(int argc, char* argv[]) {
 bool Production::runProduction()
 {
 	bool result = true;
-
-
 
 	while(timestepsLeft-- > 0)
 	{
