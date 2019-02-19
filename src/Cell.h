@@ -8,13 +8,13 @@
 #ifndef CELL_H_
 #define CELL_H_
 
-
 enum occupationStatus {empty, ant, doodlebug};
 
+class Organism;
 
 class Cell {
 private:
-
+	Organism* p = nullptr;
 public:
 
 	Cell();
