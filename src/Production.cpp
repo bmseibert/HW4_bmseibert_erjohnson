@@ -81,7 +81,7 @@ Production::Production(int argc, char* argv[]) {
 			done = true;
 		}
 		// Initialize the Grid, and put it in memory
-		g = Grid(gridSize);
+		*g = Grid(gridSize);
 
 		// Initialize all of the doodlebugs and the ants
 		int gridArray[gridSize*gridSize];
@@ -141,13 +141,13 @@ bool Production::runProduction()
 				}
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
-					Doodlebug p = g->getCell(r, c).getOrganism();
-					p.doodlebugStep();
+					//Doodlebug p = g->getCell(r, c).getOrganism();
+					//p.doodlebugStep();
 				}
 				// Ants step;
 				if(g->getCell(r, c).getOccupant() == ant){
-					Ant p = g->getCell(r, c).getOrganism();
-					p.antStep();
+					//Ant p = g->getCell(r, c).getOrganism();
+					//p.antStep();
 				}
 
 			}
@@ -163,7 +163,7 @@ bool Production::runProduction()
 /* Get Grid from the Production Object
  * @returns the grid object
  */
-Grid Production::getGrid(){
+Grid* Production::getGrid(){
 	return g;
 }
 

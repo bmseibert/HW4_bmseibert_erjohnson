@@ -25,7 +25,7 @@ public:
 	Production(int argc, char* argv[]);
 	bool runProduction();
 	virtual ~Production();
-	Grid getGrid();
+	Grid* getGrid();
 };
 
 #endif /* PRODUCTION_H_ */

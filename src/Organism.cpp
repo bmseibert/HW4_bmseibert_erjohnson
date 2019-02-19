@@ -10,7 +10,6 @@
 #include "Cell.h"
 #include <stdlib.h>
 
-bool amAnt = false;
 /* Organism::Organism() Constructor used to generally create a doodlebug
  *
  */
@@ -50,39 +49,35 @@ void Organism::setAmAnt(bool b)
 int Organism::howManyNeighbors(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
-	// sets this value equal to the number of rows and the number of columns
-	int nRows = n;
-	int nCols = n;
 	// the pointer to the array of unoccupied neighbors cells, which will never have more than 4 items
 	int numNeighbors = 0;
 	//there could be as many as 4 neighbors
 	//cells on an edge or corner have fewer neighbors
 	//we will search for neighbors clockwise from NorthWest
-	if (row > 0) {
+	if(row > 0){
 		if (g->getCellOccupant(row - 1, col) == empty)	//N
 		{
 			numNeighbors++;
 		}
-	}	//can look north
-	if (col > 0) {
+	}//can look north
+	if(col > 0){
 		if (g->getCellOccupant(row, col - 1) == empty)	//W
 		{
 			numNeighbors++;
 		}
 	}
-	if (row < nRows - 1) {
+	if(row < n){
 		if (g->getCellOccupant(row + 1, col) == empty)	//S
 		{
 			numNeighbors++;
 		}
-	}	//can look south
-	if (col < (nCols - 1)) {
+	}//can look south
+	if(col < n){
 		if (g->getCellOccupant(row, col + 1) == empty)	//E
 		{
 			numNeighbors++;
 		}
 	}
-
 	return numNeighbors;
 }
 

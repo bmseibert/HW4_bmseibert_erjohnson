@@ -7,16 +7,15 @@
 
 #include "Cell.h"
 #include "Organism.h"
-// occupation of a guest cell is automatically empty
-occupationStatus guest  = empty;
-
 
 /* Cell::Cell() is a constructor of a cell
  *
  */
 Cell::Cell() {
 
-	guest = empty;
+}
+occupationStatus Cell::getStatus(){
+	return guest;
 }
 /* Cell::setOccupant sets the occupant of cell
  * @return bool result of if this worked

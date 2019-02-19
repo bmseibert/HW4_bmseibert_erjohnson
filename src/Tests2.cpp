@@ -126,19 +126,29 @@ bool Tests2::OrganismTest()
 	bool ok2 = true;
 	std::cout << "Running the Organism Methods test" << std::endl;
 
-	Grid* myGrid_p = new Grid(9);
-	Ant* a1 = new Ant(3,4);
-	Ant* a2 = new Ant(3,5);
-	Ant* a3 = new Ant(1,6);
+	Grid* myGrid_t = new Grid(9);
+	if(myGrid_t->getCellOccupant(3, 4)!=empty)
+	{
+		std::cout << "Cell 3,4 not initially empty" << std::endl;
+	}
+	Ant* a3 = new Ant(3,4);
+	myGrid_t->setCellOccupant(3, 4, ant);
+	Ant* a4 = new Ant(3,5);
+	myGrid_t->setCellOccupant(3, 5, ant);
+	Ant* a5 = new Ant(1,6);
+	myGrid_t->setCellOccupant(9, 6, ant);
 
-	int numNeighbors1 = a1->howManyNeighbors(3, 4, myGrid_p);
-	if(numNeighbors1 != 1){
+
+	int numNeighbors1 = a3->howManyNeighbors(3, 4, myGrid_t);
+	printf("numNeighbors %d \n", numNeighbors1);
+	if(numNeighbors1 != 3){
 		ok1 = false;
-		printf("thought there were no neighbors when there was one\n");
+		printf("did not find neighbor\n");
 	}
 
-	printf("Success");
-	result = ok1;
+	Cell randNeighbor = a3->GetRandCell(3, 4, myGrid_t);
+
+	result = ok1 && ok2;
 	return result;
 }
 

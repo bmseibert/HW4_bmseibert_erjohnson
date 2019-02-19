@@ -74,7 +74,7 @@ bool Doodlebug::doodlebugStep(){
 	// SECOND
 	// starve check
 	if (starveCnt > 2){
-		~Doodlebug();
+		//~Doodlebug();
 	}
 	// THIRD
 	// breed Check

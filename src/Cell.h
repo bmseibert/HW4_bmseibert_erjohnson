@@ -14,12 +14,14 @@ class Organism;
 
 class Cell {
 private:
+	occupationStatus guest = empty;
 	Organism* p = nullptr;
 public:
 
 	Cell();
 	bool setOccupant(occupationStatus g);
 	occupationStatus getOccupant();
+	occupationStatus getStatus();
 	virtual ~Cell();
 	Organism* getOrganism();
 	bool setOrganism(Organism* o);
