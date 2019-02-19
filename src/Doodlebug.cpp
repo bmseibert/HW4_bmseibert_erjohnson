@@ -65,7 +65,7 @@ int Doodlebug::getStarveCnt(){
 /* Doodlebug Step Function
  * @return bool if the step worked
  */
-bool Doodlebug::doodlebugStep(){
+bool Doodlebug::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
@@ -74,7 +74,8 @@ bool Doodlebug::doodlebugStep(){
 	// SECOND
 	// starve check
 	if (starveCnt > 2){
-		//~Doodlebug();
+		//DELETE DOODLE BUG
+		this->~Doodlebug();
 	}
 	// THIRD
 	// breed Check
@@ -105,10 +106,10 @@ bool Doodlebug::increm(){
 
 
 /* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
- * @param
  *
  */
 Doodlebug::~Doodlebug() {
-	// TODO Auto-generated destructor stub
+// THERE MAY BE MORE STUFF NEEDED IN HERE
+
 }
 

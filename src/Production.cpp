@@ -141,16 +141,30 @@ bool Production::runProduction()
 				}
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
-					//Doodlebug p = g->getCell(r, c).getOrganism();
-					//p.doodlebugStep();
-				}
-				// Ants step;
-				if(g->getCell(r, c).getOccupant() == ant){
-					//Ant p = g->getCell(r, c).getOrganism();
-					//p.antStep();
+					Organism* p = g->getCell(r, c).getOrganism();
+					p->step(g);
 				}
 
+
 			}
+
+
+		}
+		for(int r=0; r < gridSize; r++){
+			for(int c = 0; c < gridSize; c++){
+
+				if (g->getCell(r, c).getOccupant() == empty){
+
+				}
+				// Ant step;
+				if (g->getCell(r, c).getOccupant() == ant){
+					Organism* p = g->getCell(r, c).getOrganism();
+					p->step(g);
+				}
+
+
+			}
+
 
 		}
 

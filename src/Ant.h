@@ -20,8 +20,8 @@ public:
 	Ant();
 	Ant(int r, int c);
 	bool move();
-	bool breed();
-	bool antStep();
+	bool breed(Grid * g);
+	bool step(Grid * g);
 	bool increm();
 	 ~Ant();
 
