@@ -11,6 +11,8 @@
 #include "Cell.h"
 
 class Grid {
+private:
+	int n = 0;
 
 public:
 	Grid();

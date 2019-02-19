@@ -10,8 +10,6 @@
 #include "Grid.h"
 #include "Cell.h"
 
-int n = 0; // This initial value will be changed when the program is invoked
-
 Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the array of pointers that is the gird
 
 /* Grid::Grid() is the constructor for the grid

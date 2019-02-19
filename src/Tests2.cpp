@@ -135,18 +135,30 @@ bool Tests2::OrganismTest()
 	myGrid_t->setCellOccupant(3, 4, ant);
 	Ant* a4 = new Ant(3,5);
 	myGrid_t->setCellOccupant(3, 5, ant);
-	Ant* a5 = new Ant(1,6);
-	myGrid_t->setCellOccupant(9, 6, ant);
+	Ant* a5 = new Ant(8,6);
+	myGrid_t->setCellOccupant(8, 6, ant);
 
 
 	int numNeighbors1 = a3->howManyNeighbors(3, 4, myGrid_t);
-	printf("numNeighbors %d \n", numNeighbors1);
+	printf("numNeighbors1: %d \n", numNeighbors1);
 	if(numNeighbors1 != 3){
 		ok1 = false;
 		printf("did not find neighbor\n");
 	}
 
-	Cell randNeighbor = a3->GetRandCell(3, 4, myGrid_t);
+	int n = myGrid_t->getNumCells();
+	printf("nRows %d \n", n);
+	if(myGrid_t->getCellOccupant(8, 6) == ant)
+	{
+		std::cout << "Cell 8,6 has ant" << std::endl;
+	}
+	int numNeighbors2 = a5->howManyNeighbors(8, 6, myGrid_t);
+	printf("numNeighbors2: %d \n", numNeighbors2);
+//	if(numNeighbors2 != 3){
+//		ok2 = false;
+//		printf("found a non-existent neighbor neighbor\n");
+//	}
+
 
 	result = ok1 && ok2;
 	return result;
