@@ -47,63 +47,106 @@ void Organism::setAmAnt(bool b)
  * @param Grid g is the grid of cells
  * @return unocc_arr is an array of pointers to cells
  */
-Cell** Organism::GetNeighbors(int row, int col, Grid g) {
+int Organism::howManyNeighbors(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
-	int n = g.getNumCells();
+	int n = g->getNumCells();
 	// sets this value equal to the number of rows and the number of columns
 	int nRows = n;
 	int nCols = n;
-	// the pointer to the pointer array of unoccupied neighbors cells
-	Cell* unocc_arr[] = (Cell**)nullptr;
-
+	// the pointer to the array of unoccupied neighbors cells, which will never have more than 4 items
+	int numNeighbors = 0;
 	//there could be as many as 4 neighbors
 	//cells on an edge or corner have fewer neighbors
 	//we will search for neighbors clockwise from NorthWest
 	if (row > 0) {
-		if (g.getCellOccupant(row - 1, col) == empty)	//N
-				{
-			**unocc_arr = g.getCell((row-1), col);
-			unocc_arr++;
+		if (g->getCellOccupant(row - 1, col) == empty)	//N
+		{
+			numNeighbors++;
 		}
 	}	//can look north
 	if (col > 0) {
-		if (g.getCellOccupant(row, col - 1) == empty)	//W
-				{
-			**unocc_arr = g.getCell(row, (col-1));
-			unocc_arr++;
-		}
-	}
-	if (col < (nCols - 1)) {
-		if (g.getCellOccupant(row, col + 1) == empty)	//E
-				{
-			**unocc_arr = g.getCell(row, (col+1));
-			unocc_arr++;
+		if (g->getCellOccupant(row, col - 1) == empty)	//W
+		{
+			numNeighbors++;
 		}
 	}
 	if (row < nRows - 1) {
-		if (g.getCellOccupant(row + 1, col) == empty)	//S
-				{
-			**unocc_arr = g.getCell((row+1), col);
+		if (g->getCellOccupant(row + 1, col) == empty)	//S
+		{
+			numNeighbors++;
 		}
 	}	//can look south
+	if (col < (nCols - 1)) {
+		if (g->getCellOccupant(row, col + 1) == empty)	//E
+		{
+			numNeighbors++;
+		}
+	}
 
-	return unocc_arr;
+	return numNeighbors;
 }
 
 /** GetRandCell takes an array of pointers to cells and returns
  * a pseudo-random cell pointer from that array
- * @param Cell** unoccupiedCells, is the array of pointers to cells
- * that we want a random cell from
- * @param int arrSize, is the number of elements in the unoccupiedCells parameter
- * @return outCell, a random pointer to cell from the input array
+ * @param int row,
+ * @param int col, is the number of elements in the unoccupiedCells parameter
+ * @return output, a random pointer to cell from the input array
  */
-Cell* Organism::GetRandCell(Cell** unoccupiedCells, int arrSize){
+Cell Organism::GetRandCell(int row, int col, Grid* g){
+
+	Cell output = *(new Cell());
+	// gets the number of cells in a grid
+	int n = g->getNumCells();
+	// sets this value equal to the number of rows and the number of columns
+	int nRows = n;
+	int nCols = n;
+	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
-	int cell = rand() % arrSize;
+	int numNeighbors = howManyNeighbors(row, col, g);
+	int a = rand() % numNeighbors;
 
-	Cell* outCell = unoccupiedCells[cell];
+	if (numNeighbors == 0){
+		output = g->getCell(row, col);
+	}
 
-	return outCell;
+	if (row > 0) {
+		if (g->getCellOccupant(row - 1, col) == empty)	//N
+		{
+			cell++;
+			if(cell == a){
+				output = g->getCell(row-1, col);
+			}
+		}
+	}	//can look north
+	if (col > 0) {
+		if (g->getCellOccupant(row, col - 1) == empty)	//W
+		{
+			cell++;
+			if(cell == a){
+				output = g->getCell(row, col-1);
+			}
+		}
+	}
+	if (row < nRows - 1) {
+		if (g->getCellOccupant(row + 1, col) == empty)	//S
+		{
+			cell++;
+			if(cell == a){
+				output = g->getCell(row+1, col);
+			}
+		}
+	}	//can look south
+	if (col < (nCols - 1)) {
+		if (g->getCellOccupant(row, col + 1) == empty)	//E
+		{
+			cell++;
+			if(cell == a){
+				output = g->getCell(row, col+1);
+			}
+		}
+	}
+	return output;
+
 }
 
 

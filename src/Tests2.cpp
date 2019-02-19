@@ -131,19 +131,14 @@ bool Tests2::OrganismTest()
 	Ant* a2 = new Ant(3,5);
 	Ant* a3 = new Ant(1,6);
 
-	Cell** neighbors1 = a1->GetNeighbors(3, 4, *myGrid_p);
-	if((**neighbors1).getOccupant() != ant){
+	int numNeighbors1 = a1->howManyNeighbors(3, 4, myGrid_p);
+	if(numNeighbors1 != 1){
 		ok1 = false;
-		printf("Neighbor array did not contain an ant \n");
-	}
-	Cell** neighbors2 = a2->GetNeighbors(3, 5, *myGrid_p);
-	if((**neighbors2).getOccupant() != ant){
-		ok2 = false;
-		printf("Neighbor array did not contain an ant \n");
+		printf("thought there were no neighbors when there was one\n");
 	}
 
 	printf("Success");
-	result = ok1 && ok2;
+	result = ok1;
 	return result;
 }
 
