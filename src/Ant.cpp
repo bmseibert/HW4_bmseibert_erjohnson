@@ -57,7 +57,7 @@ bool Ant::move()
  * @param Grid* g grid we are on
  * @return status
  */
-bool Ant::breed(Grid* g)
+bool Ant::breed()
 {
 	// this is assuming that the counter has reached 3
 	// and there is a place to breed
@@ -65,7 +65,7 @@ bool Ant::breed(Grid* g)
 
 	// FIRST
 	// Find Cell to Breed
-	Cell a = getRandCell(row, col, g);
+	//Cell a = getRandCell(row, col, g);
 
 	// SECOND
 	// Create Ant from this breeding
@@ -79,16 +79,16 @@ bool Ant::breed(Grid* g)
 /* Ant Step Function
  * @return bool if the step worked
  */
-bool Ant::step(Grid* g){
+bool Ant::step(){
 
 	bool ok1 = true;
 	// FIRST
 	// Move
-	move();
+	//move();
 	// SECOND
 	// Check if breed
-	if(breedCnt > 2 && howManyNeighbors(row, col, g) > 0){
-		breed(g);
+	if(breedCnt > 2){
+		//breed(g);
 	}
 	// THIRD
 	// Increment

@@ -16,6 +16,7 @@ private:
 	int col = 0;
 	int starveCnt = 0; //starving counter
 	int breedCnt = 0; //breeding counter
+	Grid* g = nullptr;
 
 public:
 	Doodlebug();
@@ -24,7 +25,7 @@ public:
 	bool breed();
 	bool eat();
 	int getStarveCnt();
-	virtual ~Doodlebug();
+	~Doodlebug();
 	bool step();
 	bool increm();
 

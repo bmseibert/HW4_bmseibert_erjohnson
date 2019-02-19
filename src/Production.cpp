@@ -110,13 +110,13 @@ Production::Production(int argc, char* argv[]) {
 				}
 				else if(gridArray[c] == 1){
 					g->setCellOccupant(r, c, doodlebug);
-					Doodlebug* d = new Doodlebug(r,c);
-					g->getCell(r, c).setOrganism(d);
+					//Doodlebug* d = new Doodlebug(r,c);
+					//g->getCell(r, c).setOrganism(d);
 				}
 				else if(gridArray[c] == 2){
 					g->setCellOccupant(r, c, ant);
-					Ant *a = new Ant(r,c);
-					g->getCell(r,c).setOrganism(a);
+					//Ant *a = new Ant(r,c);
+					//g->getCell(r,c).setOrganism(a);
 				}
 
 			}
@@ -142,7 +142,7 @@ bool Production::runProduction()
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
 					Organism* p = g->getCell(r, c).getOrganism();
-					p->step(g);
+					//p->step();
 				}
 
 
@@ -159,7 +159,7 @@ bool Production::runProduction()
 				// Ant step;
 				if (g->getCell(r, c).getOccupant() == ant){
 					Organism* p = g->getCell(r, c).getOrganism();
-					p->step(g);
+					//p->step();
 				}
 
 

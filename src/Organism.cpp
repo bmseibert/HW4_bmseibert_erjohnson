@@ -143,12 +143,7 @@ Cell Organism::getRandCell(int row, int col, Grid* g){
 	return output;
 
 }
-bool Organism::step(Grid* g){
-	bool output = true;
 
-
-	return output;
-}
 
 /* Organism::~Organism is the destructor
  *

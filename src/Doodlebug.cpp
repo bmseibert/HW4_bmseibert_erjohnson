@@ -69,7 +69,7 @@ bool Doodlebug::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
-	move();
+	//move();
 
 	// SECOND
 	// starve check
@@ -80,7 +80,7 @@ bool Doodlebug::step(){
 	// THIRD
 	// breed Check
 	if (breedCnt > 7){
-		breed();
+		//breed(g);
 	}
 
 	// FOURTH

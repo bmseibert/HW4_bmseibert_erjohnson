@@ -15,15 +15,16 @@ private:
 	int row = 0;
 	int col = 0;
 	int breedCnt = 0; // breed counter happens once every three time steps
+	Grid* g = nullptr;
 
 public:
 	Ant();
 	Ant(int r, int c);
 	bool move();
-	bool breed(Grid * g);
-	bool step(Grid * g);
+	bool breed();
+	bool step();
 	bool increm();
-	 ~Ant();
+	~Ant();
 
 };
 
