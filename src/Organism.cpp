@@ -47,14 +47,14 @@ void Organism::setAmAnt(bool b)
  * @param Grid g is the grid of cells
  * @return unocc_arr is an array of pointers to cells
  */
-Cell** Organism::GetNeighbors(int row, int col, Grid g) { //NEED TO REVISE TO HAVE IT PICK A RANDOM CELL
+Cell** Organism::GetNeighbors(int row, int col, Grid g) {
 	// gets the number of cells in a grid
 	int n = g.getNumCells();
 	// sets this value equal to the number of rows and the number of columns
 	int nRows = n;
 	int nCols = n;
 	// the pointer to the pointer array of unoccupied neighbors cells
-	Cell** unocc_arr;
+	Cell* unocc_arr[] = (Cell**)nullptr;
 
 	//there could be as many as 4 neighbors
 	//cells on an edge or corner have fewer neighbors
@@ -62,28 +62,28 @@ Cell** Organism::GetNeighbors(int row, int col, Grid g) { //NEED TO REVISE TO HA
 	if (row > 0) {
 		if (g.getCellOccupant(row - 1, col) == empty)	//N
 				{
-			*unocc_arr = g.getCellPointer((row-1), col);
+			**unocc_arr = g.getCell((row-1), col);
 			unocc_arr++;
 		}
 	}	//can look north
 	if (col > 0) {
 		if (g.getCellOccupant(row, col - 1) == empty)	//W
 				{
-			*unocc_arr = g.getCellPointer(row, (col-1));
+			**unocc_arr = g.getCell(row, (col-1));
 			unocc_arr++;
 		}
 	}
 	if (col < (nCols - 1)) {
 		if (g.getCellOccupant(row, col + 1) == empty)	//E
 				{
-			*unocc_arr = g.getCellPointer(row, (col+1));
+			**unocc_arr = g.getCell(row, (col+1));
 			unocc_arr++;
 		}
 	}
 	if (row < nRows - 1) {
 		if (g.getCellOccupant(row + 1, col) == empty)	//S
 				{
-			*unocc_arr = g.getCellPointer((row+1), col);
+			**unocc_arr = g.getCell((row+1), col);
 		}
 	}	//can look south
 
