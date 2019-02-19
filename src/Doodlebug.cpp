@@ -55,7 +55,15 @@ bool Doodlebug::eat()
 	bool status = true;
 	return status;
 }
-/* Doodlebug::~Doodlebug() Function, used to remove a pointer to a doodlebug
+
+/* Doodlebug::getStarveCnt() is a Function that gets the starve count
+ * @return the starve count
+ */
+int Doodlebug::getStarveCnt(){
+	return starveCnt;
+}
+
+/* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
  * @param
  *
  */
