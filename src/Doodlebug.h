@@ -23,6 +23,7 @@ public:
 	bool move();
 	bool breed();
 	bool eat();
+	int getStarveCnt();
 	virtual ~Doodlebug();
 
 };
