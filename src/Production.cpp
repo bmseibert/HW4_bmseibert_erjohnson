@@ -5,6 +5,7 @@
  *      Author: Everett Johnson and Ben Seibert
  */
 #include <iostream>
+#include <algorithm>
 #include "Production.h"
 #include "Grid.h"
 
@@ -76,17 +77,36 @@ Production::Production(int argc, char* argv[]) {
 		Grid g = Grid(gridSize);
 
 		// Initialize all of the doodlebugs and the ants
-		for(int i = 0; i<doodlebugs; i++){
-			g.setCellOccupant(rand()%gridSize, rand()%gridSize, doodlebug);
+		int gridArray[gridSize*gridSize];
+
+		for (int i = 0; i<doodlebugs; i++){
+			gridArray[i] = 1;
 		}
-		// Initialize all of the ants
-		for(int j= 0; j<ants; j++){
-			int f1 = rand()%gridSize;
-			int f2 = rand()%gridSize;
-			if(g.getCellOccupant(f1, f2) == empty){
-				g.setCellOccupant(f1, f2, ant);
-			}
-			else{
+		for (int j = 0; j<ants; j++){
+			gridArray[j+doodlebugs] = 2;
+		}
+		for (int z = 0; z<(gridSize*gridSize)-doodlebugs-ants; z++){
+			gridArray[z+doodlebugs+ants] = 0;
+		}
+		for(int k = 0; k<(gridSize*gridSize); k++){
+			int r = rand()%(gridSize*gridSize);
+			int temp = gridArray[k];
+			gridArray[k] = gridArray[r];
+			gridArray[r] = temp;
+		}
+
+		// Fill the grid with correct things
+		for(int i = 0; i < gridSize; i++){
+			for(int c = 0; i < gridSize; c++){
+				if(gridArray[i] == 0){
+					g.setCellOccupant(i, c, empty);
+				}
+				else if(gridArray[i] == 1){
+					g.setCellOccupant(i, c, doodlebug);
+				}
+				else if(gridArray[i] == 2){
+					g.setCellOccupant(i, c, ant);
+				}
 
 			}
 		}
