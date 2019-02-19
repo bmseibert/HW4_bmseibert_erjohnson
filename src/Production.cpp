@@ -13,9 +13,12 @@
 #include "Doodlebug.h"
 #include "Ant.h"
 
-int timestepsLeft=100;
+int timestepsLeft = 100;
 
-
+/* Production Constructor
+ * @param int argc is the number of parameters for the production
+ * @param char* argv[] is all of the arguments that we get from the console
+ */
 Production::Production(int argc, char* argv[]) {
 
 	// Makes sure that there are enough inputs
@@ -77,8 +80,8 @@ Production::Production(int argc, char* argv[]) {
 			printf("Usage: Seed should not be less than 0, received %d.\n", seed);
 			done = true;
 		}
-		// Initialize the Grid
-		Grid g = Grid(gridSize);
+		// Initialize the Grid, and put it in memory
+		g = Grid(gridSize);
 
 		// Initialize all of the doodlebugs and the ants
 		int gridArray[gridSize*gridSize];
@@ -100,20 +103,20 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Fill the grid with correct things
-		for(int i = 0; i < gridSize; i++){
-			for(int c = 0; i < gridSize; c++){
-				if(gridArray[i] == 0){
-					g.setCellOccupant(i, c, empty);
+		for(int r = 0; r < gridSize; r++){
+			for(int c = 0; c < gridSize; c++){
+				if(gridArray[c] == 0){
+					g->setCellOccupant(r, c, empty);
 				}
-				else if(gridArray[i] == 1){
-					g.setCellOccupant(i, c, doodlebug);
-					Doodlebug* d = new Doodlebug(i,c);
-					g.getCell(i, c).setOrganism(d);
+				else if(gridArray[c] == 1){
+					g->setCellOccupant(r, c, doodlebug);
+					Doodlebug* d = new Doodlebug(r,c);
+					g->getCell(r, c).setOrganism(d);
 				}
-				else if(gridArray[i] == 2){
-					g.setCellOccupant(i, c, ant);
-					Ant *a = new Ant(i,c);
-					g.getCell(i,c).setOrganism(a);
+				else if(gridArray[c] == 2){
+					g->setCellOccupant(r, c, ant);
+					Ant *a = new Ant(r,c);
+					g->getCell(r,c).setOrganism(a);
 				}
 
 			}
@@ -121,20 +124,37 @@ Production::Production(int argc, char* argv[]) {
 
 	}
 }
-
+/* Run Production Function
+ * @return bool whether the function worked
+ */
 bool Production::runProduction()
 {
 	bool result = true;
 
 	while(timeStepsLeft-- > 0)
 	{
+		for(int r=0; r < gridSize; r++){
+			for(int c = 0; c < gridSize; c++){
 
+			}
+
+		}
 		//dbs.step;
+
 		//ants.step;
 	}
 	return result;
 }
 
+/* Get Grid from the Production Object
+ * @returns the grid object
+ */
+Grid Production::getGrid(){
+	return g;
+}
+
+/* Production Destrcutor
+ */
 Production::~Production() {
 	// TODO Auto-generated destructor stub
 }
