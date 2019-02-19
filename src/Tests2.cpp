@@ -9,6 +9,7 @@
 #include "Grid.h"
 #include "Ant.h"
 #include <iostream>
+#include <stdio.h>
 
 
 Tests2::Tests2() {
@@ -39,7 +40,8 @@ bool Tests2::doTests()
 	bool ok9 = doodleEatTest();
 	//see whether they die
 	bool ok10 = doodleDietest();
-	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10;
+	bool ok11 = OrganismTest();
+	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10 && ok11;
 	return results;
 }
 
@@ -113,6 +115,32 @@ bool Tests2::makeAntsTest()
 	myGrid_p->setCellOccupant(3, 4, empty);
 	delete a1;
 	delete myGrid_p;
+	result = ok1 && ok2;
+	return result;
+}
+
+bool Tests2::OrganismTest()
+{
+	bool result = true;
+	bool ok1 = true;
+	bool ok2 = true;
+	std::cout << "Running the Organism Methods test" << std::endl;
+
+	Grid* myGrid_p = new Grid(9);
+	Ant* a1 = new Ant(3,4);
+	Ant* a2 = new Ant(3,5);
+	Ant* a3 = new Ant(1,6);
+
+	Cell** neighbors1 = a1->GetNeighbors(3, 4, *myGrid_p);
+	if((**neighbors1).getOccupant() != ant){
+		ok1 = false;
+		printf("Neighbor array did not contain an ant");
+	}
+	Cell** neighbors2 = a2->GetNeighbors(3, 5, *myGrid_p);
+	if((**neighbors2).getOccupant() != ant){
+		ok2 = false;
+		printf("Neighbor array did not contain an array");
+	}
 	result = ok1 && ok2;
 	return result;
 }

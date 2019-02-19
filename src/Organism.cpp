@@ -63,21 +63,21 @@ Cell** Organism::GetNeighbors(int row, int col, Grid g) { //NEED TO REVISE TO HA
 		if (g.getCellOccupant(row - 1, col) == empty)	//N
 				{
 			*unocc_arr = g.getCellPointer((row-1), col);
-			*unocc_arr++;
+			unocc_arr++;
 		}
 	}	//can look north
 	if (col > 0) {
 		if (g.getCellOccupant(row, col - 1) == empty)	//W
 				{
 			*unocc_arr = g.getCellPointer(row, (col-1));
-			*unocc_arr++;
+			unocc_arr++;
 		}
 	}
 	if (col < (nCols - 1)) {
 		if (g.getCellOccupant(row, col + 1) == empty)	//E
 				{
 			*unocc_arr = g.getCellPointer(row, (col+1));
-			*unocc_arr++;
+			unocc_arr++;
 		}
 	}
 	if (row < nRows - 1) {
