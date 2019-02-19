@@ -66,13 +66,13 @@ int Organism::howManyNeighbors(int row, int col, Grid* g) {
 			numNeighbors++;
 		}
 	}
-	if(row < n){
+	if(row < n-1){
 		if (g->getCellOccupant(row + 1, col) == empty)	//S
 		{
 			numNeighbors++;
 		}
 	}//can look south
-	if(col < n){
+	if(col < n-1){
 		if (g->getCellOccupant(row, col + 1) == empty)	//E
 		{
 			numNeighbors++;
@@ -87,7 +87,7 @@ int Organism::howManyNeighbors(int row, int col, Grid* g) {
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
  */
-Cell Organism::GetRandCell(int row, int col, Grid* g){
+Cell Organism::getRandCell(int row, int col, Grid* g){
 
 	Cell output = *(new Cell());
 	// gets the number of cells in a grid
@@ -143,7 +143,12 @@ Cell Organism::GetRandCell(int row, int col, Grid* g){
 	return output;
 
 }
+bool Organism::step(Grid* g){
+	bool output = true;
 
+
+	return output;
+}
 
 /* Organism::~Organism is the destructor
  *

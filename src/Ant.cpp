@@ -54,9 +54,10 @@ bool Ant::move()
 /** Ant::breed() should check the cells around the ant
  * object and if another ant in is a neighboring cell,
  * then they will produce a new ant object in a free space
+ * @param Grid* g grid we are on
  * @return status
  */
-bool Ant::breed()
+bool Ant::breed(Grid* g)
 {
 	// this is assuming that the counter has reached 3
 	// and there is a place to breed
@@ -64,8 +65,12 @@ bool Ant::breed()
 
 	// FIRST
 	// Find Cell to Breed
+	Cell a = getRandCell(row, col, g);
+
 	// SECOND
 	// Create Ant from this breeding
+
+
 	// THIRD
 	// Reset the Counter of breed to 0
 
@@ -74,7 +79,7 @@ bool Ant::breed()
 /* Ant Step Function
  * @return bool if the step worked
  */
-bool Ant::antStep(){
+bool Ant::step(Grid* g){
 
 	bool ok1 = true;
 	// FIRST
@@ -82,8 +87,8 @@ bool Ant::antStep(){
 	move();
 	// SECOND
 	// Check if breed
-	if(breedCnt > 2){
-		breed();
+	if(breedCnt > 2 && howManyNeighbors(row, col, g) > 0){
+		breed(g);
 	}
 	// THIRD
 	// Increment
