@@ -22,6 +22,7 @@ public:
 	bool move();
 	bool breed();
 	bool antStep();
+	bool increm();
 	 ~Ant();
 
 };

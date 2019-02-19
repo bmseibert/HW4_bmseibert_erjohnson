@@ -136,12 +136,26 @@ bool Production::runProduction()
 		for(int r=0; r < gridSize; r++){
 			for(int c = 0; c < gridSize; c++){
 
+				if (g->getCell(r, c).getOccupant() == empty){
+
+				}
+				// Doodlebugs step;
+				if (g->getCell(r, c).getOccupant() == doodlebug){
+					Doodlebug p = g->getCell(r, c).getOrganism();
+					p.doodlebugStep();
+				}
+				// Ants step;
+				if(g->getCell(r, c).getOccupant() == ant){
+					Ant p = g->getCell(r, c).getOrganism();
+					p.antStep();
+				}
+
 			}
 
 		}
-		//dbs.step;
 
-		//ants.step;
+
+
 	}
 	return result;
 }

@@ -26,6 +26,7 @@ public:
 	int getStarveCnt();
 	virtual ~Doodlebug();
 	bool doodlebugStep();
+	bool increm();
 
 };
 

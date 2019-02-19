@@ -75,11 +75,34 @@ bool Ant::breed()
  * @return bool if the step worked
  */
 bool Ant::antStep(){
-	bool ok1 = true;
 
+	bool ok1 = true;
+	// FIRST
+	// Move
+	move();
+	// SECOND
+	// Check if breed
+	if(breedCnt > 2){
+		breed();
+	}
+	// THIRD
+	// Increment
+	increm();
 
 
 	return ok1;
+}
+/*
+ * Ant Increment Function- used to increment the breed counters
+ * @return bool result on if the function ran properly
+ */
+bool Ant::increm(){
+	bool result = true;
+
+	//increments the counter
+	breedCnt++;
+
+	return result;
 }
 /** Ant::~Ant is a destructor for the ant class
  * indicating that a ant object has died
