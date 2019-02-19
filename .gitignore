@@ -1,6 +1,6 @@
 # Don't track content of these folders
 
-Debug/src
+/Debug
 
 # Compiled source #
 ###################
