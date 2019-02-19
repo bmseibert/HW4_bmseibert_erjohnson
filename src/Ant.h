@@ -21,6 +21,7 @@ public:
 	Ant(int r, int c);
 	bool move();
 	bool breed();
+	bool antStep();
 	 ~Ant();
 
 };

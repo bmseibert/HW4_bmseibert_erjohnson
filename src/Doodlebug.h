@@ -25,6 +25,7 @@ public:
 	bool eat();
 	int getStarveCnt();
 	virtual ~Doodlebug();
+	bool doodlebugStep();
 
 };
 

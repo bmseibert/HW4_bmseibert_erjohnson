@@ -71,6 +71,16 @@ bool Ant::breed()
 
 	return status;
 }
+/* Ant Step Function
+ * @return bool if the step worked
+ */
+bool Ant::antStep(){
+	bool ok1 = true;
+
+
+
+	return ok1;
+}
 /** Ant::~Ant is a destructor for the ant class
  * indicating that a ant object has died
  *

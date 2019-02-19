@@ -6,6 +6,7 @@
  */
 #include <iostream>
 #include "Production.h"
+#include "Grid.h"
 
 int timestepsLeft=100;
 
@@ -71,6 +72,24 @@ Production::Production(int argc, char* argv[]) {
 			printf("Usage: Seed should not be less than 0, received %d.\n", seed);
 			done = true;
 		}
+		// Initialize the Grid
+		Grid g = Grid(gridSize);
+
+		// Initialize all of the doodlebugs and the ants
+		for(int i = 0; i<doodlebugs; i++){
+			g.setCellOccupant(rand()%gridSize, rand()%gridSize, doodlebug);
+		}
+		// Initialize all of the ants
+		for(int j= 0; j<ants; j++){
+			int f1 = rand()%gridSize;
+			int f2 = rand()%gridSize;
+			if(g.getCellOccupant(f1, f2) == empty){
+				g.setCellOccupant(f1, f2, ant);
+			}
+			else{
+
+			}
+		}
 
 	}
 }
@@ -79,8 +98,9 @@ bool Production::runProduction()
 {
 	bool result = true;
 
-	while(timestepsLeft-- > 0)
+	while(timeStepsLeft-- > 0)
 	{
+
 		//dbs.step;
 		//ants.step;
 	}

@@ -62,6 +62,17 @@ bool Doodlebug::eat()
 int Doodlebug::getStarveCnt(){
 	return starveCnt;
 }
+/* Doodlebug Step Function
+ * @return bool if the step worked
+ */
+bool Doodlebug::doodlebugStep(){
+	bool ok1 = true;
+
+
+
+	return ok1;
+}
+
 
 /* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
  * @param
