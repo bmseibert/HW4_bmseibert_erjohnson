@@ -19,7 +19,10 @@ Production::Production(int argc, char* argv[]) {
 	}
 	// Not sure about this Statement here
 	if (argc >= 6) {
-		pause = argv[6];
+		char* ptr1 = 0;
+		long nb_l = strtol(argv[1], &ptr1, 10);
+		pause = (char) nb_l;
+
 	}
 	if (!done){
 
@@ -52,8 +55,8 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of TimeSteps Remaining
-		long ng_l = strtol(argv[4], &ptr, 10); //get the number of generations
-		timeStepsLeft = (int)ng_l;
+		long nh_l = strtol(argv[4], &ptr, 10); //get the number of generations
+		timeStepsLeft = (int)nh_l;
 
 		if (timeStepsLeft < 0) {
 			printf("Usage: timeStepsLeft should not be less than 0, received %d.\n", timeStepsLeft);
@@ -61,8 +64,8 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of the seed
-		long ng_l = strtol(argv[5], &ptr, 10); //get the number of generations
-		seed = (int)ng_l;
+		long nj_l = strtol(argv[5], &ptr, 10); //get the number of generations
+		seed = (int)nj_l;
 
 		if (seed < 0) {
 			printf("Usage: Seed should not be less than 0, received %d.\n", seed);
