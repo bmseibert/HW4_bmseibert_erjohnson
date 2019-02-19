@@ -6,8 +6,10 @@
  */
 
 #include "Cell.h"
+#include "Organism.h"
 // occupation of a guest cell is automatically empty
 occupationStatus guest  = empty;
+
 
 /* Cell::Cell() is a constructor of a cell
  *
@@ -25,6 +27,7 @@ bool Cell::setOccupant(occupationStatus g)
 	// checks if a cell is empty
 	if(guest==empty)
 	{
+
 		// if it is empty set the occupant of the cell to be the input of the guest
 		// also returns true saying that the setting of the occupant worked
 		guest = g;

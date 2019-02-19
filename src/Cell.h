@@ -8,11 +8,15 @@
 #ifndef CELL_H_
 #define CELL_H_
 
-enum occupationStatus { empty, ant, doodlebug};
+
+enum occupationStatus {empty, ant, doodlebug};
 
 
 class Cell {
+private:
+
 public:
+
 	Cell();
 	bool setOccupant(occupationStatus g);
 	occupationStatus getOccupant();
