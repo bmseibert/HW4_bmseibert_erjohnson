@@ -18,6 +18,7 @@ public:
 	occupationStatus getCellOccupant(int r, int c);
 	virtual ~Grid();
 	int getNumCells();
+	Cell* getCellPointer(int r, int c);
 };
 
 #endif /* GRID_H_ */

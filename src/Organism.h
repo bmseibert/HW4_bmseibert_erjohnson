@@ -21,7 +21,8 @@ public:
 	virtual bool breed()=0;
 	void setAmAnt(bool b);
 	virtual ~Organism();
-	int HowManyNeighborsEmpty(int row, int col, Grid g);
+	Cell** GetNeighbors(int row, int col, Grid g);
+	Cell* GetRandCell(Cell** unoccupiedCells, int arrSize);
 };
 
 #endif /* ORGANISM_H_ */

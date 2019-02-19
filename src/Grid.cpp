@@ -65,6 +65,11 @@ int Grid::getNumCells()
 	return n;
 }
 
+Cell* Grid::getCellPointer(int r, int c)
+{
+	return (Cell*)&myGridCells_ptr_array[r][c];
+}
+
 /* Grid::~Grid() is the default destructor for a grid
  *
  */
