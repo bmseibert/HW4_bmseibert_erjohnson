@@ -14,6 +14,7 @@ public:
 	bool doTests();
 	bool gridTest();
 	bool makeAntsTest();
+	bool OrganismTest();
 	bool antsMoveTest();
 	bool antsBreedTest();
 	bool antsDieTest();
