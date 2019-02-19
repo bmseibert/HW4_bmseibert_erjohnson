@@ -8,6 +8,10 @@
 #include <algorithm>
 #include "Production.h"
 #include "Grid.h"
+#include "Cell.h"
+#include "Organism.h"
+#include "Doodlebug.h"
+#include "Ant.h"
 
 int timestepsLeft=100;
 
@@ -103,9 +107,13 @@ Production::Production(int argc, char* argv[]) {
 				}
 				else if(gridArray[i] == 1){
 					g.setCellOccupant(i, c, doodlebug);
+					Doodlebug* d = new Doodlebug(i,c);
+					g.getCell(i, c).setOrganism(d);
 				}
 				else if(gridArray[i] == 2){
 					g.setCellOccupant(i, c, ant);
+					Ant *a = new Ant(i,c);
+					g.getCell(i,c).setOrganism(a);
 				}
 
 			}

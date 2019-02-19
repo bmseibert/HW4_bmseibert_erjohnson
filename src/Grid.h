@@ -11,6 +11,7 @@
 #include "Cell.h"
 
 class Grid {
+
 public:
 	Grid();
 	Grid(int nSquaresOnASide);
@@ -18,7 +19,7 @@ public:
 	occupationStatus getCellOccupant(int r, int c);
 	virtual ~Grid();
 	int getNumCells();
-	Cell* getCellPointer(int r, int c);
+	Cell getCell(int r, int c);
 };
 
 #endif /* GRID_H_ */

@@ -64,10 +64,14 @@ int Grid::getNumCells()
 {
 	return n;
 }
-
-Cell* Grid::getCellPointer(int r, int c)
+/* getCellPointer Function gets the cell
+ * @param int r is the row of the cell
+ * @param int c is the column of the cell
+ * @return is a pointer to the cell that we are looking for
+ */
+Cell Grid::getCell(int r, int c)
 {
-	return (Cell*)&myGridCells_ptr_array[r][c];
+	return myGridCells_ptr_array[r][c];
 }
 
 /* Grid::~Grid() is the default destructor for a grid
