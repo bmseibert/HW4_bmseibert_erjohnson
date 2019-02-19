@@ -48,6 +48,24 @@ occupationStatus Cell::getOccupant()
 	// returns the result of the guest
 	return guest;
 }
+/** getOrganism is the getter for the private field in cell which is a
+ * pointer to the organism currently in it
+ * @return p, pointer to organism in the cell
+ */
+Organism* Cell::getOrganism(){
+	return p;
+}
+/** setOrganism is the setter for the private field in cell which is a
+ * pointer to the organism currently in it
+ * @return result, which is a boolean stating whether the setter ran properly
+ */
+bool Cell::setOrganism(Organism* o){
+	bool result = true;
+	p = o;
+	return result;
+}
+
+
 
 /* Cell::~Cell is the destructor for a cell
  *
