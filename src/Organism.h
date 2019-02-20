@@ -23,7 +23,7 @@ public:
 	void setAmAnt(bool b);
 	virtual ~Organism();
 	int howManyNeighbors(int row, int col, Grid* g);
-	Cell getRandCell(int row, int col, Grid* g);
+	int* getRandCell(int row, int col, Grid* g);
 };
 
 #endif /* ORGANISM_H_ */

@@ -124,6 +124,7 @@ bool Tests2::OrganismTest()
 	bool result = true;
 	bool ok1 = true;
 	bool ok2 = true;
+	bool ok3 = true;
 	std::cout << "Running the Organism Methods test" << std::endl;
 
 	Grid* myGrid_t = new Grid(9);
@@ -148,19 +149,21 @@ bool Tests2::OrganismTest()
 
 	int n = myGrid_t->getNumCells();
 	printf("nRows %d \n", n);
-	if(myGrid_t->getCellOccupant(8, 6) == ant)
-	{
-		std::cout << "Cell 8,6 has ant" << std::endl;
-	}
 	int numNeighbors2 = a5->howManyNeighbors(8, 6, myGrid_t);
 	printf("numNeighbors2: %d \n", numNeighbors2);
-//	if(numNeighbors2 != 3){
-//		ok2 = false;
-//		printf("found a non-existent neighbor neighbor\n");
+	if(numNeighbors2 != 3){
+		ok2 = false;
+		printf("found a non-existent neighbor neighbor\n");
+	}
+
+//	if(*(a3->getRandCell(3, 4, myGrid_t)) == [4, 4] || *(a3->getRandCell(3, 4, myGrid_t)) == [4, 4] ||
+//       *(a3->getRandCell(3, 4, myGrid_t)) == [4, 4]){
+//		ok3 = false;
+//		printf("GetRandCell returned a cell that was not empty");
 //	}
 
 
-	result = ok1 && ok2;
+	result = ok1 && ok2 && ok3;
 	return result;
 }
 
