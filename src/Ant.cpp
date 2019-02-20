@@ -65,11 +65,14 @@ bool Ant::breed()
 
 	// FIRST
 	// Find Cell to Breed
-	Cell a = getRandCell(row, col, g);
-
+	int * a = getRandCell(row, col, g);
+	int b[1] = {*a};
 	// SECOND
 	// Create Ant from this breeding
-	//Ant a1 = new Ant()
+	Ant * a1 = new Ant(b[0], b[1]);
+	// put it in the new cell
+	g->setCellOccupant(b[0], b[1], ant);
+	g->getCell(b[0], b[1]).setOrganism(a1);
 
 	// THIRD
 	// Reset the Counter of breed to 0
@@ -77,6 +80,7 @@ bool Ant::breed()
 
 	return status;
 }
+
 /* Ant Step Function
  * @return bool if the step worked
  */
@@ -116,7 +120,7 @@ bool Ant::increm(){
  * @param bool result true if worked
  */
 bool Ant::setBreedCnt(int i){
-	bool result;
+	bool result = true;
 	breedCnt = 0;
 	return result;
 }
