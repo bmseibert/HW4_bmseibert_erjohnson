@@ -54,6 +54,7 @@ occupationStatus Cell::getOccupant()
 Organism* Cell::getOrganism(){
 	return p;
 }
+
 /** setOrganism is the setter for the private field in cell which is a
  * pointer to the organism currently in it
  * @return result, which is a boolean stating whether the setter ran properly

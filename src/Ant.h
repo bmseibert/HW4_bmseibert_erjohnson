@@ -24,6 +24,7 @@ public:
 	bool breed();
 	bool step();
 	bool increm();
+	bool setBreedCnt(int i);
 	~Ant();
 
 };
