@@ -65,14 +65,15 @@ bool Ant::breed()
 
 	// FIRST
 	// Find Cell to Breed
-	//Cell a = getRandCell(row, col, g);
+	Cell a = getRandCell(row, col, g);
 
 	// SECOND
 	// Create Ant from this breeding
-
+	//Ant a1 = new Ant()
 
 	// THIRD
 	// Reset the Counter of breed to 0
+	setBreedCnt(0);
 
 	return status;
 }
@@ -84,11 +85,11 @@ bool Ant::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
-	//move();
+	move();
 	// SECOND
 	// Check if breed
-	if(breedCnt > 2){
-		//breed(g);
+	if(breedCnt > 2 && howManyNeighbors(row, col, g) > 0){
+		breed();
 	}
 	// THIRD
 	// Increment
@@ -109,6 +110,17 @@ bool Ant::increm(){
 
 	return result;
 }
+
+/* Set Breed Count
+ * @param int i sets the count to i
+ * @param bool result true if worked
+ */
+bool Ant::setBreedCnt(int i){
+	bool result;
+	breedCnt = 0;
+	return result;
+}
+
 /** Ant::~Ant is a destructor for the ant class
  * indicating that a ant object has died
  *
