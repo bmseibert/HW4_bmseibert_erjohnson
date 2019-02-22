@@ -13,11 +13,17 @@
 class Grid {
 private:
 	int n = 0;
+	int numDoodle = 0;
+	int numAnt = 0;
 
 public:
 	Grid();
 	Grid(int nSquaresOnASide);
 	bool setCellOccupant(int r, int c, occupationStatus g);
+	int getNumDoodle();
+	bool setNumDoodle(int num);
+	bool setNumAnt(int num);
+	int getNumAnt();
 	occupationStatus getCellOccupant(int r, int c);
 	virtual ~Grid();
 	int getNumCells();

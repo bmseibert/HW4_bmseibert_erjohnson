@@ -72,6 +72,42 @@ Cell Grid::getCell(int r, int c)
 	return myGridCells_ptr_array[r][c];
 }
 
+/* getNumDoodle Function gets the number of doodlebugs
+ * @return is the number of doodlebugs on the grid
+ */
+int Grid::getNumDoodle()
+{
+	return numDoodle;
+}
+
+/* getNumAnt Function sets the number of Ants
+ * @return a bool on if this function ran or not
+ */
+bool Grid::setNumAnt(int num)
+{
+	bool result = true;
+	numAnt = num;
+	return result;
+}
+
+/* getNumAnt Function gets the number of ants
+ * @return is the number of ants on the grid
+ */
+int Grid::getNumAnt()
+{
+	return numAnt;
+}
+
+/* getNumDoodle Function sets the number of doodlebugs
+ * @return a bool on if this function ran or not
+ */
+bool Grid::setNumDoodle(int num)
+{
+	bool result = true;
+	numDoodle = num;
+	return result;
+}
+
 /* Grid::~Grid() is the default destructor for a grid
  *
  */

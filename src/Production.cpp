@@ -83,6 +83,8 @@ Production::Production(int argc, char* argv[]) {
 		// Initialize the Grid, and put it in memory
 		*g = Grid(gridSize);
 
+
+
 		// Initialize all of the doodlebugs and the ants
 		int gridArray[gridSize*gridSize];
 
