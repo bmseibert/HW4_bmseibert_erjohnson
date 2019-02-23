@@ -127,6 +127,7 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 	}
+	g->printGrid();
 }
 /* Run Production Function
  * @return bool whether the function worked
@@ -135,7 +136,7 @@ bool Production::runProduction()
 {
 	bool result = true;
 
-	while(timeStepsLeft-- > 0)
+	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
 		for(int r=0; r < gridSize; r++){
 			for(int c = 0; c < gridSize; c++){
@@ -146,7 +147,7 @@ bool Production::runProduction()
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
 					Organism* p = g->getCell(r, c).getOrganism();
-					//p->step();
+					p->step();
 				}
 
 
@@ -163,7 +164,7 @@ bool Production::runProduction()
 				// Ant step;
 				if (g->getCell(r, c).getOccupant() == ant){
 					Organism* p = g->getCell(r, c).getOrganism();
-					//p->step();
+					p->step();
 				}
 
 
@@ -172,7 +173,7 @@ bool Production::runProduction()
 
 		}
 
-
+		g->printGrid();
 
 	}
 	return result;

@@ -25,6 +25,7 @@ public:
 	bool setNumAnt(int num);
 	int getNumAnt();
 	occupationStatus getCellOccupant(int r, int c);
+	bool printGrid();
 	virtual ~Grid();
 	int getNumCells();
 	Cell getCell(int r, int c);
