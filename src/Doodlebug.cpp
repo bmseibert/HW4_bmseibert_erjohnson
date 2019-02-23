@@ -6,6 +6,7 @@
  */
 
 #include "Doodlebug.h"
+#include "Ant.h"
 #include <stdlib.h>
 /* Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant
@@ -31,7 +32,18 @@ Doodlebug::Doodlebug(int r, int c):Organism(false) {
 bool Doodlebug::move()
 {
 	bool status = true;
-
+	// Gets a random unoccupied cell
+	int* a  = Organism::getRandCell(row, col, g);
+	int b[1] = {*a};
+	if(b[0] == -1 || b[1] == -1){
+		status = false;
+	}
+	else{
+		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
+		g->getCell(row, col).setOrganism(nullptr);
+		g->getCell(b[0], b[1]).setOrganism(db);
+		g->getCell(b[0], b[1]).setOccupant(doodlebug);
+	}
 	return status;
 }
 /* Doodlebug::breed() Function, used to make a doodlebug breed
@@ -45,37 +57,60 @@ bool Doodlebug::breed()
 
 	// FIRST
 	// Find Cell to Breed
-	int* a = getRandCell(row, col, g);
+	int* a = Organism::getRandCell(row, col, g);
 	int b[1] = {*a};
-	// SECOND
-	// Create doodlebug from this breeding
-	Doodlebug* d1 = new Doodlebug(b[0], b[1]);
-	// put it in the new cell
-	g->setCellOccupant(b[0], b[1], doodlebug);
-	g->getCell(b[0], b[1]).setOrganism(d1);
+	if(b[0] == -1 || b[1] == -1){
+		status = false;
+	}
+	else{
+		// SECOND
+		// Create doodlebug from this breeding
+		Doodlebug* d1 = new Doodlebug(b[0], b[1]);
+		// put it in the new cell
+		g->setCellOccupant(b[0], b[1], doodlebug);
+		g->getCell(b[0], b[1]).setOrganism(d1);
 
-	//Add a doodlebug to the total counter in the grid
-	int totalDoodleBugs = g->getNumDoodle();
-	totalDoodleBugs++;
-	g->setNumDoodle(totalDoodleBugs);
-	// THIRD
-	// Reset the Counter of breed to 0
-	setBreedCnt(0);
-
+		//Add a doodlebug to the total counter in the grid
+		int totalDoodleBugs = g->getNumDoodle();
+		totalDoodleBugs++;
+		g->setNumDoodle(totalDoodleBugs);
+		// THIRD
+		// Reset the Counter of breed to 0
+		setBreedCnt(0);
+	}
 	return status;
 }
 
 /* Doodlebug::eat() Function, used to make a doodlebug eat, also kills an ant
- * Eating takes precidence over the majority of actions
- * @param
- *
+ * Eating takes precedence over the majority of other actions
+ * @param none
  * @return bool returns true if the bug was able to eat
  */
 bool Doodlebug::eat()
 {
 	bool status = true;
 
-	//Check surrounding cells for
+	//Check surrounding cells for ants
+	int* a = getRandCell(row, col, g);
+	int b[1] = {*a};
+	// Neighboring cells did not contain an ant
+	if(b[0] == -1 || b[1] == -1){
+		status = false;
+	}
+	// Neighboring cells contain an ant
+	else{
+		// eat (destruct) the ant in the cell
+		Ant* deadAnt = (Ant*) g->getCell(b[0], b[1]).getOrganism();
+		deadAnt->~Ant();
+		/* gets the doodlebug from the cuurent cell and moves it to the
+		 * cell that the ant it is eating is in
+		*/
+		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
+		g->getCell(row, col).setOrganism(nullptr);
+		g->getCell(b[0], b[1]).setOrganism(db);
+		g->getCell(b[0], b[1]).setOccupant(doodlebug);
+
+	}
 	return status;
 }
 
@@ -98,7 +133,8 @@ bool Doodlebug::step(){
 	// starve check
 	if (starveCnt > 2){
 		//DELETE DOODLE BUG
-		this->~Doodlebug();
+		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
+		db->~Doodlebug();
 	}
 	// THIRD
 	// breed Check
@@ -253,7 +289,9 @@ int* Doodlebug::getRandCell(int row, int col, Grid* g){
  *
  */
 Doodlebug::~Doodlebug() {
-// THERE MAY BE MORE STUFF NEEDED IN HERE
-
+	// THERE MAY BE MORE STUFF NEEDED IN HERE
+	g->getCell(row, col).setOrganism(nullptr);
+	g->setCellOccupant(row, col, empty);
+	delete this;
 }
 
