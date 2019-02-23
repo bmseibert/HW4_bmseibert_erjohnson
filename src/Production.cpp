@@ -28,9 +28,7 @@ Production::Production(int argc, char* argv[]) {
 	}
 	// Not sure about this Statement here
 	if (argc >= 6) {
-		char* ptr1 = 0;
-		long nb_l = strtol(argv[1], &ptr1, 10);
-		pause = (char) nb_l;
+		pause = argv[6][0];
 
 	}
 	if (!done){
