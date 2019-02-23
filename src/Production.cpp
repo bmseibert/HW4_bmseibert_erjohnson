@@ -6,6 +6,9 @@
  */
 #include <iostream>
 #include <algorithm>
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 #include "Production.h"
 #include "Grid.h"
 #include "Cell.h"
@@ -20,6 +23,13 @@ int timestepsLeft = 100;
  * @param char* argv[] is all of the arguments that we get from the console
  */
 Production::Production(int argc, char* argv[]) {
+	bool done = false;
+	int gridSize = -1;    // Grid Size
+	int doodlebugs = -1;  // Number of doodlebugs on our grid
+	int ants = -1;        // Number of ants on our grid
+	int seed = -1;        // Seed for the Random Number Generator
+	char pause = 'n';     // Whether the user prefers to pause or not
+
 
 	// Makes sure that there are enough inputs
 	if (argc < 5){
@@ -35,7 +45,7 @@ Production::Production(int argc, char* argv[]) {
 
 		// Get the gridSize
 		char* ptr = 0;
-		long nr_l = strtol(argv[1], &ptr, 10);
+		long nr_l = strtol(argv[2], &ptr, 10);
 		gridSize = (int) nr_l;
 
 		if (gridSize < 1) {
@@ -44,7 +54,7 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of Doodlebugs
-		long nc_l = strtol(argv[2], &ptr, 10);
+		long nc_l = strtol(argv[3], &ptr, 10);
 		doodlebugs = (int)nc_l;
 
 		if (doodlebugs < 0) {
@@ -53,7 +63,7 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of Ants
-		long ng_l = strtol(argv[3], &ptr, 10); //get the number of generations
+		long ng_l = strtol(argv[4], &ptr, 10); //get the number of generations
 		ants = (int)ng_l;
 
 		if (ants < 0) {
@@ -62,7 +72,7 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of TimeSteps Remaining
-		long nh_l = strtol(argv[4], &ptr, 10); //get the number of generations
+		long nh_l = strtol(argv[5], &ptr, 10); //get the number of generations
 		timeStepsLeft = (int)nh_l;
 
 		if (timeStepsLeft < 0) {
@@ -71,7 +81,7 @@ Production::Production(int argc, char* argv[]) {
 		}
 
 		// Get the number of the seed
-		long nj_l = strtol(argv[5], &ptr, 10); //get the number of generations
+		long nj_l = strtol(argv[6], &ptr, 10); //get the number of generations
 		seed = (int)nj_l;
 
 		if (seed < 0) {
@@ -79,11 +89,12 @@ Production::Production(int argc, char* argv[]) {
 			done = true;
 		}
 		// Initialize the Grid, and put it in memory
-		*g = Grid(gridSize);
+		g = new Grid(gridSize);
 
 		// set the counters for the number of ants and doodlebugs
 		g->setNumAnt(ants);
 		g->setNumDoodle(doodlebugs);
+		srand(seed);
 
 		// Initialize all of the doodlebugs and the ants
 		int gridArray[gridSize*gridSize];
@@ -107,18 +118,18 @@ Production::Production(int argc, char* argv[]) {
 		// Fill the grid with correct things
 		for(int r = 0; r < gridSize; r++){
 			for(int c = 0; c < gridSize; c++){
-				if(gridArray[c] == 0){
+				if(gridArray[c+ r*(gridSize)] == 0){
 					g->setCellOccupant(r, c, empty);
 				}
-				else if(gridArray[c] == 1){
+				else if(gridArray[c+ r*(gridSize)] == 1){
 					g->setCellOccupant(r, c, doodlebug);
-					//Doodlebug* d = new Doodlebug(r,c);
-					//g->getCell(r, c).setOrganism(d);
+					Doodlebug* d = new Doodlebug(r,c);
+					g->getCell(r, c).setOrganism(d);
 				}
-				else if(gridArray[c] == 2){
+				else if(gridArray[c+ r*(gridSize)] == 2){
 					g->setCellOccupant(r, c, ant);
-					//Ant *a = new Ant(r,c);
-					//g->getCell(r,c).setOrganism(a);
+					Ant *a = new Ant(r,c);
+					g->getCell(r,c).setOrganism(a);
 				}
 
 			}
@@ -136,16 +147,15 @@ bool Production::runProduction()
 
 	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
-		for(int r=0; r < gridSize; r++){
-			for(int c = 0; c < gridSize; c++){
+		for(int r=0; r < g->getNumCells(); r++){
+			for(int c = 0; c < g->getNumCells(); c++){
 
 				if (g->getCell(r, c).getOccupant() == empty){
 
 				}
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
-					Organism* p = g->getCell(r, c).getOrganism();
-					p->step();
+					g->getCell(r, c).getOrganism()->step();
 				}
 
 
@@ -153,16 +163,16 @@ bool Production::runProduction()
 
 
 		}
-		for(int r=0; r < gridSize; r++){
-			for(int c = 0; c < gridSize; c++){
+		for(int r=0; r < g->getNumCells(); r++){
+			for(int c = 0; c < g->getNumCells(); c++){
 
 				if (g->getCell(r, c).getOccupant() == empty){
 
 				}
 				// Ant step;
 				if (g->getCell(r, c).getOccupant() == ant){
-					Organism* p = g->getCell(r, c).getOrganism();
-					p->step();
+					g->getCell(r, c).getOrganism()->step();
+
 				}
 
 

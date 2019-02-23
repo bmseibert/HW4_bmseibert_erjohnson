@@ -10,7 +10,7 @@
 #include "Grid.h"
 #include "Cell.h"
 
-Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the array of pointers that is the gird
+//Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the array of pointers that is the gird
 
 /* Grid::Grid() is the constructor for the grid
  *
@@ -132,6 +132,22 @@ bool Grid::printGrid() {
 	printf("\n");
 	return result;
 
+}
+/* Grid getter function
+ * @return returns a pointer to the grid
+ */
+Cell** Grid::getGrid(){
+
+	return myGridCells_ptr_array;
+}
+
+/* set the seed function
+ * @return a bool of if the function worked
+ */
+bool Grid::setSeed(int s){
+	bool result = true;
+	seed = s;
+	return result;
 }
 
 

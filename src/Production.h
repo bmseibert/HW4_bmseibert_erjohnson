@@ -12,15 +12,8 @@
 class Production {
 private:
 
-	bool done = false;    // true when the program is done running
-	int gridSize = -1;    // Grid Size
-	int doodlebugs = -1;  // Number of doodlebugs on our grid
-	int ants = -1;        // Number of ants on our grid
-	int seed = -1;        // Seed for the Random Number Generator
-	char pause = 'n';     // Whether the user prefers to pause or not
-	Grid *g = nullptr;              // Grid pointer
-
 public:
+	Grid *g = nullptr;        // Grid pointer
 	int timeStepsLeft = 100;  // Initialized Number of Time Steps Left
 	Production(int argc, char* argv[]);
 	bool runProduction();
