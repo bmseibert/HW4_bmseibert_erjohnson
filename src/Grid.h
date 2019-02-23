@@ -15,6 +15,8 @@ private:
 	int n = 0;
 	int numDoodle = 0;
 	int numAnt = 0;
+	Cell** myGridCells_ptr_array = (Cell**)nullptr;
+	int seed = 0;
 
 public:
 	Grid();
@@ -26,8 +28,10 @@ public:
 	int getNumAnt();
 	occupationStatus getCellOccupant(int r, int c);
 	bool printGrid();
+	bool setSeed(int s);
 	virtual ~Grid();
 	int getNumCells();
+	Cell** getGrid();
 	Cell getCell(int r, int c);
 };
 
