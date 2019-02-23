@@ -28,6 +28,9 @@ public:
 	~Doodlebug();
 	bool step();
 	bool increm();
+	bool setBreedCnt(int i);
+	int howManyNeighbors(int row, int col, Grid* g);
+	int* Doodlebug::getRandCell(int row, int col, Grid* g);
 
 };
 

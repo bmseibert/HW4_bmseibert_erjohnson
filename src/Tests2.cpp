@@ -155,9 +155,11 @@ bool Tests2::OrganismTest()
 		ok2 = false;
 		printf("found a non-existent neighbor neighbor\n");
 	}
-
-//	if(*(a3->getRandCell(3, 4, myGrid_t)) == [4, 4] || *(a3->getRandCell(3, 4, myGrid_t)) == [4, 4] ||
-//       *(a3->getRandCell(3, 4, myGrid_t)) == [4, 4]){
+//	int arr[] = {*(a3->getRandCell(3, 4, myGrid_t))};
+//	printf("arr: %d ", arr[0]);
+//	printf(" %d \n", arr[1]);
+//	if((arr[0] == 4 && arr[1] == 4) || (arr[0] == 3 && arr[1] == 2) ||
+//	   (arr[0] == 2 && arr[1] == 4)){
 //		ok3 = false;
 //		printf("GetRandCell returned a cell that was not empty");
 //	}
