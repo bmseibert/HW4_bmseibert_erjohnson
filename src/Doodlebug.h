@@ -9,6 +9,7 @@
 #define DOODLEBUG_H_
 
 #include "Organism.h"
+#include <stdio.h>
 
 class Doodlebug: public Organism {
 private:
@@ -19,6 +20,7 @@ private:
 	Grid* g = nullptr;
 
 public:
+
 	Doodlebug();
 	Doodlebug(int r, int c);
 	bool move();

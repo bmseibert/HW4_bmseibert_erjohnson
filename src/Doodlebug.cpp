@@ -7,7 +7,7 @@
 
 #include "Doodlebug.h"
 #include "Ant.h"
-#include <stdlib.h>
+
 /* Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant
  */
@@ -100,7 +100,7 @@ bool Doodlebug::eat()
 	// Neighboring cells contain an ant
 	else{
 		// eat (destruct) the ant in the cell
-		Ant* deadAnt = (Ant*) g->getCell(b[0], b[1]).getOrganism();
+		Ant* deadAnt = (Ant*) g->getCell(b[0],b[1]).getOrganism();
 		deadAnt->~Ant();
 		/* gets the doodlebug from the cuurent cell and moves it to the
 		 * cell that the ant it is eating is in
@@ -232,7 +232,7 @@ int* Doodlebug::getRandCell(int row, int col, Grid* g){
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = howManyNeighbors(row, col, g);
-	int a = rand() % numNeighbors;
+	int a = g->randomVal % numNeighbors;
 
 	if (numNeighbors == 0){
 		output[0] = row;

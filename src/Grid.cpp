@@ -150,6 +150,12 @@ bool Grid::setSeed(int s){
 	return result;
 }
 
+bool Grid::setRand(){
+	bool result = false;
+	randomVal = rand();
+	return result;
+}
+
 
 /* Grid::~Grid() is the default destructor for a grid
  *

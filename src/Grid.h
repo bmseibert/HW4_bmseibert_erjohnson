@@ -18,7 +18,9 @@ private:
 	Cell** myGridCells_ptr_array = (Cell**)nullptr;
 	int seed = 0;
 
+
 public:
+	int randomVal = 0;
 	Grid();
 	Grid(int nSquaresOnASide);
 	bool setCellOccupant(int r, int c, occupationStatus g);
@@ -31,6 +33,7 @@ public:
 	bool setSeed(int s);
 	virtual ~Grid();
 	int getNumCells();
+	bool setRand();
 	Cell** getGrid();
 	Cell getCell(int r, int c);
 };
