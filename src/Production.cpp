@@ -155,7 +155,8 @@ bool Production::runProduction()
 				}
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
-					g->getCell(r, c).getOrganism()->step();
+					Doodlebug *d = (Doodlebug *)g->getCell(r, c).getOrganism();
+					d->step();
 				}
 
 
@@ -171,8 +172,8 @@ bool Production::runProduction()
 				}
 				// Ant step;
 				if (g->getCell(r, c).getOccupant() == ant){
-					g->getCell(r, c).getOrganism()->step();
-
+					Ant * a =(Ant *)g->getCell(r, c).getOrganism();
+					a->step();
 				}
 
 
