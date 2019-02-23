@@ -25,6 +25,7 @@ public:
 	bool step();
 	bool increm();
 	bool setBreedCnt(int i);
+	bool setRowAndCol(int i, int j);
 	~Ant();
 
 };

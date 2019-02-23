@@ -108,6 +108,33 @@ bool Grid::setNumDoodle(int num)
 	return result;
 }
 
+/* Function to Print the grid
+ * @return bool if it worked
+ */
+bool Grid::printGrid() {
+	bool result = true;
+	for(int r=0; r < n; r++)
+	{
+		for(int c=0; c < n; c++)
+		{
+			if(myGridCells_ptr_array[r][c].getOccupant() == empty){
+				printf(" ");
+			}
+			if(myGridCells_ptr_array[r][c].getOccupant() == ant){
+				printf("o");
+			}
+			if(myGridCells_ptr_array[r][c].getOccupant() == doodlebug){
+				printf("x");
+			}
+		}
+		printf("\n");
+	}
+	printf("\n");
+	return result;
+
+}
+
+
 /* Grid::~Grid() is the default destructor for a grid
  *
  */

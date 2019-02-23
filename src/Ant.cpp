@@ -44,7 +44,19 @@ bool Ant::move()
 
 	// FIRST
 	// ant needs to check the surrounding cells and find all of the ones that are empty
-	// pick one at random and move to it
+	// pick one at random.
+	int * b = getRandCell(row,col,g);
+
+	//SECOND
+	//modify the pointers to move
+	g->getCell(b[0], b[1]).setOrganism(g->getCell(row, col).getOrganism());
+	g->getCell(row, col).setOrganism(nullptr);
+
+	g->getCell(row, col).setOccupant(empty);
+	g->getCell(b[0], b[1]).setOccupant(ant);
+
+	//sets the ant row and column
+	setRowAndCol(b[0],b[1]);
 
 	// CONSIDER:
 	// ant should not move into a doodlebug or another ant
@@ -89,11 +101,14 @@ bool Ant::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
+	if(howManyNeighbors(row, col, g) > 0){
 	move();
+	}
 	// SECOND
 	// Check if breed
 	if(breedCnt > 2 && howManyNeighbors(row, col, g) > 0){
 		breed();
+		g->setNumAnt(g->getNumAnt()+1);
 	}
 	// THIRD
 	// Increment
@@ -124,6 +139,20 @@ bool Ant::setBreedCnt(int i){
 	breedCnt = 0;
 	return result;
 }
+
+/* set the row and column function
+ * @param int i sets the row
+ * @param int j sets the col
+ * @param bool result true if worked
+ */
+bool Ant::setRowAndCol(int i, int j){
+	bool result = true;
+	row = i;
+	col = j;
+	return result;
+}
+
+
 
 /** Ant::~Ant is a destructor for the ant class
  * indicating that a ant object has died
