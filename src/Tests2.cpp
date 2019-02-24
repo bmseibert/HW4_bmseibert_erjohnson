@@ -208,7 +208,7 @@ bool Tests2::antsMoveTest()
 	Ant* a3 = new Ant(3,4,myGrid_l);
 	// Set the Cell occupant and organism
 	myGrid_l->setCellOccupant(3, 4, ant);
-	myGrid_l->getCell(3, 4).setOrganism(a3);
+	myGrid_l->setCellOrganism(3, 4, a3);
 
 	myGrid_l->printGrid();
 	printf("\n");
@@ -222,7 +222,7 @@ bool Tests2::antsMoveTest()
 		ok1 = false;
 	}
 	//this does not seem to be working
-	if (myGrid_l->getCell(3, 4).getOrganism() == nullptr){
+	if (myGrid_l->getCellOrganism(3, 4) == nullptr){
 
 	}
 	else{
@@ -270,7 +270,7 @@ bool Tests2::antsBreedTest()
 	Ant* a3 = new Ant(3,4,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
-	myGrid_p->getCell(3, 4).setOrganism(a3);
+	myGrid_p->setCellOrganism(3, 4, a3);
 	// Make the ant breed
 	//a3.breed()
 	// check if there is an ant and an ant in any surrounding cells
@@ -287,7 +287,7 @@ bool Tests2::antsBreedTest()
 	Ant* a1 = new Ant(1,1,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
-	myGrid_p->getCell(3, 4).setOrganism(a1);
+	myGrid_p->setCellOrganism(3, 4, a1);
 	// Make the ant breed
 	// a1->breed();
 	// check if there is an ant
@@ -321,7 +321,7 @@ bool Tests2::antsDieTest()
 	Ant* a3 = new Ant(3,4,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
-	myGrid_p->getCell(3, 4).setOrganism(a3);
+	myGrid_p->setCellOrganism(3, 4, a3);
 	// kill the ant
 	// a3~Ant();
 
@@ -397,7 +397,7 @@ bool Tests2::doodleMoveTest()
 	Doodlebug* d3 = new Doodlebug(3,4,myGrid_l);
 	// Set the Cell occupant and organism
 	myGrid_l->setCellOccupant(3, 4, ant);
-	myGrid_l->getCell(3, 4).setOrganism(d3);
+	myGrid_l->setCellOrganism(3, 4, d3);
 	// Have the doodlebug move
 	d3->move();  //THIS HAS SO MANY BUGS
 	// check if the doodlebug moved
@@ -406,7 +406,7 @@ bool Tests2::doodleMoveTest()
 		ok1 = false;
 	}
 	//this does not seem to be working
-	if (myGrid_l->getCell(3, 4).getOrganism() == nullptr){
+	if (myGrid_l->getCellOrganism(3, 4) == nullptr){
 
 	}
 	else{
