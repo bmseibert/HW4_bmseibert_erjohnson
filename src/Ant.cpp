@@ -48,8 +48,11 @@ bool Ant::move()
 	// FIRST
 	// ant needs to check the surrounding cells and find all of the ones that are empty
 	// pick one at random.
-	int * a = getRandCell(row,col,g);
-	int b[1] = {*a}; // This does not work
+	int *cell = getRandCell(row,col,g);
+	int cellRow = *cell;
+	cell++;
+	int cellCol = *cell;
+	int b[] = {cellRow, cellCol}; // This does not work
 
 	//SECOND
 	//modify the pointers to move

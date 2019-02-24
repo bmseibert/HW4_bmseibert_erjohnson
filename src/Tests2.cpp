@@ -210,7 +210,7 @@ bool Tests2::antsMoveTest()
 	myGrid_l->setCellOccupant(3, 4, ant);
 	myGrid_l->getCell(3, 4).setOrganism(a3);
 	// Have the ant move
-	//a3->move();  //THIS HAS SO MANY BUGS
+	a3->move();  //THIS HAS SO MANY BUGS
 	//check if the ant moved
 	if (myGrid_l->getCell(3, 4).getOccupant() == ant){
 		printf("There is still an ant at this location \n");
