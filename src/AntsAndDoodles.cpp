@@ -31,6 +31,9 @@ int main(int argc, char* argv[])
 		}
 		ps.~Production(); //done with production
 	}
+    else{
+    	puts("Tests did not pass.");
+    }
     ts.~Tests2(); //done with tests
 
 

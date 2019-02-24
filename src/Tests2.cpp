@@ -155,14 +155,14 @@ bool Tests2::OrganismTest()
 		ok2 = false;
 		printf("found a non-existent neighbor neighbor\n");
 	}
-//	int arr[] = {*(a3->getRandCell(3, 4, myGrid_t))};
-//	printf("arr: %d ", arr[0]);
-//	printf(" %d \n", arr[1]);
-//	if((arr[0] == 4 && arr[1] == 4) || (arr[0] == 3 && arr[1] == 2) ||
-//	   (arr[0] == 2 && arr[1] == 4)){
-//		ok3 = false;
-//		printf("GetRandCell returned a cell that was not empty");
-//	}
+	//	int arr[] = {*(a3->getRandCell(3, 4, myGrid_t))};
+	//	printf("arr: %d ", arr[0]);
+	//	printf(" %d \n", arr[1]);
+	//	if((arr[0] == 4 && arr[1] == 4) || (arr[0] == 3 && arr[1] == 2) ||
+	//	   (arr[0] == 2 && arr[1] == 4)){
+	//		ok3 = false;
+	//		printf("GetRandCell returned a cell that was not empty");
+	//	}
 
 
 	result = ok1 && ok2 && ok3;
@@ -240,10 +240,13 @@ bool Tests2::antsBreedTest()
 {
 	bool result = true;
 	bool ok1 = true;
+	bool ok2 = true;
 	std::cout << "Running the breed ants test" << std::endl;
 
+	//makes a grid pointer
 	Grid* myGrid_p = new Grid(9);
 
+	// checking the normal case
 	// Make ant
 	Ant* a3 = new Ant(3,4);
 	// Add the Ant to the grid
@@ -251,7 +254,7 @@ bool Tests2::antsBreedTest()
 	myGrid_p->getCell(3, 4).setOrganism(a3);
 	// Make the ant breed
 	//a3.breed()
-	// check if there is an ant and an ant pointer in any surrounding cells
+	// check if there is an ant and an ant in any surrounding cells
 	if(myGrid_p->getCell(2, 4).getOccupant() == ant || myGrid_p->getCell(4, 4).getOccupant() == ant
 			|| myGrid_p->getCell(3, 3).getOccupant() == ant || myGrid_p->getCell(3, 5).getOccupant() == ant){
 
@@ -260,20 +263,70 @@ bool Tests2::antsBreedTest()
 		ok1 = false;
 	}
 
+	// checking the boundary case
+	// Make ant
+	Ant* a1 = new Ant(1,1);
+	// Add the Ant to the grid
+	myGrid_p->setCellOccupant(3, 4, ant);
+	myGrid_p->getCell(3, 4).setOrganism(a1);
+	// Make the ant breed
+	// a1.breed();
+	// check if there is an ant
+	// check if there is an ant and an ant in any surrounding cells
+	if(myGrid_p->getCell(1, 2).getOccupant() == ant || myGrid_p->getCell(2, 1).getOccupant() == ant){
 
-	result = ok1;
+	}else{
+		printf("Ant Moved to a random location or did not move at all \n");
+		ok2 = false;
+	}
+
+	result = ok1 && ok2;
 	return result;
 }
+
+/* Ants Die Test
+ * Checks if the Ant Delete test works
+ * NEED TO CHECK:
+ * normal death condition
+ *
+ * @return bool of if the test worked or not
+ */
 bool Tests2::antsDieTest()
 {
 	bool result = true;
 	std::cout << "Running the ants die test" << std::endl;
+	//makes a grid pointer
+	Grid* myGrid_p = new Grid(9);
+	// checking the normal case
+	// Make ant
+	Ant* a3 = new Ant(3,4);
+	// Add the Ant to the grid
+	myGrid_p->setCellOccupant(3, 4, ant);
+	myGrid_p->getCell(3, 4).setOrganism(a3);
+	// kill the ant
+	// a3~Ant();
+
+	//check if the ant is still there or alive
+	// NEED TO DO
+
 	return result;
 }
+/* Make Doodles Test
+ * Checks if the Make Doodles Test worked
+ *
+ * @return bool of if the test worked
+ */
 bool Tests2::makeDoodlesTest()
 {
 	bool result = true;
 	std::cout << "Running the make doodlebugs test" << std::endl;
+
+
+
+
+
+
+
 	return result;
 }
 bool Tests2::doodleMoveTest()

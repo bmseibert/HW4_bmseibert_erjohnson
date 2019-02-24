@@ -91,7 +91,7 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 
 	int output[] = {-1, -1};
 	// gets the number of cells in the grid
-	int number = g->n;
+	int number = g->getNumCells();
 	// sets this value equal to the number of rows and the number of columns
 	int nRows = number;
 	int nCols = number;

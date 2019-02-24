@@ -17,10 +17,10 @@ private:
 	int numAnt = 0;
 	Cell** myGridCells_ptr_array = (Cell**)nullptr;
 	int seed = 0;
-
+	int n = 0;
 
 public:
-	int n = 0;
+
 	int randomVal = 0;
 	Grid();
 	Grid(int nSquaresOnASide);
