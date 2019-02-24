@@ -54,10 +54,10 @@ bool Ant::move()
 	int b[] = {cell.cellRow, cell.cellCol};
 	//SECOND
 	//modify the pointers to move
-	g->getCell(b[0], b[1]).setOrganism(g->getCell(row, col).getOrganism());
+	g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
 	g->getCell(b[0], b[1]).setOccupant(ant);
 
-	g->getCell(row, col).setOrganism(nullptr);
+	g->setCellOrganism(row, col, nullptr);
 	g->setCellOccupant(row, col, empty);
 
 	g->printGrid();
@@ -91,7 +91,7 @@ bool Ant::breed()
 	Ant * a1 = new Ant(b[0], b[1], g);
 	// put it in the new cell
 	g->setCellOccupant(b[0], b[1], ant);
-	g->getCell(b[0], b[1]).setOrganism(a1);
+	g->setCellOrganism(b[0], b[1], a1);
 
 	// THIRD
 	// Reset the Counter of breed to 0
