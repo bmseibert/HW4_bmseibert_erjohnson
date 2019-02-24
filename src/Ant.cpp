@@ -7,6 +7,7 @@
 
 #include "Ant.h"
 #include "Grid.h"
+#include <stdlib.h>
 
 
 /** Ant::Ant() is the basic constructor for the
@@ -156,6 +157,74 @@ bool Ant::setRowAndCol(int i, int j){
 	return result;
 }
 
+/** GetRandCell takes an array of pointers to cells and returns
+ * a pseudo-random cell pointer from that array
+ * @param int row,
+ * @param int col, is the number of elements in the unoccupiedCells parameter
+ * @return output, a random pointer to cell from the input array
+ */
+struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
+
+	struct Coordinates output;
+	//int output[] = {-1, -1};
+	// gets the number of cells in a grid
+	int n = g->getNumCells();
+	// sets this value equal to the number of rows and the number of columns
+	int nRows = n;
+	int nCols = n;
+	int cell = 0;
+	// Get a random number from 0-arr_size, or the maximum number of elements in that array
+	int numNeighbors = howManyNeighbors(row, col, g);
+	int a = rand() % numNeighbors;
+
+	if (numNeighbors == 0){
+		output.cellRow = row;
+		output.cellCol = col;
+	}
+
+	if (row > 0) {
+		if (g->getCellOccupant(row - 1, col) == empty)	//N
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row-1;
+				output.cellCol = col;
+			}
+		}
+	}	//can look north
+	if (col > 0) {
+		if (g->getCellOccupant(row, col - 1) == empty)	//W
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row;
+				output.cellCol = col-1;
+			}
+		}
+	}
+	if (row < nRows - 1) {
+		if (g->getCellOccupant(row + 1, col) == empty)	//S
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row+1;
+				output.cellCol = col;
+			}
+		}
+	}	//can look south
+	if (col < (nCols - 1)) {
+		if (g->getCellOccupant(row, col + 1) == empty)	//E
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row;
+				output.cellCol = col+1;
+			}
+		}
+	}
+	return output;
+
+}
 
 
 /** Ant::~Ant is a destructor for the ant class

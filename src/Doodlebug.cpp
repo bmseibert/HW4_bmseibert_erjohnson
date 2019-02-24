@@ -223,7 +223,7 @@ int Doodlebug::howManyNeighbors(int row, int col, Grid* g) {
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
  */
-struct Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
+struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 	struct Coordinates output;
 	// gets the number of cells in a grid

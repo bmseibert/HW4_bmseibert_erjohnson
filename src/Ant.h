@@ -19,6 +19,10 @@ private:
 	Grid* g = nullptr;
 
 public:
+	struct Coordinates{
+		int cellRow;
+		int cellCol;
+	};
 	Ant();
 	Ant(int r, int c, Grid* ptr);
 	bool move();
@@ -27,6 +31,7 @@ public:
 	bool increm();
 	bool setBreedCnt(int i);
 	bool setRowAndCol(int i, int j);
+	struct Coordinates getRandCell(int row, int col, Grid* g);
 	~Ant();
 
 };

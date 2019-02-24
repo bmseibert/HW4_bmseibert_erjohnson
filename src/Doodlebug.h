@@ -20,7 +20,10 @@ private:
 	Grid* g = nullptr;
 
 public:
-
+	struct Coordinates{
+		int cellRow;
+		int cellCol;
+	};
 	Doodlebug();
 	Doodlebug(int r, int c, Grid * ptr);
 	bool move();
