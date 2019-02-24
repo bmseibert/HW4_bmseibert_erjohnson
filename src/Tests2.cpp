@@ -168,17 +168,100 @@ bool Tests2::OrganismTest()
 	result = ok1 && ok2 && ok3;
 	return result;
 }
-
+/*
+ * Ants Move test
+ * Tests if the ants move function operates correctly
+ *
+ * NEED TO TEST: **-still need to complete
+ * Cases of boundaries **
+ * Cases of ants being surrounded with other ants and doodlebugs **
+ * Case of no boundary
+ *
+ * @return bool if test ran
+ */
 bool Tests2::antsMoveTest()
 {
 	bool result = true;
+	bool ok1 = true;
+	bool ok2 = true;
+	bool ok3 = true;
 	std::cout << "Running the move ants test" << std::endl;
+
+	Grid* myGrid_p = new Grid(9);
+
+	//Testing an ant moving with no restrictions
+	// Make ant
+	Ant* a3 = new Ant(3,4);
+	// Set the Cell occupant and organism
+	myGrid_p->setCellOccupant(3, 4, ant);
+	myGrid_p->getCell(3, 4).setOrganism(a3);
+	// Have the ant move
+	//a3->move();  //THIS HAS SO MANY BUGS
+	//check if the ant moved
+	if (myGrid_p->getCell(3, 4).getOccupant() == ant){
+		printf("There is still an ant at this location \n");
+		ok1 = false;
+	}
+	//this does not seem to be working
+	if (myGrid_p->getCell(3, 4).getOrganism() == nullptr){
+
+	}
+	else{
+		printf("there is still an ant pointer here");
+		ok2 = false;
+	}
+
+	//Check the nearby cells
+	if (myGrid_p->getCell(2, 4).getOccupant() == ant || myGrid_p->getCell(4, 4).getOccupant() == ant
+			|| myGrid_p->getCell(3, 3).getOccupant() == ant || myGrid_p->getCell(3, 5).getOccupant() == ant){
+
+	} else
+	{
+		printf("Ant Moved to a random location or did not move at all \n");
+		ok3 = false;
+	}
+	delete a3;
+	delete myGrid_p;
+
+	result = ok1 && ok2 && ok3;
 	return result;
 }
+/* Ant Breed Test
+ * Tests if the Breed test for ants works
+ *
+ * NEED TO TEST: **-still need to complete
+ * Boundary Breeding
+ * Normal Breeding
+ *
+ *
+ * @return bool if the test worked
+ */
 bool Tests2::antsBreedTest()
 {
 	bool result = true;
+	bool ok1 = true;
 	std::cout << "Running the breed ants test" << std::endl;
+
+	Grid* myGrid_p = new Grid(9);
+
+	// Make ant
+	Ant* a3 = new Ant(3,4);
+	// Add the Ant to the grid
+	myGrid_p->setCellOccupant(3, 4, ant);
+	myGrid_p->getCell(3, 4).setOrganism(a3);
+	// Make the ant breed
+	//a3.breed()
+	// check if there is an ant and an ant pointer in any surrounding cells
+	if(myGrid_p->getCell(2, 4).getOccupant() == ant || myGrid_p->getCell(4, 4).getOccupant() == ant
+			|| myGrid_p->getCell(3, 3).getOccupant() == ant || myGrid_p->getCell(3, 5).getOccupant() == ant){
+
+	}else{
+		printf("Ant Moved to a random location or did not move at all \n");
+		ok1 = false;
+	}
+
+
+	result = ok1;
 	return result;
 }
 bool Tests2::antsDieTest()

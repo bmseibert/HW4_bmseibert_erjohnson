@@ -12,7 +12,7 @@
 
 class Grid {
 private:
-	int n = 0;
+
 	int numDoodle = 0;
 	int numAnt = 0;
 	Cell** myGridCells_ptr_array = (Cell**)nullptr;
@@ -20,6 +20,7 @@ private:
 
 
 public:
+	int n = 0;
 	int randomVal = 0;
 	Grid();
 	Grid(int nSquaresOnASide);

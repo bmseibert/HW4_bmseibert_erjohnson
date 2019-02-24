@@ -90,11 +90,11 @@ int Organism::howManyNeighbors(int row, int col, Grid* g) {
 int* Organism::getRandCell(int row, int col, Grid* g){
 
 	int output[] = {-1, -1};
-	// gets the number of cells in a grid
-	int n = g->getNumCells();
+	// gets the number of cells in the grid
+	int number = g->n;
 	// sets this value equal to the number of rows and the number of columns
-	int nRows = n;
-	int nCols = n;
+	int nRows = number;
+	int nCols = number;
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = howManyNeighbors(row, col, g);

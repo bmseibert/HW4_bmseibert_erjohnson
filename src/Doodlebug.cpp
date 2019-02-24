@@ -7,6 +7,7 @@
 
 #include "Doodlebug.h"
 #include "Ant.h"
+#include "Grid.h"
 
 /* Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant

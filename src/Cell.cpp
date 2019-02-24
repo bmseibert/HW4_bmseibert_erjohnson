@@ -14,9 +14,7 @@
 Cell::Cell() {
 
 }
-occupationStatus Cell::getStatus(){
-	return guest;
-}
+
 /* Cell::setOccupant sets the occupant of cell
  * @return bool result of if this worked
  */

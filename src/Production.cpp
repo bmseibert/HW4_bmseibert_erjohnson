@@ -147,7 +147,7 @@ bool Production::runProduction()
 
 	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
-		for(int r=0; r < g->getNumCells(); r++){
+		for(int r = 0; r < g->getNumCells(); r++){
 			for(int c = 0; c < g->getNumCells(); c++){
 
 				if (g->getCell(r, c).getOccupant() == empty){
@@ -155,8 +155,10 @@ bool Production::runProduction()
 				}
 				// Doodlebugs step;
 				if (g->getCell(r, c).getOccupant() == doodlebug){
-					Doodlebug *d = (Doodlebug *)g->getCell(r, c).getOrganism();
-					d->step();
+					Doodlebug * b = (Doodlebug*)g->getCell(r, c).getOrganism();
+					b->step();
+
+
 				}
 
 

@@ -6,6 +6,8 @@
  */
 
 #include "Ant.h"
+#include "Grid.h"
+
 
 /** Ant::Ant() is the basic constructor for the
  * ant class
