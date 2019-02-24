@@ -42,10 +42,10 @@ bool Doodlebug::move()
 		status = false;
 	}
 	else{
-		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
-		g->getCell(row, col).setOrganism(nullptr);
-		g->getCell(b[0], b[1]).setOrganism(db);
-		g->getCell(b[0], b[1]).setOccupant(doodlebug);
+		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
+		g->setCellOrganism(row, col, nullptr);
+		g->setCellOrganism(b[0], b[1], db);
+		g->setCellOccupant(row, col, doodlebug);
 	}
 	return status;
 }
@@ -71,7 +71,7 @@ bool Doodlebug::breed()
 		Doodlebug* d1 = new Doodlebug(b[0], b[1], g);
 		// put it in the new cell
 		g->setCellOccupant(b[0], b[1], doodlebug);
-		g->getCell(b[0], b[1]).setOrganism(d1);
+		g->setCellOrganism(b[0], b[1], d1);
 
 		//Add a doodlebug to the total counter in the grid
 		int totalDoodleBugs = g->getNumDoodle();
@@ -103,15 +103,15 @@ bool Doodlebug::eat()
 	// Neighboring cells contain an ant
 	else{
 		// eat (destruct) the ant in the cell
-		Ant* deadAnt = (Ant*) g->getCell(b[0],b[1]).getOrganism();
+		Ant* deadAnt = (Ant*) g->getCellOrganism(b[0], b[1]);
 		deadAnt->~Ant();
 		/* gets the doodlebug from the cuurent cell and moves it to the
 		 * cell that the ant it is eating is in
 		*/
-		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
-		g->getCell(row, col).setOrganism(nullptr);
-		g->getCell(b[0], b[1]).setOrganism(db);
-		g->getCell(b[0], b[1]).setOccupant(doodlebug);
+		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
+		g->setCellOrganism(row, col, nullptr);
+		g->setCellOrganism(b[0], b[1], db);
+		g->setCellOccupant(b[0], b[1], doodlebug);
 
 	}
 	return status;
@@ -136,7 +136,7 @@ bool Doodlebug::step(){
 	// starve check
 	if (starveCnt > 2){
 		//DELETE DOODLE BUG
-		Doodlebug* db = (Doodlebug*) g->getCell(row, col).getOrganism();
+		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
 		db->~Doodlebug();
 	}
 	// THIRD
@@ -297,7 +297,7 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
  */
 Doodlebug::~Doodlebug() {
 	// THERE MAY BE MORE STUFF NEEDED IN HERE
-	g->getCell(row, col).setOrganism(nullptr);
+	g->setCellOrganism(row, col, nullptr);
 	g->setCellOccupant(row, col, empty);
 	delete this;
 }
