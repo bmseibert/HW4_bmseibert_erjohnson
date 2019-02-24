@@ -2,21 +2,35 @@
  * Tests2.cpp
  *
  *  Created on: Feb 7, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
+ *
+ *      TESTS LEFT TO WRITE:
+ *      Tests for organism functions
+ *      Tests for grid functions
+ *
+ *
+ *
  */
 
 #include "Tests2.h"
 #include "Grid.h"
 #include "Ant.h"
+#include "Doodlebug.h"
 #include <iostream>
 #include <stdio.h>
 
-
+/* Test Constructor Sub
+ * Generates a new test object
+ */
 Tests2::Tests2() {
 	// TODO Auto-generated constructor stub
 	//initialize the grid
 }
-
+/* do Test Function
+ * Runs all of the tests
+ * @return bool on if all of the tests passed or not
+ *
+ */
 bool Tests2::doTests()
 {
 	bool results;
@@ -101,7 +115,7 @@ bool Tests2::makeAntsTest()
 		std::cout << "Cell not set to ant" << std::endl;
 		ok1 = false;
 	}
-	Ant* a1 = new Ant(3,4);
+	Ant* a1 = new Ant(3,4,myGrid_p);
 	if(myGrid_p->getCellOccupant(3, 4)!=empty)
 	{
 		std::cout << "Cell 3,4 not initially empty" << std::endl;
@@ -132,11 +146,11 @@ bool Tests2::OrganismTest()
 	{
 		std::cout << "Cell 3,4 not initially empty" << std::endl;
 	}
-	Ant* a3 = new Ant(3,4);
+	Ant* a3 = new Ant(3,4, myGrid_t);
 	myGrid_t->setCellOccupant(3, 4, ant);
-	Ant* a4 = new Ant(3,5);
+	Ant* a4 = new Ant(3,5,myGrid_t);
 	myGrid_t->setCellOccupant(3, 5, ant);
-	Ant* a5 = new Ant(8,6);
+	Ant* a5 = new Ant(8,6,myGrid_t);
 	myGrid_t->setCellOccupant(8, 6, ant);
 
 
@@ -187,23 +201,23 @@ bool Tests2::antsMoveTest()
 	bool ok3 = true;
 	std::cout << "Running the move ants test" << std::endl;
 
-	Grid* myGrid_p = new Grid(9);
+	Grid* myGrid_l = new Grid(9);
 
 	//Testing an ant moving with no restrictions
 	// Make ant
-	Ant* a3 = new Ant(3,4);
+	Ant* a3 = new Ant(3,4,myGrid_l);
 	// Set the Cell occupant and organism
-	myGrid_p->setCellOccupant(3, 4, ant);
-	myGrid_p->getCell(3, 4).setOrganism(a3);
+	myGrid_l->setCellOccupant(3, 4, ant);
+	myGrid_l->getCell(3, 4).setOrganism(a3);
 	// Have the ant move
 	//a3->move();  //THIS HAS SO MANY BUGS
 	//check if the ant moved
-	if (myGrid_p->getCell(3, 4).getOccupant() == ant){
+	if (myGrid_l->getCell(3, 4).getOccupant() == ant){
 		printf("There is still an ant at this location \n");
 		ok1 = false;
 	}
 	//this does not seem to be working
-	if (myGrid_p->getCell(3, 4).getOrganism() == nullptr){
+	if (myGrid_l->getCell(3, 4).getOrganism() == nullptr){
 
 	}
 	else{
@@ -212,8 +226,8 @@ bool Tests2::antsMoveTest()
 	}
 
 	//Check the nearby cells
-	if (myGrid_p->getCell(2, 4).getOccupant() == ant || myGrid_p->getCell(4, 4).getOccupant() == ant
-			|| myGrid_p->getCell(3, 3).getOccupant() == ant || myGrid_p->getCell(3, 5).getOccupant() == ant){
+	if (myGrid_l->getCell(2, 4).getOccupant() == ant || myGrid_l->getCell(4, 4).getOccupant() == ant
+			|| myGrid_l->getCell(3, 3).getOccupant() == ant || myGrid_l->getCell(3, 5).getOccupant() == ant){
 
 	} else
 	{
@@ -221,7 +235,7 @@ bool Tests2::antsMoveTest()
 		ok3 = false;
 	}
 	delete a3;
-	delete myGrid_p;
+	delete myGrid_l;
 
 	result = ok1 && ok2 && ok3;
 	return result;
@@ -248,7 +262,7 @@ bool Tests2::antsBreedTest()
 
 	// checking the normal case
 	// Make ant
-	Ant* a3 = new Ant(3,4);
+	Ant* a3 = new Ant(3,4,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
 	myGrid_p->getCell(3, 4).setOrganism(a3);
@@ -265,12 +279,12 @@ bool Tests2::antsBreedTest()
 
 	// checking the boundary case
 	// Make ant
-	Ant* a1 = new Ant(1,1);
+	Ant* a1 = new Ant(1,1,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
 	myGrid_p->getCell(3, 4).setOrganism(a1);
 	// Make the ant breed
-	// a1.breed();
+	// a1->breed();
 	// check if there is an ant
 	// check if there is an ant and an ant in any surrounding cells
 	if(myGrid_p->getCell(1, 2).getOccupant() == ant || myGrid_p->getCell(2, 1).getOccupant() == ant){
@@ -299,7 +313,7 @@ bool Tests2::antsDieTest()
 	Grid* myGrid_p = new Grid(9);
 	// checking the normal case
 	// Make ant
-	Ant* a3 = new Ant(3,4);
+	Ant* a3 = new Ant(3,4,myGrid_p);
 	// Add the Ant to the grid
 	myGrid_p->setCellOccupant(3, 4, ant);
 	myGrid_p->getCell(3, 4).setOrganism(a3);
@@ -329,31 +343,73 @@ bool Tests2::makeDoodlesTest()
 
 	return result;
 }
+
+/* Doodle Move Test
+ * Checks if the Doodle move function works
+ * NEED TO TEST: **-still need to complete
+ * Boundary Moving
+ * Normal Moving
+ * Check if it moves on an ant before it moves to an open cell
+ *
+ * @return bool if the test worked
+ *
+ */
 bool Tests2::doodleMoveTest()
 {
 	bool result = true;
 	std::cout << "Running the move doodlebugs test" << std::endl;
+
+
+
 	return result;
 }
+/* Doodle Breed Test
+ * Checks if the breed function for doodlebug works
+ * NEED TO TEST:
+ * Normal Condition
+ * Boundary Conditions
+ *
+ * @return bool if this function worked properly
+ *
+ */
 bool Tests2::doodleBreedTest()
 {
 	bool result = true;
 	std::cout << "Running the breed doodlebugs test" << std::endl;
+
 	return result;
 }
+/* Doodle Eat Test
+ * Checks if the eat function worked
+ * NEED TO TEST:
+ * normal conditions
+ *
+ * @return bool of if the function worked
+ *
+ */
 bool Tests2::doodleEatTest()
 {
 	bool result = true;
 	std::cout << "Running the eat ant test" << std::endl;
 	return result;
 }
+/* Doodle Die Test
+ * Checks if the doodlebug is erased correctly
+ * NEED TO TEST:
+ * Normal Conditions
+ *
+ * @return bool on if the function worked correctly
+ *
+ */
 bool Tests2::doodleDietest()
 {
 	bool result = true;
 	std::cout << "Running the doodlebug dies test" << std::endl;
 	return result;
 }
-
+/* Test Destructor Sub
+ * Deletes the Testing file
+ */
 Tests2::~Tests2() {
 	// TODO Auto-generated destructor stub
 }

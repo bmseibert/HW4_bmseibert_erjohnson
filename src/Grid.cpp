@@ -10,8 +10,6 @@
 #include "Grid.h"
 #include "Cell.h"
 
-//Cell** myGridCells_ptr_array = (Cell**)nullptr; // This is the pointer to the array of pointers that is the gird
-
 /* Grid::Grid() is the constructor for the grid
  *
  */
@@ -20,19 +18,19 @@ Grid::Grid() {
 	Grid(10); //calls general constructor with default value
 }
 
-/* Grid::Grid(int nSquaresOnASide) is the constructor for the grid
+/* Grid::Grid(int nSquaresOnASide) is a constructor for the grid
  * @param int nSquaresOnASide is the number of squares for one side
  */
 Grid::Grid(int nSquaresOnASide)
 {
-	n = nSquaresOnASide; //initialize size of grid
+	nCells = nSquaresOnASide; //initialize size of grid
 	//we do not want automatic storage for the grid
 
-	myGridCells_ptr_array = new Cell* [n];  //first allocate array of row pointers
+	myGridCells_ptr_array = new Cell* [nCells];  //first allocate array of row pointers
 
-	for(int i=0 ; i < n ; i++)
+	for(int i=0 ; i < nCells ; i++)
 	{
-		myGridCells_ptr_array[i] = new Cell[n]; // allocate memory for columns in each row
+		myGridCells_ptr_array[i] = new Cell[nCells]; // allocate memory for columns in each row
 	}
 }
 /* Grid::setCellOccupant() is a Function that sets the occupation status for a cell
@@ -60,7 +58,7 @@ occupationStatus Grid::getCellOccupant(int r, int c)
  */
 int Grid::getNumCells()
 {
-	return n;
+	return nCells;
 }
 /* getCellPointer Function gets the cell
  * @param int r is the row of the cell
@@ -113,9 +111,9 @@ bool Grid::setNumDoodle(int num)
  */
 bool Grid::printGrid() {
 	bool result = true;
-	for(int r=0; r < n; r++)
+	for(int r=0; r < nCells; r++)
 	{
-		for(int c=0; c < n; c++)
+		for(int c=0; c < nCells; c++)
 		{
 			if(myGridCells_ptr_array[r][c].getOccupant() == empty){
 				printf(" ");
@@ -149,7 +147,9 @@ bool Grid::setSeed(int s){
 	seed = s;
 	return result;
 }
-
+/* sets the Random Value needed to stop any errors
+ * @return bool on if it worked
+ */
 bool Grid::setRand(){
 	bool result = false;
 	randomVal = rand();
@@ -162,9 +162,9 @@ bool Grid::setRand(){
  */
 Grid::~Grid() {
 
-	for(int r=0; r < n; r++)
+	for(int r=0; r < nCells; r++)
 	{
-		for(int c=0; c < n; c++)
+		for(int c=0; c < nCells; c++)
 		{
 			//cout << "Before freeing" << r << c << endl;
 			myGridCells_ptr_array[r][c].~Cell(); // free memory for columns in each row

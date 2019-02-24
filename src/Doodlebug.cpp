@@ -20,9 +20,10 @@ Doodlebug::Doodlebug():Organism(false) {
  * @param false is set for the organism input to tell the organism that it is not an ant
  * Doodlebug will have a Starve Counter and a Breed Counter it will also have a row and col for its location
  */
-Doodlebug::Doodlebug(int r, int c):Organism(false) {
+Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 	row = r; //row
 	col = c; //column
+	g = ptr;
 
 }
 /* Doodlebug::move() Function, used to make a doodlebug move
@@ -66,7 +67,7 @@ bool Doodlebug::breed()
 	else{
 		// SECOND
 		// Create doodlebug from this breeding
-		Doodlebug* d1 = new Doodlebug(b[0], b[1]);
+		Doodlebug* d1 = new Doodlebug(b[0], b[1], g);
 		// put it in the new cell
 		g->setCellOccupant(b[0], b[1], doodlebug);
 		g->getCell(b[0], b[1]).setOrganism(d1);

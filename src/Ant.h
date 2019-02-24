@@ -9,6 +9,7 @@
 #define ANT_H_
 
 #include "Organism.h"
+#include "Grid.h"
 
 class Ant: public Organism {
 private:
@@ -19,7 +20,7 @@ private:
 
 public:
 	Ant();
-	Ant(int r, int c);
+	Ant(int r, int c, Grid* ptr);
 	bool move();
 	bool breed();
 	bool step();

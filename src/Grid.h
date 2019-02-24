@@ -17,7 +17,7 @@ private:
 	int numAnt = 0;
 	Cell** myGridCells_ptr_array = (Cell**)nullptr;
 	int seed = 0;
-	int n = 0;
+	int nCells = 0;
 
 public:
 

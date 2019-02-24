@@ -16,7 +16,6 @@
 #include "Doodlebug.h"
 #include "Ant.h"
 
-int timestepsLeft = 100;
 
 /* Production Constructor
  * @param int argc is the number of parameters for the production
@@ -123,12 +122,12 @@ Production::Production(int argc, char* argv[]) {
 				}
 				else if(gridArray[c+ r*(gridSize)] == 1){
 					g->setCellOccupant(r, c, doodlebug);
-					Doodlebug* d = new Doodlebug(r,c);
+					Doodlebug* d = new Doodlebug(r,c,g);
 					g->getCell(r, c).setOrganism(d);
 				}
 				else if(gridArray[c+ r*(gridSize)] == 2){
 					g->setCellOccupant(r, c, ant);
-					Ant *a = new Ant(r,c);
+					Ant *a = new Ant(r,c,g);
 					g->getCell(r,c).setOrganism(a);
 				}
 

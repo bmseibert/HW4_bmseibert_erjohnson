@@ -22,7 +22,7 @@ private:
 public:
 
 	Doodlebug();
-	Doodlebug(int r, int c);
+	Doodlebug(int r, int c, Grid * ptr);
 	bool move();
 	bool breed();
 	bool eat();

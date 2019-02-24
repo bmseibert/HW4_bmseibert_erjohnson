@@ -29,10 +29,11 @@ Ant::Ant() : Organism(true)
  * @return
  *
  */
-Ant::Ant(int r, int c) : Organism(true)
+Ant::Ant(int r, int c, Grid * ptr) : Organism(true)
 {
 	row = r;
 	col = c;
+	g = ptr;
 	// Counters are in the header
 }
 /** Ant::move() should move an ant object to a neighboring
@@ -47,7 +48,8 @@ bool Ant::move()
 	// FIRST
 	// ant needs to check the surrounding cells and find all of the ones that are empty
 	// pick one at random.
-	int * b = getRandCell(row,col,g);
+	int * a = getRandCell(row,col,g);
+	int b[1] = {*a}; // This does not work
 
 	//SECOND
 	//modify the pointers to move
@@ -58,7 +60,7 @@ bool Ant::move()
 	g->getCell(b[0], b[1]).setOccupant(ant);
 
 	//sets the ant row and column
-	setRowAndCol(b[0],b[1]);
+	//setRowAndCol(b[0],b[1]);
 
 	// CONSIDER:
 	// ant should not move into a doodlebug or another ant
@@ -83,7 +85,7 @@ bool Ant::breed()
 	int b[1] = {*a};
 	// SECOND
 	// Create Ant from this breeding
-	Ant * a1 = new Ant(b[0], b[1]);
+	Ant * a1 = new Ant(b[0], b[1], g);
 	// put it in the new cell
 	g->setCellOccupant(b[0], b[1], ant);
 	g->getCell(b[0], b[1]).setOrganism(a1);
