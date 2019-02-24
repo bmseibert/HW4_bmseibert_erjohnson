@@ -87,9 +87,10 @@ int Organism::howManyNeighbors(int row, int col, Grid* g) {
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
  */
-int* Organism::getRandCell(int row, int col, Grid* g){
+struct Coordinates Organism::getRandCell(int row, int col, Grid* g){
 
-	int output[] = {-1, -1};
+	struct Coordinates output;
+	//int output[] = {-1, -1};
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
 	// sets this value equal to the number of rows and the number of columns
@@ -101,8 +102,8 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 	int a = rand() % numNeighbors;
 
 	if (numNeighbors == 0){
-		output[0] = row;
-		output[1] = col;
+		output.cellRow = row;
+		output.cellCol = col;
 	}
 
 	if (row > 0) {
@@ -110,8 +111,8 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 		{
 			cell++;
 			if(cell == a){
-				output[0] = row-1;
-				output[1] = col;
+				output.cellRow = row-1;
+				output.cellCol = col;
 			}
 		}
 	}	//can look north
@@ -120,8 +121,8 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 		{
 			cell++;
 			if(cell == a){
-				output[0] = row;
-				output[1] = col-1;
+				output.cellRow = row;
+				output.cellCol = col-1;
 			}
 		}
 	}
@@ -130,8 +131,8 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 		{
 			cell++;
 			if(cell == a){
-				output[0] = row+1;
-				output[1] = col;
+				output.cellRow = row+1;
+				output.cellCol = col;
 			}
 		}
 	}	//can look south
@@ -140,8 +141,8 @@ int* Organism::getRandCell(int row, int col, Grid* g){
 		{
 			cell++;
 			if(cell == a){
-				output[0] = row;
-				output[1] = col+1;
+				output.cellRow = row;
+				output.cellCol = col+1;
 			}
 		}
 	}

@@ -14,6 +14,10 @@ private:
 	bool amAnt = false;
 
 public:
+	struct Coordinates{
+		int cellRow;
+		int cellCol;
+	};
 	Organism();
 	Organism(bool b);
 	bool isPrey();
@@ -23,7 +27,7 @@ public:
 	void setAmAnt(bool b);
 	virtual ~Organism();
 	int howManyNeighbors(int row, int col, Grid* g);
-	int* getRandCell(int row, int col, Grid* g);
+	struct Coordinates getRandCell(int row, int col, Grid* g);
 };
 
 #endif /* ORGANISM_H_ */

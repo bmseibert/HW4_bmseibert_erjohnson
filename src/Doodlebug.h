@@ -32,7 +32,7 @@ public:
 	bool increm();
 	bool setBreedCnt(int i);
 	int howManyNeighbors(int row, int col, Grid* g);
-	int* getRandCell(int row, int col, Grid* g);
+	struct Coordinates getRandCell(int row, int col, Grid* g);
 
 };
 
