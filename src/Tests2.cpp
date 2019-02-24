@@ -4,12 +4,6 @@
  *  Created on: Feb 7, 2019
  *      Author: Everett Johnson and Ben Seibert
  *
- *      TESTS LEFT TO WRITE:
- *      Tests for organism functions
- *      Tests for grid functions
- *
- *
- *
  */
 
 #include "Tests2.h"
@@ -54,8 +48,13 @@ bool Tests2::doTests()
 	bool ok9 = doodleEatTest();
 	//see whether they die
 	bool ok10 = doodleDietest();
-	bool ok11 = OrganismTest();
-	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10 && ok11;
+	//see whether the neighbor function works
+	bool ok11 = organismNeighborTest();
+	//see whether the random cell test works
+	bool ok12 = organismRandCellTest();
+
+	// if all tests pass return true
+	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10 && ok11 && ok12;
 	return results;
 }
 
@@ -468,6 +467,38 @@ bool Tests2::doodleDietest()
 	std::cout << "Running the doodlebug dies test" << std::endl;
 	return result;
 }
+/* How many neighbors test function
+ * Tests if the function works properly
+ *
+ * NEED TO TEST:
+ * 0, 1, 2, 3, 4 neighbors
+ *
+ * @return bool of if the test passed
+ */
+
+bool Tests2::organismNeighborTest(){
+	bool result = true;
+	std::cout << "Running the Neighbor Test" << std::endl;
+
+
+	return result;
+}
+/* Rand Cell Test
+ * Tests if the function of rand cell test works
+ *
+ * NEED TO TEST:
+ * if a cell is picked and is one of the surrounding cells of the picked cell
+ *
+ * @return bool of if the test passed
+ */
+bool Tests2::organismRandCellTest(){
+	bool result = true;
+	std::cout << "Running the Rand Cell test" << std::endl;
+
+
+	return result;
+}
+
 /* Test Destructor Sub
  * Deletes the Testing file
  */

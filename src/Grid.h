@@ -18,6 +18,7 @@ private:
 	Cell** myGridCells_ptr_array = (Cell**)nullptr;
 	int seed = 0;
 	int nCells = 0;
+	char pause = 'n';
 
 public:
 
@@ -35,6 +36,8 @@ public:
 	virtual ~Grid();
 	int getNumCells();
 	bool setRand();
+	bool setPause(char c);
+	char getPause();
 	Cell** getGrid();
 	Cell getCell(int r, int c);
 };

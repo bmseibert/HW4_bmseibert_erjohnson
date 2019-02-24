@@ -23,6 +23,8 @@ public:
 	bool doodleBreedTest();
 	bool doodleEatTest();
 	bool doodleDietest();
+	bool organismNeighborTest();
+	bool organismRandCellTest();
 
 
 	virtual ~Tests2();

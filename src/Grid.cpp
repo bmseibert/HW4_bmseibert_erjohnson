@@ -147,6 +147,20 @@ bool Grid::setSeed(int s){
 	seed = s;
 	return result;
 }
+/* set the pause function
+ * @return a bool of if the function worked
+ */
+bool Grid::setPause(char c){
+	bool result = true;
+	pause = c;
+	return result;
+}
+/* get the pause function
+ * @return a bool of if the function worked
+ */
+char Grid::getPause(){
+	return pause;
+}
 /* sets the Random Value needed to stop any errors
  * @return bool on if it worked
  */

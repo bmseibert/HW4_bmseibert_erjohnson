@@ -93,7 +93,9 @@ Production::Production(int argc, char* argv[]) {
 		// set the counters for the number of ants and doodlebugs
 		g->setNumAnt(ants);
 		g->setNumDoodle(doodlebugs);
+		g->setPause(pause);
 		srand(seed);
+
 
 		// Initialize all of the doodlebugs and the ants
 		int gridArray[gridSize*gridSize];
@@ -181,6 +183,11 @@ bool Production::runProduction()
 			}
 
 
+		}
+		if (g->getPause() == 'y') {
+			puts("Paused waiting for input.");
+			getc(stdin);
+			//getc(stdin); //No idea why I need two of these but it works so oh well
 		}
 
 		g->printGrid();
