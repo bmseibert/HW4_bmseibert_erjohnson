@@ -153,7 +153,7 @@ bool Tests2::OrganismTest()
 	myGrid_t->setCellOccupant(8, 6, ant);
 
 
-	int numNeighbors1 = a3->howManyNeighbors(3, 4, myGrid_t);
+	int numNeighbors1 = a3->numPossCells(3, 4, myGrid_t);
 	printf("numNeighbors1: %d \n", numNeighbors1);
 	if(numNeighbors1 != 3){
 		ok1 = false;
@@ -162,7 +162,7 @@ bool Tests2::OrganismTest()
 
 	int n = myGrid_t->getNumCells();
 	printf("nRows %d \n", n);
-	int numNeighbors2 = a5->howManyNeighbors(8, 6, myGrid_t);
+	int numNeighbors2 = a5->numPossCells(8, 6, myGrid_t);
 	printf("numNeighbors2: %d \n", numNeighbors2);
 	if(numNeighbors2 != 3){
 		ok2 = false;
@@ -381,7 +381,7 @@ bool Tests2::doodleMoveTest()
 	bool ok1 = true;
 	bool ok2 = true;
 	bool ok3 = true;
-	std::cout << "Running the move ants test" << std::endl;
+	std::cout << "Running the move doodlebug move test" << std::endl;
 
 	// Create the Grid
 	Grid* myGrid_l = new Grid(9);
@@ -393,7 +393,7 @@ bool Tests2::doodleMoveTest()
 	myGrid_l->setCellOccupant(3, 4, ant);
 	myGrid_l->getCell(3, 4).setOrganism(d3);
 	// Have the doodlebug move
-	// d3->move();  //THIS HAS SO MANY BUGS
+	d3->move();  //THIS HAS SO MANY BUGS
 	// check if the doodlebug moved
 	if (myGrid_l->getCell(3, 4).getOccupant() == doodlebug){
 		printf("There is still an ant at this location \n");

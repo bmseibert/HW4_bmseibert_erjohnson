@@ -9,6 +9,7 @@
 #include "Ant.h"
 #include "Grid.h"
 
+
 /* Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant
  */
@@ -182,7 +183,7 @@ bool Doodlebug::setBreedCnt(int i){
  * @param Grid g is the grid of cells
  * @return numNeighbors is an int the
  */
-int Doodlebug::howManyNeighbors(int row, int col, Grid* g) {
+int Doodlebug::numPossCells(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
 	// the number of neighboring cells with ants in them
@@ -226,6 +227,9 @@ int Doodlebug::howManyNeighbors(int row, int col, Grid* g) {
 struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 	struct Coordinates output;
+	// Cell row and col
+	output.cellCol = -1;
+	output.cellRow = -1;
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
 	// sets this value equal to the number of rows and the number of columns
@@ -233,13 +237,14 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 	int nCols = n;
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
-	int numNeighbors = howManyNeighbors(row, col, g);
+	int numNeighbors = numPossCells(row, col, g);
+
 	int a = g->randomVal % numNeighbors;
 
-	if (numNeighbors == 0){
-		output.cellRow = row;
-		output.cellCol = col;
-	}
+//	if (numNeighbors == 0){
+//		output.cellRow = row;
+//		output.cellCol = col;
+//	}
 
 	if (row > 0) {
 		if (g->getCellOccupant(row - 1, col) == ant)	//N

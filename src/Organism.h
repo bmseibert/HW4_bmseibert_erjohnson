@@ -14,15 +14,20 @@ private:
 	bool amAnt = false;
 
 public:
+	struct Coordinates{
+		int cellRow;
+		int cellCol;
+	};
 	Organism();
 	Organism(bool b);
 	bool isPrey();
-	bool move();
+	virtual bool move() = 0;
 	virtual bool breed() = 0;
 	virtual bool step() = 0;
 	void setAmAnt(bool b);
 	virtual ~Organism();
-	int howManyNeighbors(int row, int col, Grid* g);
+	virtual int numPossCells(int row, int col, Grid* g);
+	virtual struct Coordinates getRandCell(int row, int col, Grid* g);
 };
 
 #endif /* ORGANISM_H_ */

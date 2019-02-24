@@ -20,10 +20,7 @@ private:
 	Grid* g = nullptr;
 
 public:
-	struct Coordinates{
-		int cellRow;
-		int cellCol;
-	};
+
 	Doodlebug();
 	Doodlebug(int r, int c, Grid * ptr);
 	bool move();
@@ -34,8 +31,8 @@ public:
 	bool step();
 	bool increm();
 	bool setBreedCnt(int i);
-	int howManyNeighbors(int row, int col, Grid* g);
-	struct Coordinates getRandCell(int row, int col, Grid* g);
+	int numPossCells(int row, int col, Grid* g);
+	struct Organism::Coordinates getRandCell(int row, int col, Grid* g);
 
 };
 

@@ -38,6 +38,77 @@ void Organism::setAmAnt(bool b)
 {
 	amAnt = b;
 }
+/** GetRandCell takes an array of pointers to cells and returns
+ * a pseudo-random cell pointer from that array
+ * @param int row,
+ * @param int col, is the number of elements in the unoccupiedCells parameter
+ * @return output, a random pointer to cell from the input array
+ */
+struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
+
+	struct Coordinates output;
+	// Cell row and col
+	output.cellCol = -1;
+	output.cellRow = -1;
+	// gets the number of cells in a grid
+	int n = g->getNumCells();
+	// sets this value equal to the number of rows and the number of columns
+	int nRows = n;
+	int nCols = n;
+	int cell = 0;
+	// Get a random number from 0-arr_size, or the maximum number of elements in that array
+	int numNeighbors = Organism::numPossCells(row, col, g);
+
+	int a = g->randomVal % numNeighbors;
+
+//	if (numNeighbors == 0){
+//		output.cellRow = row;
+//		output.cellCol = col;
+//	}
+
+	if (row > 0) {
+		if (g->getCellOccupant(row - 1, col) == ant)	//N
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row-1;
+				output.cellCol = col;
+			}
+		}
+	}	//can look north
+	if (col > 0) {
+		if (g->getCellOccupant(row, col - 1) == ant)	//W
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row;
+				output.cellCol = col-1;
+			}
+		}
+	}
+	if (row < nRows - 1) {
+		if (g->getCellOccupant(row + 1, col) == ant)	//S
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row+1;
+				output.cellCol = col;
+			}
+		}
+	}	//can look south
+	if (col < (nCols - 1)) {
+		if (g->getCellOccupant(row, col + 1) == ant)	//E
+		{
+			cell++;
+			if(cell == a){
+				output.cellRow = row;
+				output.cellCol = col+1;
+			}
+		}
+	}
+	return output;
+
+}
 /**
  * GetNeighbors checks how many cells next to a given organism are empty and then
  * add all the unoccupied neighbors to an array
@@ -46,7 +117,7 @@ void Organism::setAmAnt(bool b)
  * @param Grid g is the grid of cells
  * @return unocc_arr is an array of pointers to cells
  */
-int Organism::howManyNeighbors(int row, int col, Grid* g) {
+int Organism::numPossCells(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
 	// the pointer to the array of unoccupied neighbors cells, which will never have more than 4 items

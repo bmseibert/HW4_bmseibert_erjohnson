@@ -50,8 +50,7 @@ bool Ant::move()
 	// ant needs to check the surrounding cells and find all of the ones that are empty
 	// pick one at random.
 	struct Coordinates cell = getRandCell(row,col,g);
-	int b[] = {cell.cellRow, cell.cellCol}; // This does not work
-
+	int b[] = {cell.cellRow, cell.cellCol};
 	//SECOND
 	//modify the pointers to move
 	g->getCell(b[0], b[1]).setOrganism(g->getCell(row, col).getOrganism());
@@ -106,12 +105,12 @@ bool Ant::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
-	if(howManyNeighbors(row, col, g) > 0){
+	if(numPossCells(row, col, g) > 0){
 	move();
 	}
 	// SECOND
 	// Check if breed
-	if(breedCnt > 2 && howManyNeighbors(row, col, g) > 0){
+	if(breedCnt > 2 && numPossCells(row, col, g) > 0){
 		breed();
 		g->setNumAnt(g->getNumAnt()+1);
 	}
@@ -174,7 +173,7 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	int nCols = n;
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
-	int numNeighbors = howManyNeighbors(row, col, g);
+	int numNeighbors = numPossCells(row, col, g);
 	int a = rand() % numNeighbors;
 
 	if (numNeighbors == 0){
