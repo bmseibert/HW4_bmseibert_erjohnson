@@ -36,7 +36,23 @@ occupationStatus Cell::getOccupant()
 	return guest;
 }
 
+/* set Organism function
+ * @return bool if the function worked
+ *
+ */
+bool Cell::setOrganism(Organism * o){
+	bool result = true;
+	p = o;
+	return result;
+}
+/* get Organism function
+ * @return Organism Pointer
+ *
+ */
+Organism* Cell::getOrganism(){
 
+	return p;
+}
 
 
 /* Cell::~Cell is the destructor for a cell

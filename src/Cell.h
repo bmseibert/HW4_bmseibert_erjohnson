@@ -21,6 +21,8 @@ public:
 	Cell();
 	bool setOccupant(occupationStatus g);
 	occupationStatus getOccupant();
+	bool setOrganism(Organism * o);
+	Organism* getOrganism();
 	virtual ~Cell();
 
 };
