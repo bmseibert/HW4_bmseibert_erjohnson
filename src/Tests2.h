@@ -2,7 +2,7 @@
  * Tests2.h
  *
  *  Created on: Feb 7, 2019
- *      Author: student
+ *      Author: Everett Johnson and Ben Seibert
  */
 
 #ifndef TESTS2_H_

@@ -333,14 +333,36 @@ bool Tests2::antsDieTest()
 bool Tests2::makeDoodlesTest()
 {
 	bool result = true;
+	bool ok1 = true;
+	bool ok2 = true;
 	std::cout << "Running the make doodlebugs test" << std::endl;
 
-
-
-
-
-
-
+	Grid* myGrid_p = new Grid(9);
+	if(myGrid_p->getCellOccupant(1, 2)!=empty)
+	{
+		std::cout << "Cell 1,2 not initially empty" << std::endl;
+	}
+	myGrid_p->setCellOccupant(1, 2, doodlebug);
+	if(myGrid_p->getCellOccupant(1, 2)!=doodlebug)
+	{
+		std::cout << "Cell not set to doodlebug" << std::endl;
+		ok1 = false;
+	}
+	Doodlebug* d1 = new Doodlebug(3,4,myGrid_p);
+	if(myGrid_p->getCellOccupant(3, 4)!=empty)
+	{
+		std::cout << "Cell 3,4 not initially empty" << std::endl;
+	}
+	myGrid_p->setCellOccupant(3, 4, doodlebug);
+	if(myGrid_p->getCellOccupant(3, 4)!=doodlebug)
+	{
+		std::cout << "Cell not set to doodlebug" << std::endl;
+		ok2 = false;
+	}
+	myGrid_p->setCellOccupant(3, 4, empty);
+	//delete d1; // NEED TO FIX THIS
+	delete myGrid_p;
+	result = ok1 && ok2;
 	return result;
 }
 
@@ -357,10 +379,49 @@ bool Tests2::makeDoodlesTest()
 bool Tests2::doodleMoveTest()
 {
 	bool result = true;
-	std::cout << "Running the move doodlebugs test" << std::endl;
+	bool ok1 = true;
+	bool ok2 = true;
+	bool ok3 = true;
+	std::cout << "Running the move ants test" << std::endl;
 
+	// Create the Grid
+	Grid* myGrid_l = new Grid(9);
 
+	// Testing a doodlebug moving with no restrictions
+	// Make doodlebug
+	Doodlebug* d3 = new Doodlebug(3,4,myGrid_l);
+	// Set the Cell occupant and organism
+	myGrid_l->setCellOccupant(3, 4, ant);
+	myGrid_l->getCell(3, 4).setOrganism(d3);
+	// Have the doodlebug move
+	// d3->move();  //THIS HAS SO MANY BUGS
+	// check if the doodlebug moved
+	if (myGrid_l->getCell(3, 4).getOccupant() == doodlebug){
+		printf("There is still an ant at this location \n");
+		ok1 = false;
+	}
+	//this does not seem to be working
+	if (myGrid_l->getCell(3, 4).getOrganism() == nullptr){
 
+	}
+	else{
+		printf("there is still an doodlebug pointer here");
+		ok2 = false;
+	}
+
+	//Check the nearby cells
+	if (myGrid_l->getCell(2, 4).getOccupant() == doodlebug || myGrid_l->getCell(4, 4).getOccupant() == doodlebug
+			|| myGrid_l->getCell(3, 3).getOccupant() == doodlebug || myGrid_l->getCell(3, 5).getOccupant() == doodlebug){
+
+	} else
+	{
+		printf("Ant Moved to a random location or did not move at all \n");
+		ok3 = false;
+	}
+	//delete d3;
+	delete myGrid_l;
+
+	result = ok1 && ok2 && ok3;
 	return result;
 }
 /* Doodle Breed Test
@@ -411,6 +472,6 @@ bool Tests2::doodleDietest()
  * Deletes the Testing file
  */
 Tests2::~Tests2() {
-	// TODO Auto-generated destructor stub
+	delete this;
 }
 
