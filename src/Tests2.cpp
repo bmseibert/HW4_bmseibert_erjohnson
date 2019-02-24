@@ -10,6 +10,7 @@
 #include "Grid.h"
 #include "Ant.h"
 #include "Doodlebug.h"
+#include "Cell.h"
 #include <iostream>
 #include <stdio.h>
 
@@ -208,8 +209,13 @@ bool Tests2::antsMoveTest()
 	// Set the Cell occupant and organism
 	myGrid_l->setCellOccupant(3, 4, ant);
 	myGrid_l->getCell(3, 4).setOrganism(a3);
+
+	myGrid_l->printGrid();
+	printf("\n");
 	// Have the ant move
 	a3->move();  //THIS HAS SO MANY BUGS
+
+	//myGrid_l->printGrid();
 	//check if the ant moved
 	if (myGrid_l->getCell(3, 4).getOccupant() == ant){
 		printf("There is still an ant at this location \n");
@@ -230,7 +236,7 @@ bool Tests2::antsMoveTest()
 
 	} else
 	{
-		printf("Ant Moved to a random location or did not move at all \n");
+		printf("Ant moved to a random location or did not move at all \n");
 		ok3 = false;
 	}
 	delete a3;

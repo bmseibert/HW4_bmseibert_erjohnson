@@ -53,6 +53,26 @@ occupationStatus Grid::getCellOccupant(int r, int c)
 	return myGridCells_ptr_array[r][c].getOccupant();
 }
 
+/* Grid::setCellOrganism() is a Function that sets organism of a cell
+ * @param int r is the row of the grid
+ * @param int c is the column of the grid
+ * @param Organism * g is the pointer to an organism
+ * @return bool returns the status of if this function worked
+ */
+bool Grid::setCellOrganism(int r, int c, Organism* o)
+{
+	return myGridCells_ptr_array[r][c].setOrganism(o);
+}
+/* Grid::getCellOrganism() is a Function that sets the occupation status for a cell
+ * @param int r is the row of the grid
+ * @param int c is the column of the grid
+ * @return organism of a given cell
+ */
+Organism* Grid::getCellOrganism(int r, int c)
+{
+	return myGridCells_ptr_array[r][c].getOrganism();
+}
+
 /* Grid::getNumCells() is a Function that gets the occupation status for a cell
  * @return the number of cells in the grid
  */
@@ -116,7 +136,7 @@ bool Grid::printGrid() {
 		for(int c=0; c < nCells; c++)
 		{
 			if(myGridCells_ptr_array[r][c].getOccupant() == empty){
-				printf(" ");
+				printf("-");
 			}
 			if(myGridCells_ptr_array[r][c].getOccupant() == ant){
 				printf("o");

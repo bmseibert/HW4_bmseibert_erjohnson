@@ -8,6 +8,7 @@
 #include "Ant.h"
 #include "Grid.h"
 #include <stdlib.h>
+#include <stdio.h>
 
 
 /** Ant::Ant() is the basic constructor for the
@@ -54,13 +55,15 @@ bool Ant::move()
 	//SECOND
 	//modify the pointers to move
 	g->getCell(b[0], b[1]).setOrganism(g->getCell(row, col).getOrganism());
-	g->getCell(row, col).setOrganism(nullptr);
-
-	g->getCell(row, col).setOccupant(empty);
 	g->getCell(b[0], b[1]).setOccupant(ant);
 
+	g->getCell(row, col).setOrganism(nullptr);
+	g->setCellOccupant(row, col, empty);
+
+	g->printGrid();
+	printf("\n");
 	//sets the ant row and column
-	//setRowAndCol(b[0],b[1]);
+	setRowAndCol(b[0],b[1]);
 
 	// CONSIDER:
 	// ant should not move into a doodlebug or another ant

@@ -40,6 +40,8 @@ public:
 	char getPause();
 	Cell** getGrid();
 	Cell getCell(int r, int c);
+	bool setCellOrganism(int r, int c, Organism* o);
+	Organism* getCellOrganism(int r, int c);
 };
 
 #endif /* GRID_H_ */

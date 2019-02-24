@@ -21,19 +21,9 @@ Cell::Cell() {
 bool Cell::setOccupant(occupationStatus g)
 {
 	bool result = true;
-	// checks if a cell is empty
-	if(guest==empty)
-	{
 
-		// if it is empty set the occupant of the cell to be the input of the guest
-		// also returns true saying that the setting of the occupant worked
-		guest = g;
-	}
-	else
-	{
-		// if it is full return false
-		result = false;
-	}
+	guest = g;
+
 	// returns the result of if there is an occupant in a given cell
 	return result;
 }
@@ -45,23 +35,7 @@ occupationStatus Cell::getOccupant()
 	// returns the result of the guest
 	return guest;
 }
-/** getOrganism is the getter for the private field in cell which is a
- * pointer to the organism currently in it
- * @return p, pointer to organism in the cell
- */
-Organism* Cell::getOrganism(){
-	return p;
-}
 
-/** setOrganism is the setter for the private field in cell which is a
- * pointer to the organism currently in it
- * @return result, which is a boolean stating whether the setter ran properly
- */
-bool Cell::setOrganism(Organism* o){
-	bool result = true;
-	p = o;
-	return result;
-}
 
 
 
