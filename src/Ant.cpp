@@ -48,11 +48,8 @@ bool Ant::move()
 	// FIRST
 	// ant needs to check the surrounding cells and find all of the ones that are empty
 	// pick one at random.
-	int *cell = getRandCell(row,col,g);
-	int cellRow = *cell;
-	cell++;
-	int cellCol = *cell;
-	int b[] = {cellRow, cellCol}; // This does not work
+	struct Coordinates cell = getRandCell(row,col,g);
+	int b[] = {cell.cellRow, cell.cellCol}; // This does not work
 
 	//SECOND
 	//modify the pointers to move
@@ -84,8 +81,8 @@ bool Ant::breed()
 
 	// FIRST
 	// Find Cell to Breed
-	int * a = getRandCell(row, col, g);
-	int b[1] = {*a};
+	struct Coordinates cell = getRandCell(row, col, g);
+	int b[] = {cell.cellRow, cell.cellCol};
 	// SECOND
 	// Create Ant from this breeding
 	Ant * a1 = new Ant(b[0], b[1], g);
