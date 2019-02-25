@@ -177,7 +177,7 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = numPossCells(row, col, g);
-	int a = rand() % numNeighbors;
+	int a = 1 + rand() % numNeighbors;
 
 	if (numNeighbors == 0){
 		output.cellRow = row;

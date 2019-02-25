@@ -187,7 +187,7 @@ bool Tests2::OrganismTest()
  * Tests if the ants move function operates correctly
  *
  * NEED TO TEST: **-still need to complete
- * Cases of boundaries **
+ * Cases of boundaries
  * Cases of ants being surrounded with other ants and doodlebugs **
  * Case of no boundary
  *
@@ -249,7 +249,7 @@ bool Tests2::antsMoveTest()
 	myGrid_l->setCellOccupant(0, 0, ant);
 	myGrid_l->setCellOrganism(0, 0, a2);
 
-	myGrid_l->printGrid();
+	//myGrid_l->printGrid();
 	// Make the ant move
 	a2->move();
 
@@ -275,6 +275,8 @@ bool Tests2::antsMoveTest()
 		myGrid_l->printGrid();
 		ok6 = false;
 	}
+
+	//
 
 	// delete all of the objects used
 	delete a3;
