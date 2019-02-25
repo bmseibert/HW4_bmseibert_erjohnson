@@ -181,7 +181,12 @@ bool Grid::setRand(){
 	randomVal = rand();
 	return result;
 }
-
+/* gets the Random Value needed to stop any errors
+ * @return bool on if it worked
+ */
+int Grid::getRand(){
+	return randomVal;
+}
 
 /* Grid::~Grid() is the default destructor for a grid
  *

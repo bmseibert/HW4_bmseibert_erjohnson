@@ -8,6 +8,8 @@
 #ifndef ORGANISM_H_
 #define ORGANISM_H_
 #include "Grid.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 class Organism {
 private:

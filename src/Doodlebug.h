@@ -9,7 +9,8 @@
 #define DOODLEBUG_H_
 
 #include "Organism.h"
-#include <stdio.h>
+#include "Grid.h"
+
 
 class Doodlebug: public Organism {
 private:
@@ -24,6 +25,7 @@ public:
 	Doodlebug();
 	Doodlebug(int r, int c, Grid * ptr);
 	bool move();
+	bool breedDoodle();
 	bool breed();
 	bool eat();
 	int getStarveCnt();
@@ -33,6 +35,7 @@ public:
 	bool setBreedCnt(int i);
 	int numPossCells(int row, int col, Grid* g);
 	bool setGridPtr(Grid * a);
+	bool setRowAndCol(int i, int j);
 	struct Organism::Coordinates getRandCell(int row, int col, Grid* g);
 
 };

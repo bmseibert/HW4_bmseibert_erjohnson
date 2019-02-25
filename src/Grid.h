@@ -19,10 +19,11 @@ private:
 	int seed = 0;
 	int nCells = 0;
 	char pause = 'n';
+	int randomVal = 0;
 
 public:
 
-	int randomVal = 0;
+
 	Grid();
 	Grid(int nSquaresOnASide);
 	bool setCellOccupant(int r, int c, occupationStatus g);
@@ -38,6 +39,7 @@ public:
 	bool setRand();
 	bool setPause(char c);
 	char getPause();
+	int getRand();
 	Cell** getGrid();
 	Cell getCell(int r, int c);
 	bool setCellOrganism(int r, int c, Organism* o);

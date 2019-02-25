@@ -511,6 +511,8 @@ bool Tests2::doodleMoveTest()
 	// Set the Cell occupant and organism
 	myGrid_l->setCellOccupant(3, 4, doodlebug);
 	myGrid_l->setCellOrganism(3, 4, d3);
+
+	//myGrid_l->printGrid();
 	// Have the doodlebug move
 	d3->move();
 	// check if the doodlebug moved
@@ -533,6 +535,7 @@ bool Tests2::doodleMoveTest()
 
 	} else
 	{
+		//myGrid_l->printGrid();
 		printf("Ant Moved to a random location or did not move at all \n");
 		ok3 = false;
 	}
@@ -555,8 +558,40 @@ bool Tests2::doodleMoveTest()
 bool Tests2::doodleBreedTest()
 {
 	bool result = true;
+	bool ok1 = true;
+	bool ok2 = true;
 	std::cout << "Running the breed doodlebugs test" << std::endl;
 
+	// Create the Grid
+	Grid* myGrid_l = new Grid(9);
+
+	// Testing a doodlebug moving with no restrictions
+	// Make doodlebug
+	Doodlebug* d3 = new Doodlebug(3, 4, myGrid_l);
+
+	// Set the Cell occupant and organism
+	myGrid_l->setCellOccupant(3, 4, doodlebug);
+	myGrid_l->setCellOrganism(3, 4, d3);
+
+	// Make the doodlebug breed
+	d3->breedDoodle();
+	// check if there is an ant and an ant in any surrounding cells
+	if(myGrid_l->getCellOccupant(2, 4) == doodlebug || myGrid_l->getCellOccupant(4, 4) == doodlebug
+			|| myGrid_l->getCellOccupant(3, 3) == doodlebug || myGrid_l->getCellOccupant(3, 5) == doodlebug){
+	}else{
+		printf("Ant did not breed \n");
+		ok1 = false;
+	}
+	// check to make sure the doodlebug is still there
+	if(myGrid_l->getCellOccupant(3, 4) == doodlebug){
+
+	}else{
+		printf("Doodlebug moved \n");
+		ok2 = false;
+	}
+	myGrid_l->~Grid();
+	d3->~Doodlebug();
+	result = ok1 && ok2;
 	return result;
 }
 /* Doodle Eat Test

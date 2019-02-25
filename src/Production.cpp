@@ -31,13 +31,13 @@ Production::Production(int argc, char* argv[]) {
 
 
 	// Makes sure that there are enough inputs
-	if (argc < 5){
+	if (argc < 6){
 		printf("Not enough inputs");
 		done = true;
 	}
 	// Not sure about this Statement here
-	if (argc >= 6) {
-		pause = argv[6][0];
+	if (argc >= 7) {
+		pause = argv[7][0];
 
 	}
 	if (!done){
@@ -146,6 +146,7 @@ bool Production::runProduction()
 {
 	bool result = true;
 
+
 	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
 		for(int r = 0; r < g->getNumCells(); r++){
@@ -156,8 +157,7 @@ bool Production::runProduction()
 				}
 				// Doodlebugs step;
 				if (g->getCellOccupant(r, c) == doodlebug){
-					Doodlebug * b = (Doodlebug*)g->getCellOrganism(r, c);
-					b->step();
+					g->getCellOrganism(r, c)->step();
 
 
 				}
@@ -175,8 +175,7 @@ bool Production::runProduction()
 				}
 				// Ant step;
 				if (g->getCellOccupant(r, c) == ant){
-					Ant * a =(Ant *)g->getCellOrganism(r, c);
-					a->step();
+					g->getCellOrganism(r, c)->step();
 				}
 
 
@@ -187,7 +186,7 @@ bool Production::runProduction()
 		if (g->getPause() == 'y') {
 			puts("Paused waiting for input.");
 			getc(stdin);
-			//getc(stdin); //No idea why I need two of these but it works so oh well
+
 		}
 
 		g->printGrid();

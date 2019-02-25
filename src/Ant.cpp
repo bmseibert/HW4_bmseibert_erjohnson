@@ -117,16 +117,17 @@ bool Ant::step(){
 	bool ok1 = true;
 	// FIRST
 	// Move
-	if(numPossCells(row, col, g) > 0){
+	if(Organism::numPossCells(row, col, g) > 0){
 		move();
 	}
 	// SECOND
 	// Check if breed
-	if(breedCnt > 2 && numPossCells(row, col, g) > 0){
+	if(breedCnt > 2 && Organism::numPossCells(row, col, g) > 0){
 		breed();
 		g->setNumAnt(g->getNumAnt()+1);
 	}
 
+	increm();
 
 	return ok1;
 }
@@ -191,8 +192,6 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	else{
 		int a = 1 + rand() % numNeighbors;
 
-
-
 		if (row > 0) {
 			if (g->getCellOccupant(row - 1, col) == empty)	//N
 			{
@@ -200,6 +199,7 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 				if(cell == a){
 					output.cellRow = row-1;
 					output.cellCol = col;
+					return output;
 				}
 			}
 		}
@@ -209,7 +209,8 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 				cell++;
 				if(cell == a){
 					output.cellRow = row;
-					output.cellCol = col-1;
+					output.cellCol = col - 1;
+					return output;
 				}
 			}
 		}
@@ -218,8 +219,9 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 			{
 				cell++;
 				if(cell == a){
-					output.cellRow = row+1;
+					output.cellRow = row + 1;
 					output.cellCol = col;
+					return output;
 				}
 			}
 		}	//can look south
@@ -229,7 +231,8 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 				cell++;
 				if(cell == a){
 					output.cellRow = row;
-					output.cellCol = col+1;
+					output.cellCol = col + 1;
+					return output;
 				}
 			}
 		}

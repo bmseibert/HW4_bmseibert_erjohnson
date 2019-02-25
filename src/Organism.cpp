@@ -59,7 +59,8 @@ struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = Organism::numPossCells(row, col, g);
 
-	int a = g->randomVal % numNeighbors;
+	g->setRand();
+	int a = g->getRand() % numNeighbors;
 
 //	if (numNeighbors == 0){
 //		output.cellRow = row;
@@ -67,42 +68,42 @@ struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
 //	}
 
 	if (row > 0) {
-		if (g->getCellOccupant(row - 1, col) == ant)	//N
+		if (g->getCellOccupant(row - 1, col) == empty)	//N
 		{
 			cell++;
 			if(cell == a){
-				output.cellRow = row-1;
+				output.cellRow = row - 1;
 				output.cellCol = col;
 			}
 		}
-	}	//can look north
+	}
 	if (col > 0) {
-		if (g->getCellOccupant(row, col - 1) == ant)	//W
+		if (g->getCellOccupant(row, col - 1) == empty)	//W
 		{
 			cell++;
 			if(cell == a){
 				output.cellRow = row;
-				output.cellCol = col-1;
+				output.cellCol = col - 1;
 			}
 		}
 	}
 	if (row < nRows - 1) {
-		if (g->getCellOccupant(row + 1, col) == ant)	//S
+		if (g->getCellOccupant(row + 1, col) == empty)	//S
 		{
 			cell++;
 			if(cell == a){
-				output.cellRow = row+1;
+				output.cellRow = row + 1;
 				output.cellCol = col;
 			}
 		}
 	}	//can look south
 	if (col < (nCols - 1)) {
-		if (g->getCellOccupant(row, col + 1) == ant)	//E
+		if (g->getCellOccupant(row, col + 1) == empty)	//E
 		{
 			cell++;
 			if(cell == a){
 				output.cellRow = row;
-				output.cellCol = col+1;
+				output.cellCol = col + 1;
 			}
 		}
 	}
@@ -158,6 +159,6 @@ int Organism::numPossCells(int row, int col, Grid* g) {
  *
  */
 Organism::~Organism() {
-	// TODO Auto-generated destructor stub
+	// Unknown how this works
 }
 

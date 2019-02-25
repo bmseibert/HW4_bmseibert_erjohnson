@@ -8,6 +8,9 @@
 #include "Doodlebug.h"
 #include "Ant.h"
 #include "Grid.h"
+#include <stdlib.h>
+#include <stdio.h>
+
 
 
 /* Doodlebug::Doodlebug() Default Constructor
@@ -36,31 +39,47 @@ bool Doodlebug::move()
 {
 	bool status = true;
 	// Gets a random unoccupied cell
-	struct Coordinates cell = getRandCell(row,col,g);
-	int b[] = {cell.cellRow, cell.cellCol};
-	if(b[0] == -1 || b[1] == -1){
-		status = false;
-	}
-	else{
-		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
-		g->setCellOrganism(row, col, nullptr);
-		g->setCellOrganism(b[0], b[1], db);
-		g->setCellOccupant(row, col, doodlebug);
+	struct Coordinates cell1 = getRandCell(row, col, g);
+	int b1[] = {cell1.cellRow, cell1.cellCol};
+	if (b1[0] == row && b1[1] == col){
+		struct Coordinates cell = Organism::getRandCell(row,col,g);
+		int b[] = {cell.cellRow, cell.cellCol};
+
+
+		if(b[0] == -1 || b[1] == -1){
+			status = false;
+		}
+		else{
+
+			g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
+			g->setCellOccupant(b[0], b[1], doodlebug);
+
+			g->setCellOrganism(row, col, nullptr);
+			g->setCellOccupant(row, col, empty);
+
+			setRowAndCol(b[0],b[1]);
+		}
+
+	}else{
+		eat();
 	}
 	return status;
+}
+bool Doodlebug::breed(){
+	return true;
 }
 /* Doodlebug::breed() Function, used to make a doodlebug breed
  * Breeding does NOT take precidence over death
  * @param
  * @return bool returns true if the bug was able to breed
  */
-bool Doodlebug::breed()
+bool Doodlebug::breedDoodle()
 {
 	bool status = true;
 
 	// FIRST
 	// Find Cell to Breed
-	struct Coordinates cell = getRandCell(row,col,g);
+	struct Coordinates cell = Organism::getRandCell(row,col,g);
 	int b[] = {cell.cellRow, cell.cellCol};
 	if(b[0] == -1 || b[1] == -1){
 		status = false;
@@ -74,7 +93,7 @@ bool Doodlebug::breed()
 		g->setCellOrganism(b[0], b[1], d1);
 
 		//Add a doodlebug to the total counter in the grid
-		int totalDoodleBugs = g->getNumDoodle();
+		short int totalDoodleBugs = g->getNumDoodle();
 		totalDoodleBugs++;
 		g->setNumDoodle(totalDoodleBugs);
 		// THIRD
@@ -107,9 +126,10 @@ bool Doodlebug::eat()
 		deadAnt->~Ant();
 		/* gets the doodlebug from the cuurent cell and moves it to the
 		 * cell that the ant it is eating is in
-		*/
+		 */
 		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
 		g->setCellOrganism(row, col, nullptr);
+		g->setCellOccupant(row, col, empty);
 		g->setCellOrganism(b[0], b[1], db);
 		g->setCellOccupant(b[0], b[1], doodlebug);
 
@@ -128,9 +148,10 @@ int Doodlebug::getStarveCnt(){
  */
 bool Doodlebug::step(){
 	bool ok1 = true;
+
 	// FIRST
 	// Move
-	//move();
+	move();
 
 	// SECOND
 	// starve check
@@ -142,7 +163,7 @@ bool Doodlebug::step(){
 	// THIRD
 	// breed Check
 	if (breedCnt > 7){
-		breed();
+		breedDoodle();
 	}
 
 	// FOURTH
@@ -224,12 +245,11 @@ int Doodlebug::numPossCells(int row, int col, Grid* g) {
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
  */
-struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
+struct Organism::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 	struct Coordinates output;
 	// Cell row and col
-	output.cellCol = -1;
-	output.cellRow = -1;
+
 	// gets the number of cells in a grid
 	int n = g->getNumCells();
 	// sets this value equal to the number of rows and the number of columns
@@ -238,51 +258,52 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = numPossCells(row, col, g);
-
-	int a = g->randomVal % numNeighbors;
-
-//	if (numNeighbors == 0){
-//		output.cellRow = row;
-//		output.cellCol = col;
-//	}
-
-	if (row > 0) {
-		if (g->getCellOccupant(row - 1, col) == ant)	//N
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row-1;
-				output.cellCol = col;
-			}
-		}
-	}	//can look north
-	if (col > 0) {
-		if (g->getCellOccupant(row, col - 1) == ant)	//W
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row;
-				output.cellCol = col-1;
-			}
-		}
+	if (numNeighbors == 0){
+		output.cellRow = row;
+		output.cellCol = col;
 	}
-	if (row < nRows - 1) {
-		if (g->getCellOccupant(row + 1, col) == ant)	//S
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row+1;
-				output.cellCol = col;
+	else{
+		int a = 1 + rand()%numNeighbors;
+
+
+		if (row > 0) {
+			if (g->getCellOccupant(row - 1, col) == ant)	//N
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row-1;
+					output.cellCol = col;
+				}
+			}
+		}	//can look north
+		if (col > 0) {
+			if (g->getCellOccupant(row, col - 1) == ant)	//W
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row;
+					output.cellCol = col-1;
+				}
 			}
 		}
-	}	//can look south
-	if (col < (nCols - 1)) {
-		if (g->getCellOccupant(row, col + 1) == ant)	//E
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row;
-				output.cellCol = col+1;
+		if (row < nRows - 1) {
+			if (g->getCellOccupant(row + 1, col) == ant)	//S
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row+1;
+					output.cellCol = col;
+				}
+			}
+		}	//can look south
+		if (col < (nCols - 1)) {
+			if (g->getCellOccupant(row, col + 1) == ant)	//E
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row;
+					output.cellCol = col+1;
+				}
 			}
 		}
 	}
@@ -296,6 +317,17 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 bool Doodlebug::setGridPtr(Grid * a){
 	bool result = true;
 	g = a;
+	return result;
+}
+/* set the row and column function
+ * @param int i sets the row
+ * @param int j sets the col
+ * @param bool result true if worked
+ */
+bool Doodlebug::setRowAndCol(int i, int j){
+	bool result = true;
+	row = i;
+	col = j;
 	return result;
 }
 
