@@ -52,19 +52,23 @@ bool Ant::move()
 	// pick one at random.
 	struct Coordinates cell = getRandCell(row,col,g);
 	int b[] = {cell.cellRow, cell.cellCol};
-	//SECOND
-	//modify the pointers to move
-	g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
-	g->setCellOccupant(b[0], b[1], ant);
+	if(b[0] == -1 && b[1] == -1){
+		status = false;
+	}
+	else{
+		//SECOND
+		//modify the pointers to move
+		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
+		g->setCellOccupant(b[0], b[1], ant);
 
-	g->setCellOrganism(row, col, nullptr);
-	g->setCellOccupant(row, col, empty);
+		g->setCellOrganism(row, col, nullptr);
+		g->setCellOccupant(row, col, empty);
 
-	//g->printGrid();
-	//printf("\n");
-	//sets the ant row and column
-	setRowAndCol(b[0],b[1]);
-
+		//g->printGrid();
+		//printf("\n");
+		//sets the ant row and column
+		setRowAndCol(b[0],b[1]);
+	}
 	// CONSIDER:
 	// ant should not move into a doodlebug or another ant
 
@@ -86,17 +90,22 @@ bool Ant::breed()
 	// Find Cell to Breed
 	struct Coordinates cell = getRandCell(row, col, g);
 	int b[] = {cell.cellRow, cell.cellCol};
-	// SECOND
-	// Create Ant from this breeding
-	Ant * a1 = new Ant(b[0], b[1], g);
-	// put it in the new cell
-	g->setCellOccupant(b[0], b[1], ant);
-	g->setCellOrganism(b[0], b[1], a1);
+	if(b[0] == -1 && b[1] == -1){
+		status = false;
+	}
+	else{// SECOND
+		// Create Ant from this breeding
+		Ant * a1 = new Ant(b[0], b[1], g);
+		// put it in the new cell
+		g->setCellOccupant(b[0], b[1], ant);
+		g->setCellOrganism(b[0], b[1], a1);
 
-	// THIRD
-	// Reset the Counter of breed to 0
-	setBreedCnt(0);
+		// THIRD
+		// Reset the Counter of breed to 0
+		setBreedCnt(0);
 
+		increm();
+	}
 	return status;
 }
 
@@ -109,7 +118,7 @@ bool Ant::step(){
 	// FIRST
 	// Move
 	if(numPossCells(row, col, g) > 0){
-	move();
+		move();
 	}
 	// SECOND
 	// Check if breed
@@ -117,9 +126,6 @@ bool Ant::step(){
 		breed();
 		g->setNumAnt(g->getNumAnt()+1);
 	}
-	// THIRD
-	// Increment
-	increm();
 
 
 	return ok1;
@@ -177,56 +183,61 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
 	int numNeighbors = numPossCells(row, col, g);
-	int a = 1 + rand() % numNeighbors;
-
 	if (numNeighbors == 0){
-		output.cellRow = row;
-		output.cellCol = col;
-	}
+		output.cellRow = -1;
+		output.cellCol = -1;
 
-	if (row > 0) {
-		if (g->getCellOccupant(row - 1, col) == empty)	//N
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row-1;
-				output.cellCol = col;
-			}
-		}
 	}
-	if (col > 0) {
-		if (g->getCellOccupant(row, col - 1) == empty)	//W
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row;
-				output.cellCol = col-1;
+	else{
+		int a = 1 + rand() % numNeighbors;
+
+
+
+		if (row > 0) {
+			if (g->getCellOccupant(row - 1, col) == empty)	//N
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row-1;
+					output.cellCol = col;
+				}
 			}
 		}
-	}
-	if (row < nRows - 1) {
-		if (g->getCellOccupant(row + 1, col) == empty)	//S
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row+1;
-				output.cellCol = col;
+		if (col > 0) {
+			if (g->getCellOccupant(row, col - 1) == empty)	//W
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row;
+					output.cellCol = col-1;
+				}
 			}
 		}
-	}	//can look south
-	if (col < (nCols - 1)) {
-		if (g->getCellOccupant(row, col + 1) == empty)	//E
-		{
-			cell++;
-			if(cell == a){
-				output.cellRow = row;
-				output.cellCol = col+1;
+		if (row < nRows - 1) {
+			if (g->getCellOccupant(row + 1, col) == empty)	//S
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row+1;
+					output.cellCol = col;
+				}
+			}
+		}	//can look south
+		if (col < (nCols - 1)) {
+			if (g->getCellOccupant(row, col + 1) == empty)	//E
+			{
+				cell++;
+				if(cell == a){
+					output.cellRow = row;
+					output.cellCol = col+1;
+				}
 			}
 		}
 	}
 	return output;
 
 }
+
 
 
 /** Ant::~Ant is a destructor for the ant class

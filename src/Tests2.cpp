@@ -301,6 +301,7 @@ bool Tests2::antsBreedTest()
 	bool result = true;
 	bool ok1 = true;
 	bool ok2 = true;
+	bool ok3 = true;
 	std::cout << "Running the breed ants test" << std::endl;
 
 	//makes a grid pointer
@@ -313,34 +314,57 @@ bool Tests2::antsBreedTest()
 	myGrid_p->setCellOccupant(3, 4, ant);
 	myGrid_p->setCellOrganism(3, 4, a3);
 	// Make the ant breed
-	//a3.breed()
+	a3->breed();
 	// check if there is an ant and an ant in any surrounding cells
 	if(myGrid_p->getCellOccupant(2, 4) == ant || myGrid_p->getCellOccupant(4, 4) == ant
 			|| myGrid_p->getCellOccupant(3, 3) == ant || myGrid_p->getCellOccupant(3, 5) == ant){
 
 	}else{
-		printf("Ant Moved to a random location or did not move at all \n");
+		printf("Ant did not breed \n");
 		ok1 = false;
 	}
 
 	// checking the boundary case
 	// Make ant
-	Ant* a1 = new Ant(1,1,myGrid_p);
+	Ant* a1 = new Ant(0,0,myGrid_p);
 	// Add the Ant to the grid
-	myGrid_p->setCellOccupant(3, 4, ant);
-	myGrid_p->setCellOrganism(3, 4, a1);
+	myGrid_p->setCellOccupant(0, 0, ant);
+	myGrid_p->setCellOrganism(0, 0, a1);
 	// Make the ant breed
-	// a1->breed();
+	a1->breed();
 	// check if there is an ant
 	// check if there is an ant and an ant in any surrounding cells
-	if(myGrid_p->getCellOccupant(1, 2) == ant || myGrid_p->getCellOccupant(2, 1) == ant){
+	if(myGrid_p->getCellOccupant(0, 1) == ant || myGrid_p->getCellOccupant(1, 0) == ant){
 
 	}else{
-		printf("Ant Moved to a random location or did not move at all \n");
+		printf("Ant did not breed \n");
 		ok2 = false;
 	}
 
-	result = ok1 && ok2;
+	// checking when there is no place for the and to breed
+	// Make ant
+	Ant* a4 = new Ant(8,8,myGrid_p);
+	Ant* a5= new Ant(7,8,myGrid_p);
+	Ant* a6 = new Ant(8,7,myGrid_p);
+	// Add the Ant to the grid
+	myGrid_p->setCellOccupant(8, 8, ant);
+	myGrid_p->setCellOrganism(8, 8, a4);
+	myGrid_p->setCellOccupant(7, 8, ant);
+	myGrid_p->setCellOrganism(7, 8, a5);
+	myGrid_p->setCellOccupant(8, 7, ant);
+	myGrid_p->setCellOrganism(8, 7, a6);
+	// Make the ant breed
+	int antsBeforeBreed = myGrid_p->getNumAnt();
+	a4->breed();
+	// check that no new ants were created
+	if(myGrid_p->getNumAnt() == antsBeforeBreed){
+
+	}else{
+		printf("Ant breed when there was no space \n");
+		ok3 = false;
+	}
+
+	result = ok1 && ok2 && ok3;
 	return result;
 }
 
