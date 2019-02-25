@@ -290,15 +290,22 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 }
 
-
+/* Set grid pointer function
+ * @return bool of if the function worked
+ */
+bool Doodlebug::setGridPtr(Grid * a){
+	bool result = true;
+	g = a;
+	return result;
+}
 
 /* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
  *
  */
 Doodlebug::~Doodlebug() {
-	// THERE MAY BE MORE STUFF NEEDED IN HERE
-	g->setCellOrganism(row, col, nullptr);
+
 	g->setCellOccupant(row, col, empty);
-	delete this;
+	g->setCellOrganism(row, col, nullptr);
+	setGridPtr(nullptr);
 }
 
