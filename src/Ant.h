@@ -28,6 +28,7 @@ public:
 	bool increm();
 	bool setBreedCnt(int i);
 	bool setRowAndCol(int i, int j);
+	bool setGridPtr(Grid * a);
 	struct Organism::Coordinates getRandCell(int row, int col, Grid* g);
 	~Ant();
 

@@ -127,12 +127,14 @@ bool Tests2::makeAntsTest()
 		ok2 = false;
 	}
 	myGrid_p->setCellOccupant(3, 4, empty);
-	delete a1;
+	a1->~Ant();
 	delete myGrid_p;
 	result = ok1 && ok2;
 	return result;
 }
-
+/* Organism Test
+ * @return bool if the tests works
+ */
 bool Tests2::OrganismTest()
 {
 	bool result = true;
@@ -141,11 +143,14 @@ bool Tests2::OrganismTest()
 	bool ok3 = true;
 	std::cout << "Running the Organism Methods test" << std::endl;
 
+	// Make the Grid
 	Grid* myGrid_t = new Grid(9);
+	// Checks that the grid has none of the cells initialized
 	if(myGrid_t->getCellOccupant(3, 4)!=empty)
 	{
 		std::cout << "Cell 3,4 not initially empty" << std::endl;
 	}
+	// Make all of the ants
 	Ant* a3 = new Ant(3,4, myGrid_t);
 	myGrid_t->setCellOccupant(3, 4, ant);
 	Ant* a4 = new Ant(3,5,myGrid_t);
@@ -153,14 +158,13 @@ bool Tests2::OrganismTest()
 	Ant* a5 = new Ant(8,6,myGrid_t);
 	myGrid_t->setCellOccupant(8, 6, ant);
 
-
+	// checks that the number of cells empty is correct
 	int numNeighbors1 = a3->numPossCells(3, 4, myGrid_t);
 	printf("numNeighbors1: %d \n", numNeighbors1);
 	if(numNeighbors1 != 3){
 		ok1 = false;
 		printf("did not find neighbor\n");
 	}
-
 	int n = myGrid_t->getNumCells();
 	printf("nRows %d \n", n);
 	int numNeighbors2 = a5->numPossCells(8, 6, myGrid_t);
@@ -169,16 +173,11 @@ bool Tests2::OrganismTest()
 		ok2 = false;
 		printf("found a non-existent neighbor neighbor\n");
 	}
-	//	int arr[] = {*(a3->getRandCell(3, 4, myGrid_t))};
-	//	printf("arr: %d ", arr[0]);
-	//	printf(" %d \n", arr[1]);
-	//	if((arr[0] == 4 && arr[1] == 4) || (arr[0] == 3 && arr[1] == 2) ||
-	//	   (arr[0] == 2 && arr[1] == 4)){
-	//		ok3 = false;
-	//		printf("GetRandCell returned a cell that was not empty");
-	//	}
 
-
+	a3->~Ant();
+	a4->~Ant();
+	a5->~Ant();
+	myGrid_t->~Grid();
 	result = ok1 && ok2 && ok3;
 	return result;
 }
@@ -186,9 +185,9 @@ bool Tests2::OrganismTest()
  * Ants Move test
  * Tests if the ants move function operates correctly
  *
- * NEED TO TEST: **-still need to complete
+ * NEED TO TEST:
  * Cases of boundaries
- * Cases of ants being surrounded with other ants and doodlebugs **
+ * Cases of ants being surrounded with other ants and doodlebugs
  * Case of no boundary
  *
  * @return bool if test ran
@@ -276,12 +275,53 @@ bool Tests2::antsMoveTest()
 		ok6 = false;
 	}
 
-	//
+	// Surrounded by Doodlebug and another ant
+	Ant *a4 = new Ant(6,6,myGrid_l);
+
+	// Sets the occupant
+	myGrid_l->setCellOccupant(6, 6, ant);
+	myGrid_l->setCellOrganism(6, 6, a4);
+
+	// Doodlebug initialization
+	Doodlebug* d1 = new Doodlebug(6,7,myGrid_l);
+	myGrid_l->setCellOccupant(6, 7, doodlebug);
+	myGrid_l->setCellOrganism(6, 7, d1);
+
+	// One more ant
+	Ant* a5 = new Ant(5,6,myGrid_l);
+	myGrid_l->setCellOccupant(5, 6, ant);
+	myGrid_l->setCellOrganism(5, 6, a5);
+
+	// Move the ant
+	a4->move();
+
+	// Check if the ant moved
+	if (myGrid_l->getCellOccupant(6, 6) == ant){
+		printf("There is still an ant at this location \n");
+		ok4 = false;
+	}
+	// Check to make sure that the ant pointer moved
+	if (myGrid_l->getCellOrganism(6, 6) == nullptr){
+
+	}
+	else{
+		printf("there is still an ant pointer here");
+		ok5 = false;
+	}
+	// Check the nearby cells
+	if (myGrid_l->getCellOccupant(7, 6) == ant || myGrid_l->getCellOccupant(6, 5) == ant){
+
+	} else
+	{
+		printf("Ant moved to a random location or did not move at all 2 \n");
+		myGrid_l->printGrid();
+		ok6 = false;
+	}
 
 	// delete all of the objects used
-	delete a3;
-	delete a2;
-	delete myGrid_l;
+	a3->~Ant();
+	a4->~Ant();
+	myGrid_l->~Grid();
 
 	result = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
 	return result;
@@ -378,6 +418,7 @@ bool Tests2::antsBreedTest()
 bool Tests2::antsDieTest()
 {
 	bool result = true;
+	bool ok1 = true;
 	std::cout << "Running the ants die test" << std::endl;
 	//makes a grid pointer
 	Grid* myGrid_p = new Grid(9);
@@ -388,11 +429,17 @@ bool Tests2::antsDieTest()
 	myGrid_p->setCellOccupant(3, 4, ant);
 	myGrid_p->setCellOrganism(3, 4, a3);
 	// kill the ant
-	// a3~Ant();
-
+	a3->~Ant();
 	//check if the ant is still there or alive
-	// NEED TO DO
+	if (myGrid_p->getCellOrganism(3, 4) == nullptr){
 
+	}
+	else{
+		printf("there is still an ant pointer here");
+		ok1 = false;
+	}
+
+	result = ok1;
 	return result;
 }
 /* Make Doodles Test
@@ -430,8 +477,9 @@ bool Tests2::makeDoodlesTest()
 		ok2 = false;
 	}
 	myGrid_p->setCellOccupant(3, 4, empty);
-	//delete d1; // NEED TO FIX THIS
-	delete myGrid_p;
+
+	d1->~Doodlebug();
+	myGrid_p->~Grid();
 	result = ok1 && ok2;
 	return result;
 }
@@ -459,9 +507,9 @@ bool Tests2::doodleMoveTest()
 
 	// Testing a doodlebug moving with no restrictions
 	// Make doodlebug
-	Doodlebug* d3 = new Doodlebug(3,4,myGrid_l);
+	Doodlebug* d3 = new Doodlebug(3, 4, myGrid_l);
 	// Set the Cell occupant and organism
-	myGrid_l->setCellOccupant(3, 4, ant);
+	myGrid_l->setCellOccupant(3, 4, doodlebug);
 	myGrid_l->setCellOrganism(3, 4, d3);
 	// Have the doodlebug move
 	d3->move();
@@ -489,7 +537,8 @@ bool Tests2::doodleMoveTest()
 		ok3 = false;
 	}
 	//delete d3;
-	delete myGrid_l;
+	d3->~Doodlebug();
+	myGrid_l->~Grid();
 
 	result = ok1 && ok2 && ok3;
 	return result;

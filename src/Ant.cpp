@@ -237,7 +237,14 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	return output;
 
 }
-
+/* Set grid pointer function
+ * @return bool of if the function worked
+ */
+bool Ant::setGridPtr(Grid * a){
+	bool result = true;
+	g = a;
+	return result;
+}
 
 
 /** Ant::~Ant is a destructor for the ant class
@@ -245,7 +252,8 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
  *
  */
 Ant::~Ant() {
-	// TODO Auto-generated destructor stub
-
+	g->setCellOccupant(row, col, empty);
+	g->setCellOrganism(row, col, nullptr);
+	setGridPtr(nullptr);
 }
 
