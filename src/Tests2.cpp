@@ -199,29 +199,30 @@ bool Tests2::antsMoveTest()
 	bool ok1 = true;
 	bool ok2 = true;
 	bool ok3 = true;
+	bool ok4 = true;
+	bool ok5 = true;
+	bool ok6 = true;
 	std::cout << "Running the move ants test" << std::endl;
 
+	// Make the Grid
 	Grid* myGrid_l = new Grid(9);
 
-	//Testing an ant moving with no restrictions
+	// Testing an ant moving with no restrictions
 	// Make ant
-	Ant* a3 = new Ant(3,4,myGrid_l);
+	Ant* a3 = new Ant(3, 4, myGrid_l);
 	// Set the Cell occupant and organism
 	myGrid_l->setCellOccupant(3, 4, ant);
 	myGrid_l->setCellOrganism(3, 4, a3);
 
-	myGrid_l->printGrid();
-	printf("\n");
-	// Have the ant move
-	a3->move();  //THIS HAS SO MANY BUGS
+	// Make the ant move
+	a3->move();
 
-	//myGrid_l->printGrid();
-	//check if the ant moved
-	if (myGrid_l->getCell(3, 4).getOccupant() == ant){
+	// Check if the ant moved
+	if (myGrid_l->getCellOccupant(3, 4) == ant){
 		printf("There is still an ant at this location \n");
 		ok1 = false;
 	}
-	//this does not seem to be working
+	// Check to make sure that the ant pointer moved
 	if (myGrid_l->getCellOrganism(3, 4) == nullptr){
 
 	}
@@ -230,19 +231,57 @@ bool Tests2::antsMoveTest()
 		ok2 = false;
 	}
 
-	//Check the nearby cells
-	if (myGrid_l->getCell(2, 4).getOccupant() == ant || myGrid_l->getCell(4, 4).getOccupant() == ant
-			|| myGrid_l->getCell(3, 3).getOccupant() == ant || myGrid_l->getCell(3, 5).getOccupant() == ant){
+	// Check the nearby cells
+	if (myGrid_l->getCellOccupant(2, 4) == ant || myGrid_l->getCellOccupant(4, 4) == ant
+			|| myGrid_l->getCellOccupant(3, 3) == ant || myGrid_l->getCellOccupant(3, 5) == ant){
 
 	} else
 	{
 		printf("Ant moved to a random location or did not move at all \n");
 		ok3 = false;
 	}
+
+	// Tests the boundaries
+	// make the ant
+	Ant* a2 = new Ant(0,0,myGrid_l);
+
+	// Sets the occupant
+	myGrid_l->setCellOccupant(0, 0, ant);
+	myGrid_l->setCellOrganism(0, 0, a2);
+
+	myGrid_l->printGrid();
+	// Make the ant move
+	a2->move();
+
+	// Check if the ant moved
+	if (myGrid_l->getCellOccupant(0, 0) == ant){
+		printf("There is still an ant at this location \n");
+		ok4 = false;
+	}
+	// Check to make sure that the ant pointer moved
+	if (myGrid_l->getCellOrganism(0, 0) == nullptr){
+
+	}
+	else{
+		printf("there is still an ant pointer here");
+		ok5 = false;
+	}
+	// Check the nearby cells
+	if (myGrid_l->getCellOccupant(0, 1) == ant || myGrid_l->getCellOccupant(1, 0) == ant){
+
+	} else
+	{
+		printf("Ant moved to a random location or did not move at all 2 \n");
+		myGrid_l->printGrid();
+		ok6 = false;
+	}
+
+	// delete all of the objects used
 	delete a3;
+	delete a2;
 	delete myGrid_l;
 
-	result = ok1 && ok2 && ok3;
+	result = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
 	return result;
 }
 /* Ant Breed Test
@@ -274,8 +313,8 @@ bool Tests2::antsBreedTest()
 	// Make the ant breed
 	//a3.breed()
 	// check if there is an ant and an ant in any surrounding cells
-	if(myGrid_p->getCell(2, 4).getOccupant() == ant || myGrid_p->getCell(4, 4).getOccupant() == ant
-			|| myGrid_p->getCell(3, 3).getOccupant() == ant || myGrid_p->getCell(3, 5).getOccupant() == ant){
+	if(myGrid_p->getCellOccupant(2, 4) == ant || myGrid_p->getCellOccupant(4, 4) == ant
+			|| myGrid_p->getCellOccupant(3, 3) == ant || myGrid_p->getCellOccupant(3, 5) == ant){
 
 	}else{
 		printf("Ant Moved to a random location or did not move at all \n");
@@ -292,7 +331,7 @@ bool Tests2::antsBreedTest()
 	// a1->breed();
 	// check if there is an ant
 	// check if there is an ant and an ant in any surrounding cells
-	if(myGrid_p->getCell(1, 2).getOccupant() == ant || myGrid_p->getCell(2, 1).getOccupant() == ant){
+	if(myGrid_p->getCellOccupant(1, 2) == ant || myGrid_p->getCellOccupant(2, 1) == ant){
 
 	}else{
 		printf("Ant Moved to a random location or did not move at all \n");
@@ -399,9 +438,9 @@ bool Tests2::doodleMoveTest()
 	myGrid_l->setCellOccupant(3, 4, ant);
 	myGrid_l->setCellOrganism(3, 4, d3);
 	// Have the doodlebug move
-	d3->move();  //THIS HAS SO MANY BUGS
+	d3->move();
 	// check if the doodlebug moved
-	if (myGrid_l->getCell(3, 4).getOccupant() == doodlebug){
+	if (myGrid_l->getCellOccupant(3, 4) == doodlebug){
 		printf("There is still an ant at this location \n");
 		ok1 = false;
 	}
@@ -415,8 +454,8 @@ bool Tests2::doodleMoveTest()
 	}
 
 	//Check the nearby cells
-	if (myGrid_l->getCell(2, 4).getOccupant() == doodlebug || myGrid_l->getCell(4, 4).getOccupant() == doodlebug
-			|| myGrid_l->getCell(3, 3).getOccupant() == doodlebug || myGrid_l->getCell(3, 5).getOccupant() == doodlebug){
+	if (myGrid_l->getCellOccupant(2, 4) == doodlebug || myGrid_l->getCellOccupant(4, 4) == doodlebug
+			|| myGrid_l->getCellOccupant(3, 3) == doodlebug || myGrid_l->getCellOccupant(3, 5) == doodlebug){
 
 	} else
 	{

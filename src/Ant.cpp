@@ -55,13 +55,13 @@ bool Ant::move()
 	//SECOND
 	//modify the pointers to move
 	g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
-	g->getCell(b[0], b[1]).setOccupant(ant);
+	g->setCellOccupant(b[0], b[1], ant);
 
 	g->setCellOrganism(row, col, nullptr);
 	g->setCellOccupant(row, col, empty);
 
-	g->printGrid();
-	printf("\n");
+	//g->printGrid();
+	//printf("\n");
 	//sets the ant row and column
 	setRowAndCol(b[0],b[1]);
 
@@ -193,7 +193,7 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 				output.cellCol = col;
 			}
 		}
-	}	//can look north
+	}
 	if (col > 0) {
 		if (g->getCellOccupant(row, col - 1) == empty)	//W
 		{

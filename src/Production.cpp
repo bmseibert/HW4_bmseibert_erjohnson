@@ -151,11 +151,11 @@ bool Production::runProduction()
 		for(int r = 0; r < g->getNumCells(); r++){
 			for(int c = 0; c < g->getNumCells(); c++){
 
-				if (g->getCell(r, c).getOccupant() == empty){
+				if (g->getCellOccupant(r, c) == empty){
 
 				}
 				// Doodlebugs step;
-				if (g->getCell(r, c).getOccupant() == doodlebug){
+				if (g->getCellOccupant(r, c) == doodlebug){
 					Doodlebug * b = (Doodlebug*)g->getCellOrganism(r, c);
 					b->step();
 
@@ -170,11 +170,11 @@ bool Production::runProduction()
 		for(int r=0; r < g->getNumCells(); r++){
 			for(int c = 0; c < g->getNumCells(); c++){
 
-				if (g->getCell(r, c).getOccupant() == empty){
+				if (g->getCellOccupant(r, c) == empty){
 
 				}
 				// Ant step;
-				if (g->getCell(r, c).getOccupant() == ant){
+				if (g->getCellOccupant(r, c) == ant){
 					Ant * a =(Ant *)g->getCellOrganism(r, c);
 					a->step();
 				}

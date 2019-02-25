@@ -125,13 +125,13 @@ int Organism::numPossCells(int row, int col, Grid* g) {
 	//there could be as many as 4 neighbors
 	//cells on an edge or corner have fewer neighbors
 	//we will search for neighbors clockwise from NorthWest
-	if(row > 0){
+	if(row > 1){
 		if (g->getCellOccupant(row - 1, col) == empty)	//N
 		{
 			numNeighbors++;
 		}
 	}//can look north
-	if(col > 0){
+	if(col > 1){
 		if (g->getCellOccupant(row, col - 1) == empty)	//W
 		{
 			numNeighbors++;

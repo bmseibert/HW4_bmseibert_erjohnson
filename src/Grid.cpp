@@ -80,15 +80,7 @@ int Grid::getNumCells()
 {
 	return nCells;
 }
-/* getCellPointer Function gets the cell
- * @param int r is the row of the cell
- * @param int c is the column of the cell
- * @return is a pointer to the cell that we are looking for
- */
-Cell Grid::getCell(int r, int c)
-{
-	return myGridCells_ptr_array[r][c];
-}
+
 
 /* getNumDoodle Function gets the number of doodlebugs
  * @return is the number of doodlebugs on the grid
