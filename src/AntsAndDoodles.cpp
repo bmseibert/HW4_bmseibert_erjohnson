@@ -1,6 +1,6 @@
 //============================================================================
 // Name        : Ants.cpp
-// Author      : Therese building on Ciaraldi
+// Author      : Everett Johnson and Ben Seibert
 // Version     :
 // Copyright   : Your copyright notice
 // Description : Hello World in C++, Ansi-style

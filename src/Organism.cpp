@@ -159,6 +159,6 @@ int Organism::numPossCells(int row, int col, Grid* g) {
  *
  */
 Organism::~Organism() {
-	// Unknown how this works
+
 }
 

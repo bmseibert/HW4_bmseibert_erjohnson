@@ -321,6 +321,9 @@ bool Tests2::antsMoveTest()
 	// delete all of the objects used
 	a3->~Ant();
 	a4->~Ant();
+	a5->~Ant();
+	a2->~Ant();
+	d1->~Doodlebug();
 	myGrid_l->~Grid();
 
 	result = ok1 && ok2 && ok3 && ok4 && ok5 && ok6;
@@ -403,7 +406,12 @@ bool Tests2::antsBreedTest()
 		printf("Ant breed when there was no space \n");
 		ok3 = false;
 	}
-
+	a1->~Ant();
+	a3->~Ant();
+	a4->~Ant();
+	a5->~Ant();
+	a6->~Ant();
+	myGrid_p->~Grid();
 	result = ok1 && ok2 && ok3;
 	return result;
 }
@@ -439,6 +447,7 @@ bool Tests2::antsDieTest()
 		ok1 = false;
 	}
 
+	myGrid_p->~Grid();
 	result = ok1;
 	return result;
 }
@@ -606,6 +615,8 @@ bool Tests2::doodleEatTest()
 {
 	bool result = true;
 	std::cout << "Running the eat ant test" << std::endl;
+
+
 	return result;
 }
 /* Doodle Die Test
@@ -619,7 +630,29 @@ bool Tests2::doodleEatTest()
 bool Tests2::doodleDietest()
 {
 	bool result = true;
-	std::cout << "Running the doodlebug dies test" << std::endl;
+	bool ok1 = true;
+	std::cout << "Running the Doodlebug die test" << std::endl;
+	//makes a grid pointer
+	Grid* myGrid_p = new Grid(9);
+	// checking the normal case
+	// Make doodlebug
+	Doodlebug* d3 = new Doodlebug(3,4,myGrid_p);
+	// Add the Doodlebug to the grid
+	myGrid_p->setCellOccupant(3, 4, doodlebug);
+	myGrid_p->setCellOrganism(3, 4, d3);
+	// kill the doodlebug
+	d3->~Doodlebug();
+	//check if the doodlebug is still there or alive
+	if (myGrid_p->getCellOrganism(3, 4) == nullptr){
+
+	}
+	else{
+		printf("there is still an doodlebug pointer here");
+		ok1 = false;
+	}
+
+	myGrid_p->~Grid();
+	result = ok1;
 	return result;
 }
 /* How many neighbors test function
@@ -648,9 +681,43 @@ bool Tests2::organismNeighborTest(){
  */
 bool Tests2::organismRandCellTest(){
 	bool result = true;
+	bool ok1 = true;
+	bool ok2 = true;
 	std::cout << "Running the Rand Cell test" << std::endl;
+	// Grid Initialization
+	Grid* Grid_p = new Grid (8);
+	// Ant Initialization
+	Ant * a1 = new Ant(3,4,Grid_p);
+	// Find the random cells
+	struct Ant::Coordinates cords = a1->getRandCell(3, 4, Grid_p);
+	int b[]= {cords.cellRow, cords.cellCol};
+	if ((b[0] == 4 && b[1] == 4) || (b[0] == 3 && b[1] == 5) || (b[0] == 3 && b[1] == 3) || (b[0] == 2 && b[1] == 4)){
 
+	}else {
+		printf("Did not pick a correct random cell");
+		ok1 = false;
+	}
+	// Adding ants around the other ant
+	Ant * a2 = new Ant(3,5,Grid_p);
+	Grid_p->setCellOccupant(3, 5, ant);
+	Grid_p->setCellOrganism(3, 5, a2);
+	Ant * a3 = new Ant(3,3,Grid_p);
+	Grid_p->setCellOccupant(3, 3, ant);
+	Grid_p->setCellOrganism(3, 3, a3);
+	Ant * a4 = new Ant(2,4,Grid_p);
+	Grid_p->setCellOccupant(2, 4, ant);
+	Grid_p->setCellOrganism(2, 4, a4);
 
+	struct Ant::Coordinates cords2 = a1->getRandCell(3, 4, Grid_p);
+	int b2[]= {cords2.cellRow, cords2.cellCol};
+	if (b2[0] == 4 && b2[1] == 4){
+
+	}else {
+		printf("Did not pick a correct random cell");
+		ok2 = false;
+	}
+
+	result = ok1 && ok2;
 	return result;
 }
 
@@ -658,6 +725,6 @@ bool Tests2::organismRandCellTest(){
  * Deletes the Testing file
  */
 Tests2::~Tests2() {
-	delete this;
+
 }
 

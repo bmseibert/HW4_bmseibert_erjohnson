@@ -33,6 +33,8 @@ public:
 	bool step();
 	bool increm();
 	bool setBreedCnt(int i);
+	int getRow();
+	int getCol();
 	int numPossCells(int row, int col, Grid* g);
 	bool setGridPtr(Grid * a);
 	bool setRowAndCol(int i, int j);

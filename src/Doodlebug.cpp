@@ -93,7 +93,7 @@ bool Doodlebug::breedDoodle()
 		g->setCellOrganism(b[0], b[1], d1);
 
 		//Add a doodlebug to the total counter in the grid
-		short int totalDoodleBugs = g->getNumDoodle();
+		int totalDoodleBugs = g->getNumDoodle();
 		totalDoodleBugs++;
 		g->setNumDoodle(totalDoodleBugs);
 		// THIRD
@@ -157,8 +157,8 @@ bool Doodlebug::step(){
 	// starve check
 	if (starveCnt > 2){
 		//DELETE DOODLE BUG
-		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
-		db->~Doodlebug();
+		//Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
+		//		g->setCellOrganism(db->getRow(), db->getCol(), nullptr);
 	}
 	// THIRD
 	// breed Check
@@ -186,6 +186,7 @@ bool Doodlebug::increm(){
 
 	return result;
 }
+
 /* Set Breed Count
  * @param int i sets the count to i
  * @param bool result true if worked
@@ -329,6 +330,12 @@ bool Doodlebug::setRowAndCol(int i, int j){
 	row = i;
 	col = j;
 	return result;
+}
+int Doodlebug::getRow(){
+	return row;
+}
+int Doodlebug::getCol(){
+	return col;
 }
 
 /* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
