@@ -18,7 +18,6 @@
  * Generates a new test object
  */
 Tests2::Tests2() {
-	// TODO Auto-generated constructor stub
 	//initialize the grid
 }
 /* do Test Function
@@ -598,8 +597,9 @@ bool Tests2::doodleBreedTest()
 		printf("Doodlebug moved \n");
 		ok2 = false;
 	}
-	myGrid_l->~Grid();
+
 	d3->~Doodlebug();
+	myGrid_l->~Grid();
 	result = ok1 && ok2;
 	return result;
 }
@@ -614,9 +614,38 @@ bool Tests2::doodleBreedTest()
 bool Tests2::doodleEatTest()
 {
 	bool result = true;
+	bool ok1 = true;
 	std::cout << "Running the eat ant test" << std::endl;
+	// Generate the Grid
+	Grid * myGrid = new Grid(9);
+	// Add an Ant and a Doodlebug to the Grid
+	// Make doodlebug
+	Doodlebug* d = new Doodlebug(3, 4, myGrid);
 
+	// Set the Cell occupant and organism
+	myGrid->setCellOccupant(3, 4, doodlebug);
+	myGrid->setCellOrganism(3, 4, d);
+	// Make an Ant
+	Ant * a = new Ant(4,4, myGrid);
+	// Set the occupancy on the grid
+	myGrid->setCellOccupant(4, 4, ant);
+	myGrid->setCellOrganism(4, 4, a);
 
+	// Make the Doodlebug eat
+	//d->eat(); // There are bugs with this function
+
+	// Test if it worked
+	if(myGrid->getCellOccupant(4, 4) == doodlebug && myGrid->getCellOccupant(3, 4) == empty){
+
+	}else{
+		printf("One of the tests failed for eat");
+		ok1 = false;
+	}
+
+	d->~Doodlebug();
+	a->~Ant();
+	myGrid->~Grid();
+	result = ok1;
 	return result;
 }
 /* Doodle Die Test
