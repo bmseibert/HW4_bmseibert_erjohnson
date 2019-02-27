@@ -37,50 +37,24 @@ Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 bool Doodlebug::move()
 {
 	bool status = true;
-	// Gets a random occupied cell by an ant
-	struct Coordinates cell = getRandCell(row,col,g);
+
+	struct Coordinates cell = Organism::getRandCell(row,col,g);
 	int b[] = {cell.cellRow, cell.cellCol};
-	if(b[0] == -1 && b[1] == -1){
-		status = false;
+
+	if(b[0] == -1 || b[1] == -1){
+
 	}
 	else{
-		//SECOND
-		//modify the pointers to move
+
 		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
 		g->setCellOccupant(b[0], b[1], doodlebug);
 
 		g->setCellOrganism(row, col, nullptr);
 		g->setCellOccupant(row, col, empty);
 
-		//g->printGrid();
-		//printf("\n");
-		//sets the ant row and column
 		setRowAndCol(b[0],b[1]);
 	}
 
-	//	Doodlebug * db = (Doodlebug*) g->getCellOrganism(row, col);
-	//	int np = db->numPossCells(row, col, g);
-	//	if (np > 0){
-	//		eat();
-	//	}
-	//	else{
-	//		struct Coordinates cell = Organism::getRandCell(row,col,g);
-	//		int b[] = {cell.cellRow, cell.cellCol};
-	//
-	//		if(b[0] == -1 || b[1] == -1){
-	//
-	//		}
-	//		else{
-	//
-	//			g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
-	//			g->setCellOccupant(b[0], b[1], doodlebug);
-	//
-	//			g->setCellOrganism(row, col, nullptr);
-	//			g->setCellOccupant(row, col, empty);
-	//
-	//			setRowAndCol(b[0],b[1]);
-	//		}
-	//	}
 
 	return status;
 }
@@ -137,7 +111,7 @@ bool Doodlebug::eat()
 	int b[] = {cell.cellRow, cell.cellCol};
 	// Neighboring cells did not contain an ant
 	if(b[0] == -1 || b[1] == -1){
-		status = false;
+
 	}
 	// Neighboring cells contain an ant
 	else{
@@ -147,12 +121,15 @@ bool Doodlebug::eat()
 		/* gets the doodlebug from the cuurent cell and moves it to the
 		 * cell that the ant it is eating is in
 		 */
-		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
+
 		g->setCellOrganism(row, col, nullptr);
 		g->setCellOccupant(row, col, empty);
-		g->setCellOrganism(b[0], b[1], db);
+		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
 		g->setCellOccupant(b[0], b[1], doodlebug);
 
+		setRowAndCol(b[0],b[1]);
+
+		setStarveCnt(0);
 	}
 	return status;
 }
@@ -163,6 +140,11 @@ bool Doodlebug::eat()
 int Doodlebug::getStarveCnt(){
 	return starveCnt;
 }
+bool Doodlebug::setStarveCnt(int s){
+	bool result = true;
+	starveCnt = s;
+	return result;
+}
 /* Doodlebug Step Function
  * @return bool if the step worked
  */
@@ -170,8 +152,11 @@ bool Doodlebug::step(){
 	bool ok1 = true;
 
 	// FIRST
-	// Move
-	if(Doodlebug::numPossCells(row, col, g) > 0){
+	// Move or Eat
+	if(Doodlebug::numPossCells(row, col, g) > 0) {
+		eat();
+
+	}else if (Organism::numPossCells(row, col, g) > 0 ){
 		move();
 	}
 

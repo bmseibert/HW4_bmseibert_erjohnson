@@ -30,6 +30,7 @@ public:
 	bool breedDoodle();
 	bool eat();
 	int getStarveCnt();
+	bool setStarveCnt(int s);
 	~Doodlebug();
 	bool step();
 	bool increm();

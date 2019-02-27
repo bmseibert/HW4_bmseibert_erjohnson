@@ -523,6 +523,7 @@ bool Tests2::doodleMoveTest()
 	//myGrid_l->printGrid();
 	// Have the doodlebug move
 	d3->move();
+	//myGrid_l->printGrid();
 	// check if the doodlebug moved
 	if (myGrid_l->getCellOccupant(3, 4) == doodlebug){
 		printf("There is still an ant at this location \n");
@@ -543,8 +544,8 @@ bool Tests2::doodleMoveTest()
 
 	} else
 	{
-		//myGrid_l->printGrid();
-		printf("Ant Moved to a random location or did not move at all \n");
+		myGrid_l->printGrid();
+		printf("Doodlebug Moved to a random location or did not move at all \n");
 		ok3 = false;
 	}
 	//delete d3;
