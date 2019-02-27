@@ -10,6 +10,7 @@
 
 #include "Organism.h"
 #include "Grid.h"
+#include "Ant.h"
 
 
 class Doodlebug: public Organism {
@@ -25,8 +26,8 @@ public:
 	Doodlebug();
 	Doodlebug(int r, int c, Grid * ptr);
 	bool move();
-	bool breedDoodle();
 	bool breed();
+	bool breedDoodle();
 	bool eat();
 	int getStarveCnt();
 	~Doodlebug();

@@ -6,7 +6,6 @@
  */
 
 #include "Doodlebug.h"
-#include "Ant.h"
 #include "Grid.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -65,6 +64,7 @@ bool Doodlebug::move()
 	}
 	return status;
 }
+
 bool Doodlebug::breed(){
 	return true;
 }

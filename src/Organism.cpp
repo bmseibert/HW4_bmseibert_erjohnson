@@ -38,6 +38,8 @@ void Organism::setAmAnt(bool b)
 {
 	amAnt = b;
 }
+
+
 /** GetRandCell takes an array of pointers to cells and returns
  * a pseudo-random cell pointer from that array
  * @param int row,
