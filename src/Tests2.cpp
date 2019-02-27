@@ -615,6 +615,7 @@ bool Tests2::doodleEatTest()
 {
 	bool result = true;
 	bool ok1 = true;
+	bool ok2 = true;
 	std::cout << "Running the eat ant test" << std::endl;
 	// Generate the Grid
 	Grid * myGrid = new Grid(9);
@@ -641,11 +642,32 @@ bool Tests2::doodleEatTest()
 		printf("One of the tests failed for eat /n");
 		ok1 = false;
 	}
+/*
+	Ant * a1 = new Ant(5,4, myGrid);
+	// Set the occupancy on the grid
+	myGrid->setCellOccupant(5, 4, ant);
+	myGrid->setCellOrganism(5, 4, a1);
 
+	Ant * a2 = new Ant(4,3, myGrid);
+	// Set the occupancy on the grid
+	myGrid->setCellOccupant(4, 3, ant);
+	myGrid->setCellOrganism(4, 3, a2);
+
+	d->eat();
+
+	if((myGrid->getCellOccupant(5, 4) == doodlebug || myGrid->getCellOccupant(4, 3) == doodlebug)
+	   && myGrid->getCellOccupant(4, 4) == empty){
+
+	}else{
+
+		printf("One of the tests failed for eat \n");
+		ok2 = false;
+	}
+*/
 	d->~Doodlebug();
 	//the ant was already destructed, that was the error
 	myGrid->~Grid();
-	result = ok1;
+	result = ok1 && ok2;
 	return result;
 }
 /* Doodle Die Test
