@@ -632,18 +632,18 @@ bool Tests2::doodleEatTest()
 	myGrid->setCellOrganism(4, 4, a);
 
 	// Make the Doodlebug eat
-	//d->eat(); // There are bugs with this function
+	d->eat(); // There are bugs with this function
 
 	// Test if it worked
 	if(myGrid->getCellOccupant(4, 4) == doodlebug && myGrid->getCellOccupant(3, 4) == empty){
 
 	}else{
-		printf("One of the tests failed for eat");
+		printf("One of the tests failed for eat /n");
 		ok1 = false;
 	}
 
 	d->~Doodlebug();
-	a->~Ant();
+	//the ant was already destructed, that was the error
 	myGrid->~Grid();
 	result = ok1;
 	return result;
@@ -696,8 +696,65 @@ bool Tests2::doodleDietest()
 bool Tests2::organismNeighborTest(){
 	bool result = true;
 	std::cout << "Running the Neighbor Test" << std::endl;
+	bool ok = true;
+	bool ok1 = true;
+	bool ok2 = true;
+	bool ok3 = true;
+	bool ok4 = true;
 
+	Grid* myGrid_n = new Grid(9);
 
+	//Ant on an empty field
+	Ant* a1 = new Ant(3,4,myGrid_n);
+	myGrid_n->setCellOccupant(3, 4, ant);
+	myGrid_n->setCellOrganism(3, 4, a1);
+
+	int neighbors1 = a1->numPossCells(3, 4, myGrid_n);
+	//Second ant on field
+	Ant* a2 = new Ant(4,4,myGrid_n);
+	myGrid_n->setCellOccupant(4, 4, ant);
+	myGrid_n->setCellOrganism(4, 4, a2);
+
+	int neighbors2 = a1->numPossCells(3, 4, myGrid_n);
+
+	//third ant on field
+	Ant* a3 = new Ant(3,3,myGrid_n);
+	myGrid_n->setCellOccupant(3, 3, ant);
+	myGrid_n->setCellOrganism(3, 3, a3);
+
+	int neighbors3 = a1->numPossCells(3, 4, myGrid_n);
+
+	//fourth ant on field
+	Ant* a4 = new Ant(2,4,myGrid_n);
+	myGrid_n->setCellOccupant(2, 4, ant);
+	myGrid_n->setCellOrganism(2, 4, a4);
+
+	int neighbors4 = a1->numPossCells(3, 4, myGrid_n);
+
+	//fifth ant on field
+	Ant* a5 = new Ant(3,5,myGrid_n);
+	myGrid_n->setCellOccupant(3, 5, ant);
+	myGrid_n->setCellOrganism(3, 5, a5);
+
+	int neighbors5 = a1->numPossCells(3, 4, myGrid_n);
+
+	if(neighbors1 != 4){
+		ok1 = false;
+	}
+	if(neighbors2 != 3){
+		ok2 = false;
+	}
+	if(neighbors3 != 2){
+		ok3 = false;
+	}
+	if(neighbors4 != 1){
+		ok4 = false;
+	}
+	if(neighbors5 != 0){
+		ok = false;
+	}
+
+	result = ok1 && ok2 && ok3 && ok4 && ok;
 	return result;
 }
 /* Rand Cell Test
