@@ -12,16 +12,21 @@
 
 
 
-/* Doodlebug::Doodlebug() Default Constructor
+/** Doodlebug::Doodlebug() Default Constructor
  * @param false is set for the organism input to tell the organism that it is not an ant
+ * @return none
  */
 Doodlebug::Doodlebug():Organism(false) {
 
 
 }
-/* Doodlebug::Doodlebug():Organism() Constructor
+/** Doodlebug::Doodlebug():Organism() Constructor
+ * @param int r, The row the doodlebug should be constructed on
+ * @param int c, The col the doodlebug should be constructed on
+ * @param Grid * ptr, The pointer to the grid the doodlebug is geing created on
  * @param false is set for the organism input to tell the organism that it is not an ant
  * Doodlebug will have a Starve Counter and a Breed Counter it will also have a row and col for its location
+ * @return none
  */
 Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 	row = r; //row
@@ -29,7 +34,8 @@ Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 	g = ptr;
 
 }
-/* Doodlebug::move() Function, used to make a doodlebug move
+/** Doodlebug::move() this function used finds are random neighboring unoccupied cell
+ * and moves the doodlebug form its current cell to the neighboring
  * @param
  *
  * @return bool returns true if the bug was able to move

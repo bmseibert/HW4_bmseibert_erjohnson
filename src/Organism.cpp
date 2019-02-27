@@ -10,28 +10,28 @@
 #include "Cell.h"
 #include <stdlib.h>
 
-/* Organism::Organism() Constructor used to generally create a doodlebug
+/** Organism::Organism() is default constructor for a Organism
  *
  */
 Organism::Organism() {
 
 
 }
-/* Organism::Organism() Secondary Constructor
+/** Organism::Organism() is the Secondary Constructor
  * @param bool b is whether the organism is an ant
  */
 Organism::Organism(bool b) {
 	amAnt = b;
 
 }
-/* Organism::isPrey() is a function used to tell if an organism is prey
+/** Organism::isPrey() is a function used to tell if an organism is prey
  * @return bool returns if the organism is an ant
  */
 bool Organism::isPrey()
 {
 	return amAnt;
 }
-/* Organism::setAmAnt() is a function used to set if an organism is an ant
+/** Organism::setAmAnt() is a function used to set if an organism is an ant
  * @return void
  */
 void Organism::setAmAnt(bool b)
@@ -40,8 +40,8 @@ void Organism::setAmAnt(bool b)
 }
 
 
-/** GetRandCell takes an array of pointers to cells and returns
- * a pseudo-random cell pointer from that array
+/** Organism::GetRandCell() takes a grid and a row column pair, and
+ *
  * @param int row,
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
