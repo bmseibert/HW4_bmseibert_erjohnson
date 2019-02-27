@@ -8,14 +8,16 @@
 #include "Cell.h"
 #include "Organism.h"
 
-/* Cell::Cell() is a constructor of a cell
+/** Cell::Cell() is a constructor of a cell
  *
  */
 Cell::Cell() {
 
 }
 
-/* Cell::setOccupant sets the occupant of cell
+/** Cell::setOccupant sets the occupationStatus of cell
+ * @param occupationStatus g, is an enumeration that can be
+ * empty, ant or doodlebug and represents what organism is in the cell
  * @return bool result of if this worked
  */
 bool Cell::setOccupant(occupationStatus g)
@@ -27,8 +29,10 @@ bool Cell::setOccupant(occupationStatus g)
 	// returns the result of if there is an occupant in a given cell
 	return result;
 }
-/* Cell::qetOccupant gets the occupant of cell
- * @return the occupation status of a cell
+/** Cell::qetOccupant gets the occupantStatus of the cell
+ * @param none
+ * @return the occupationStatus of a cell  which is an enumeration that can be
+ * empty, ant or doodlebug and represents what organism is in the cell
  */
 occupationStatus Cell::getOccupant()
 {
@@ -36,18 +40,22 @@ occupationStatus Cell::getOccupant()
 	return guest;
 }
 
-/* set Organism function
- * @return bool if the function worked
- *
+/** Cell::setOrganism sets the field p which is the
+ * pointer to the organism that is currently in the cell
+ * @param Organism* o, The pointer to the organism that you want
+ * to put in the current cell
+ * @return bool if the function was successful
  */
 bool Cell::setOrganism(Organism * o){
 	bool result = true;
 	p = o;
 	return result;
 }
-/* get Organism function
- * @return Organism Pointer
- *
+/** Cell::getOrganism gets the field p which is the
+ * pointer to the organism that is currently in the cell
+ * @param none
+ * @return Organism* p, The pointer to the organism in
+ * the current cell
  */
 Organism* Cell::getOrganism(){
 
@@ -55,8 +63,9 @@ Organism* Cell::getOrganism(){
 }
 
 
-/* Cell::~Cell is the destructor for a cell
- *
+/** Cell::~Cell is the destructor for a cell
+ * @oaram none
+ *@return none
  */
 Cell::~Cell() {
 	// TODO Auto-generated destructor stub
