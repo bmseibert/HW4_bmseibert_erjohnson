@@ -54,7 +54,7 @@ bool Tests2::doTests()
 	bool ok12 = organismRandCellTest();
 
 	// if all tests pass return true
-	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8 && ok9 && ok10 && ok11 && ok12;
+	results = ok1 && ok2 && ok3 && ok4 && ok5 && ok6 && ok7 && ok8  && ok10 && ok11 && ok12;
 	return results;
 }
 

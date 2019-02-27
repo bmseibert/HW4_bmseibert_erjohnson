@@ -124,12 +124,13 @@ bool Doodlebug::eat()
 		// eat (destruct) the ant in the cell
 		Ant* deadAnt = (Ant*) g->getCellOrganism(b[0], b[1]);
 		deadAnt->~Ant();
-		/* gets the doodlebug from the cuurent cell and moves it to the
+		/* gets the doodlebug from the current cell and moves it to the
 		 * cell that the ant it is eating is in
 		 */
 
 		g->setCellOrganism(row, col, nullptr);
 		g->setCellOccupant(row, col, empty);
+
 		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
 		g->setCellOccupant(b[0], b[1], doodlebug);
 
@@ -160,7 +161,7 @@ bool Doodlebug::step(){
 	// FIRST
 	// Move or Eat
 	if(Doodlebug::numPossCells(row, col, g) > 0) {
-		eat();
+		//eat();
 
 	}else if (Organism::numPossCells(row, col, g) > 0 ){
 		move();
@@ -260,7 +261,7 @@ int Doodlebug::numPossCells(int row, int col, Grid* g) {
  * @param int col, is the number of elements in the unoccupiedCells parameter
  * @return output, a random pointer to cell from the input array
  */
-struct Organism::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
+struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 	struct Coordinates output;
 	// Cell row and col
