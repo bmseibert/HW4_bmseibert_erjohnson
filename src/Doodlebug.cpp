@@ -37,31 +37,51 @@ Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 bool Doodlebug::move()
 {
 	bool status = true;
-	// Gets a random unoccupied cell
-	struct Coordinates cell1 = getRandCell(row, col, g);
-	int b1[] = {cell1.cellRow, cell1.cellCol};
-	if (b1[0] == row && b1[1] == col){
-		struct Coordinates cell = Organism::getRandCell(row,col,g);
-		int b[] = {cell.cellRow, cell.cellCol};
-
-
-		if(b[0] == -1 || b[1] == -1){
-			status = false;
-		}
-		else{
-
-			g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
-			g->setCellOccupant(b[0], b[1], doodlebug);
-
-			g->setCellOrganism(row, col, nullptr);
-			g->setCellOccupant(row, col, empty);
-
-			setRowAndCol(b[0],b[1]);
-		}
-
-	}else{
-		eat();
+	// Gets a random occupied cell by an ant
+	struct Coordinates cell = getRandCell(row,col,g);
+	int b[] = {cell.cellRow, cell.cellCol};
+	if(b[0] == -1 && b[1] == -1){
+		status = false;
 	}
+	else{
+		//SECOND
+		//modify the pointers to move
+		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
+		g->setCellOccupant(b[0], b[1], doodlebug);
+
+		g->setCellOrganism(row, col, nullptr);
+		g->setCellOccupant(row, col, empty);
+
+		//g->printGrid();
+		//printf("\n");
+		//sets the ant row and column
+		setRowAndCol(b[0],b[1]);
+	}
+
+	//	Doodlebug * db = (Doodlebug*) g->getCellOrganism(row, col);
+	//	int np = db->numPossCells(row, col, g);
+	//	if (np > 0){
+	//		eat();
+	//	}
+	//	else{
+	//		struct Coordinates cell = Organism::getRandCell(row,col,g);
+	//		int b[] = {cell.cellRow, cell.cellCol};
+	//
+	//		if(b[0] == -1 || b[1] == -1){
+	//
+	//		}
+	//		else{
+	//
+	//			g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
+	//			g->setCellOccupant(b[0], b[1], doodlebug);
+	//
+	//			g->setCellOrganism(row, col, nullptr);
+	//			g->setCellOccupant(row, col, empty);
+	//
+	//			setRowAndCol(b[0],b[1]);
+	//		}
+	//	}
+
 	return status;
 }
 
@@ -113,7 +133,7 @@ bool Doodlebug::eat()
 	bool status = true;
 
 	//Check surrounding cells for ants
-	struct Coordinates cell = getRandCell(row,col,g);
+	struct Coordinates cell = Doodlebug::getRandCell(row,col,g);
 	int b[] = {cell.cellRow, cell.cellCol};
 	// Neighboring cells did not contain an ant
 	if(b[0] == -1 || b[1] == -1){
@@ -151,18 +171,21 @@ bool Doodlebug::step(){
 
 	// FIRST
 	// Move
-	move();
+	if(Doodlebug::numPossCells(row, col, g) > 0){
+		move();
+	}
 
 	// SECOND
 	// starve check
 	if (starveCnt > 2){
 		//DELETE DOODLE BUG
-		//Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
-		//		g->setCellOrganism(db->getRow(), db->getCol(), nullptr);
+		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
+		db->~Doodlebug();
+
 	}
 	// THIRD
 	// breed Check
-	if (breedCnt > 7){
+	if (breedCnt > 7 && Organism::numPossCells(row, col, g) > 0){
 		breedDoodle();
 	}
 
@@ -258,7 +281,7 @@ struct Organism::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 	int nCols = n;
 	int cell = 0;
 	// Get a random number from 0-arr_size, or the maximum number of elements in that array
-	int numNeighbors = numPossCells(row, col, g);
+	int numNeighbors = Doodlebug::numPossCells(row, col, g);
 	if (numNeighbors == 0){
 		output.cellRow = row;
 		output.cellCol = col;
