@@ -1,0 +1,354 @@
+\section{Ant Class Reference}
+\label{classAnt}\index{Ant@{Ant}}
+
+
+{\ttfamily \#include $<$Ant.\+h$>$}
+
+Inheritance diagram for Ant\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classAnt}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Ant} ()
+\item 
+\textbf{ Ant} (int r, int c, \textbf{ Grid} $\ast$ptr)
+\item 
+bool \textbf{ move} ()
+\item 
+bool \textbf{ breed} ()
+\item 
+bool \textbf{ step} ()
+\item 
+bool \textbf{ increm} ()
+\item 
+bool \textbf{ set\+Breed\+Cnt} (int i)
+\item 
+bool \textbf{ set\+Row\+And\+Col} (int i, int j)
+\item 
+bool \textbf{ set\+Grid\+Ptr} (\textbf{ Grid} $\ast$a)
+\item 
+struct \textbf{ Organism\+::\+Coordinates} \textbf{ get\+Rand\+Cell} (int \textbf{ row}, int \textbf{ col}, \textbf{ Grid} $\ast$\textbf{ g})
+\item 
+\textbf{ $\sim$\+Ant} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ row} = 0
+\item 
+int \textbf{ col} = 0
+\item 
+int \textbf{ breed\+Cnt} = 0
+\item 
+\textbf{ Grid} $\ast$ \textbf{ g} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classAnt_ad6c1a8f70419877f7a3e2c9c557f913d}} 
+\index{Ant@{Ant}!Ant@{Ant}}
+\index{Ant@{Ant}!Ant@{Ant}}
+\subsubsection{Ant()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Ant\+::\+Ant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::\+Ant()}{p.}{classAnt_ad6c1a8f70419877f7a3e2c9c557f913d} is the basic constructor for the ant class 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Referenced by breed(), and Tests2\+::organism\+Rand\+Cell\+Test().
+
+\mbox{\label{classAnt_a234f9425fb253250f230cfcca9eb4e9f}} 
+\index{Ant@{Ant}!Ant@{Ant}}
+\index{Ant@{Ant}!Ant@{Ant}}
+\subsubsection{Ant()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Ant\+::\+Ant (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c,  }\item[{\textbf{ Grid} $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::\+Ant()}{p.}{classAnt_ad6c1a8f70419877f7a3e2c9c557f913d} is another constructor for the ant class, placing the ant object at the location on the grid specified by the row and column parameters 
+\begin{DoxyParams}{Parameters}
+{\em int} & r, the row where the ant will be constructed \\
+\hline
+{\em int} & c, the column where the ant will be constructed \\
+\hline
+{\em int} & life, the amount of ticks the ant object has been alive on the board \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+References col, g, and row.
+
+\mbox{\label{classAnt_a33ca6bd592236726a18a2159908e4116}} 
+\index{Ant@{Ant}!````~Ant@{$\sim$\+Ant}}
+\index{````~Ant@{$\sim$\+Ant}!Ant@{Ant}}
+\subsubsection{$\sim$\+Ant()}
+{\footnotesize\ttfamily Ant\+::$\sim$\+Ant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::$\sim$\+Ant}{p.}{classAnt_a33ca6bd592236726a18a2159908e4116} is a destructor for the ant class 
+\begin{DoxyParams}{Parameters}
+{\em none} & indicating that a ant object has died \\
+\hline
+\end{DoxyParams}
+
+
+References col, empty, g, row, Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and set\+Grid\+Ptr().
+
+
+
+Referenced by Tests2\+::ants\+Breed\+Test(), Tests2\+::ants\+Die\+Test(), Tests2\+::ants\+Move\+Test(), Doodlebug\+::eat(), Tests2\+::make\+Ants\+Test(), and Tests2\+::\+Organism\+Test().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classAnt_a13f4550006f7d3626ba4c0af215e06b6}} 
+\index{Ant@{Ant}!breed@{breed}}
+\index{breed@{breed}!Ant@{Ant}}
+\subsubsection{breed()}
+{\footnotesize\ttfamily bool Ant\+::breed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Ant\+::breed()}{p.}{classAnt_a13f4550006f7d3626ba4c0af215e06b6} should check the cells around the ant object and if another ant in is a neighboring cell, then they will produce a new ant object in a free space 
+\begin{DoxyParams}{Parameters}
+{\em Grid$\ast$} & g grid we are on \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status true if ant breed 
+\end{DoxyReturn}
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_a0336595710b1b4e7996852596d8be619}.
+
+
+
+References ant, Ant(), Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, g, Grid\+::get\+Num\+Ant(), get\+Rand\+Cell(), increm(), row, set\+Breed\+Cnt(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and Grid\+::set\+Num\+Ant().
+
+
+
+Referenced by Tests2\+::ants\+Breed\+Test(), and step().
+
+\mbox{\label{classAnt_a3889cd201fe6a10eabd47b90a28045ce}} 
+\index{Ant@{Ant}!get\+Rand\+Cell@{get\+Rand\+Cell}}
+\index{get\+Rand\+Cell@{get\+Rand\+Cell}!Ant@{Ant}}
+\subsubsection{get\+Rand\+Cell()}
+{\footnotesize\ttfamily struct \textbf{ Ant\+::\+Coordinates} Ant\+::get\+Rand\+Cell (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{\textbf{ Grid} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Ant\+::\+Get\+Rand\+Cell takes an array of pointers to cells and returns a pseudo-\/random cell that is a neighbor of the input cell (row and cel).. 
+\begin{DoxyParams}{Parameters}
+{\em int} & row, the row that this cell is on \\
+\hline
+{\em int} & col, the column that this cell is on \\
+\hline
+{\em \doxyref{Grid}{p.}{classGrid}} & g is the grid of cells \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output, a struct Coordinates which represents the row and column of the randomly chosen cell 
+\end{DoxyReturn}
+
+
+Reimplemented from \textbf{ Organism} \doxyref{}{p.}{classOrganism_a52ff86e2ef1b525ffc5a473cfee8080e}.
+
+
+
+References Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, empty, g, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Num\+Cells(), Organism\+::num\+Poss\+Cells(), and row.
+
+
+
+Referenced by breed(), move(), and Tests2\+::organism\+Rand\+Cell\+Test().
+
+\mbox{\label{classAnt_a8b4e65af7752399808703ca6cc87a601}} 
+\index{Ant@{Ant}!increm@{increm}}
+\index{increm@{increm}!Ant@{Ant}}
+\subsubsection{increm()}
+{\footnotesize\ttfamily bool Ant\+::increm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::increm()}{p.}{classAnt_a8b4e65af7752399808703ca6cc87a601}-\/ used to increment the breed counters inside of the ant. 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool result true if the function ran properly 
+\end{DoxyReturn}
+
+
+References breed\+Cnt.
+
+
+
+Referenced by breed(), and step().
+
+\mbox{\label{classAnt_a4aa0576c34e25ca4df23f90a3caef0f5}} 
+\index{Ant@{Ant}!move@{move}}
+\index{move@{move}!Ant@{Ant}}
+\subsubsection{move()}
+{\footnotesize\ttfamily bool Ant\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Ant\+::move()}{p.}{classAnt_a4aa0576c34e25ca4df23f90a3caef0f5} should move an ant object to a neighboring cell 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status, true if the ant object moved 
+\end{DoxyReturn}
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_a9b6a5dadbe12711fa252bbfbfb988545}.
+
+
+
+References ant, Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, empty, g, Grid\+::get\+Cell\+Organism(), get\+Rand\+Cell(), row, Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and set\+Row\+And\+Col().
+
+
+
+Referenced by Tests2\+::ants\+Move\+Test(), and step().
+
+\mbox{\label{classAnt_a9e07799223c8a57c436b2982299b9c22}} 
+\index{Ant@{Ant}!set\+Breed\+Cnt@{set\+Breed\+Cnt}}
+\index{set\+Breed\+Cnt@{set\+Breed\+Cnt}!Ant@{Ant}}
+\subsubsection{set\+Breed\+Cnt()}
+{\footnotesize\ttfamily bool Ant\+::set\+Breed\+Cnt (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::set\+Breed\+Cnt}{p.}{classAnt_a9e07799223c8a57c436b2982299b9c22} Sets the Breed Count inside of the ant 
+\begin{DoxyParams}{Parameters}
+{\em int} & i the new count to i \\
+\hline
+{\em bool} & result true if the function worked \\
+\hline
+\end{DoxyParams}
+
+
+References breed\+Cnt.
+
+
+
+Referenced by breed().
+
+\mbox{\label{classAnt_a60bcbfb2c76e60dd37434acf797a254e}} 
+\index{Ant@{Ant}!set\+Grid\+Ptr@{set\+Grid\+Ptr}}
+\index{set\+Grid\+Ptr@{set\+Grid\+Ptr}!Ant@{Ant}}
+\subsubsection{set\+Grid\+Ptr()}
+{\footnotesize\ttfamily bool Ant\+::set\+Grid\+Ptr (\begin{DoxyParamCaption}\item[{\textbf{ Grid} $\ast$}]{a }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::set\+Grid\+Ptr}{p.}{classAnt_a60bcbfb2c76e60dd37434acf797a254e} Sets the grid pointer for the ant 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool true if the function worked 
+\end{DoxyReturn}
+
+
+References g.
+
+
+
+Referenced by $\sim$\+Ant().
+
+\mbox{\label{classAnt_adb3266abdb4fbf6c56edd8c7fca768dc}} 
+\index{Ant@{Ant}!set\+Row\+And\+Col@{set\+Row\+And\+Col}}
+\index{set\+Row\+And\+Col@{set\+Row\+And\+Col}!Ant@{Ant}}
+\subsubsection{set\+Row\+And\+Col()}
+{\footnotesize\ttfamily bool Ant\+::set\+Row\+And\+Col (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+\doxyref{Ant\+::set\+Row\+And\+Col}{p.}{classAnt_adb3266abdb4fbf6c56edd8c7fca768dc} set the row and column of the \doxyref{Ant}{p.}{classAnt} 
+\begin{DoxyParams}{Parameters}
+{\em int} & i the new row \\
+\hline
+{\em int} & j the new column \\
+\hline
+{\em bool} & result true if function worked \\
+\hline
+\end{DoxyParams}
+
+
+References col, and row.
+
+
+
+Referenced by move().
+
+\mbox{\label{classAnt_ae7bb9517e9090218401d83fa2858561a}} 
+\index{Ant@{Ant}!step@{step}}
+\index{step@{step}!Ant@{Ant}}
+\subsubsection{step()}
+{\footnotesize\ttfamily bool Ant\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Ant\+::\+Step() performs a move and breed if the conditions for moving and breeding are met. 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool if the step worked 
+\end{DoxyReturn}
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_ae889d5671066bccdfbc15c7f16eab20e}.
+
+
+
+References breed(), breed\+Cnt, col, g, Grid\+::get\+Num\+Ant(), increm(), move(), Organism\+::num\+Poss\+Cells(), row, and Grid\+::set\+Num\+Ant().
+
+
+
+\subsection{Field Documentation}
+\mbox{\label{classAnt_ada40f54e63324c09a57961fb726149da}} 
+\index{Ant@{Ant}!breed\+Cnt@{breed\+Cnt}}
+\index{breed\+Cnt@{breed\+Cnt}!Ant@{Ant}}
+\subsubsection{breed\+Cnt}
+{\footnotesize\ttfamily int Ant\+::breed\+Cnt = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by increm(), set\+Breed\+Cnt(), and step().
+
+\mbox{\label{classAnt_afe21bedec87ea26e3db74857960a78c6}} 
+\index{Ant@{Ant}!col@{col}}
+\index{col@{col}!Ant@{Ant}}
+\subsubsection{col}
+{\footnotesize\ttfamily int Ant\+::col = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by Ant(), breed(), get\+Rand\+Cell(), move(), set\+Row\+And\+Col(), step(), and $\sim$\+Ant().
+
+\mbox{\label{classAnt_a60e006b25b0905b95ed3a636febdba2e}} 
+\index{Ant@{Ant}!g@{g}}
+\index{g@{g}!Ant@{Ant}}
+\subsubsection{g}
+{\footnotesize\ttfamily \textbf{ Grid}$\ast$ Ant\+::g = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by Ant(), breed(), get\+Rand\+Cell(), move(), set\+Grid\+Ptr(), step(), and $\sim$\+Ant().
+
+\mbox{\label{classAnt_abf712c4a02e999938c7d79557a8fc24b}} 
+\index{Ant@{Ant}!row@{row}}
+\index{row@{row}!Ant@{Ant}}
+\subsubsection{row}
+{\footnotesize\ttfamily int Ant\+::row = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by Ant(), breed(), get\+Rand\+Cell(), move(), set\+Row\+And\+Col(), step(), and $\sim$\+Ant().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Ant.\+h}\item 
+\textbf{ Ant.\+cpp}\end{DoxyCompactItemize}

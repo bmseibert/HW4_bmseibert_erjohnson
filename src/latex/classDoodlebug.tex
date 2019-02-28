@@ -1,0 +1,479 @@
+\section{Doodlebug Class Reference}
+\label{classDoodlebug}\index{Doodlebug@{Doodlebug}}
+
+
+{\ttfamily \#include $<$Doodlebug.\+h$>$}
+
+Inheritance diagram for Doodlebug\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classDoodlebug}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Doodlebug} ()
+\item 
+\textbf{ Doodlebug} (int r, int c, \textbf{ Grid} $\ast$ptr)
+\item 
+bool \textbf{ move} ()
+\item 
+bool \textbf{ breed} ()
+\item 
+bool \textbf{ breed\+Doodle} ()
+\item 
+bool \textbf{ eat} ()
+\item 
+int \textbf{ get\+Starve\+Cnt} ()
+\item 
+bool \textbf{ set\+Starve\+Cnt} (int s)
+\item 
+\textbf{ $\sim$\+Doodlebug} ()
+\item 
+bool \textbf{ step} ()
+\item 
+bool \textbf{ increm} ()
+\item 
+bool \textbf{ set\+Breed\+Cnt} (int i)
+\item 
+int \textbf{ num\+Poss\+Cells} (int \textbf{ row}, int \textbf{ col}, \textbf{ Grid} $\ast$\textbf{ g})
+\item 
+bool \textbf{ set\+Grid\+Ptr} (\textbf{ Grid} $\ast$a)
+\item 
+bool \textbf{ set\+Row\+And\+Col} (int i, int j)
+\item 
+struct \textbf{ Organism\+::\+Coordinates} \textbf{ get\+Rand\+Cell} (int \textbf{ row}, int \textbf{ col}, \textbf{ Grid} $\ast$\textbf{ g})
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \textbf{ row} = 0
+\item 
+int \textbf{ col} = 0
+\item 
+int \textbf{ starve\+Cnt} = 0
+\item 
+int \textbf{ breed\+Cnt} = 0
+\item 
+\textbf{ Grid} $\ast$ \textbf{ g} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classDoodlebug_afb2796ea39a6ffa13d4f54ac68dd52fc}} 
+\index{Doodlebug@{Doodlebug}!Doodlebug@{Doodlebug}}
+\index{Doodlebug@{Doodlebug}!Doodlebug@{Doodlebug}}
+\subsubsection{Doodlebug()\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Doodlebug\+::\+Doodlebug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::\+Doodlebug()}{p.}{classDoodlebug_afb2796ea39a6ffa13d4f54ac68dd52fc} Default Constructor 
+\begin{DoxyParams}{Parameters}
+{\em false} & is set for the organism input to tell the organism that it is not an ant \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Referenced by breed\+Doodle().
+
+\mbox{\label{classDoodlebug_a30b896467b713684c59ee97767c97f50}} 
+\index{Doodlebug@{Doodlebug}!Doodlebug@{Doodlebug}}
+\index{Doodlebug@{Doodlebug}!Doodlebug@{Doodlebug}}
+\subsubsection{Doodlebug()\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Doodlebug\+::\+Doodlebug (\begin{DoxyParamCaption}\item[{int}]{r,  }\item[{int}]{c,  }\item[{\textbf{ Grid} $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::\+Doodlebug()}{p.}{classDoodlebug_afb2796ea39a6ffa13d4f54ac68dd52fc}\+:\doxyref{Organism()}{p.}{classOrganism_aeb16ee24b64839584b4862384d0b53fe} Constructor 
+\begin{DoxyParams}{Parameters}
+{\em int} & r, The row the doodlebug should be constructed on \\
+\hline
+{\em int} & c, The col the doodlebug should be constructed on \\
+\hline
+{\em \doxyref{Grid}{p.}{classGrid}} & $\ast$ ptr, The pointer to the grid the doodlebug is geing created on \\
+\hline
+{\em false} & is set for the organism input to tell the organism that it is not an ant \doxyref{Doodlebug}{p.}{classDoodlebug} will have a Starve Counter and a Breed Counter it will also have a row and col for its location \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+References col, g, and row.
+
+\mbox{\label{classDoodlebug_ac318cc9acbd9a3af52348a236070d891}} 
+\index{Doodlebug@{Doodlebug}!````~Doodlebug@{$\sim$\+Doodlebug}}
+\index{````~Doodlebug@{$\sim$\+Doodlebug}!Doodlebug@{Doodlebug}}
+\subsubsection{$\sim$\+Doodlebug()}
+{\footnotesize\ttfamily Doodlebug\+::$\sim$\+Doodlebug (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::$\sim$\+Doodlebug()}{p.}{classDoodlebug_ac318cc9acbd9a3af52348a236070d891} Destructor, used to remove a pointer to a doodlebug 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+References col, empty, g, row, Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and set\+Grid\+Ptr().
+
+
+
+Referenced by Tests2\+::ants\+Move\+Test(), Tests2\+::doodle\+Breed\+Test(), Tests2\+::doodle\+Dietest(), Tests2\+::doodle\+Eat\+Test(), Tests2\+::doodle\+Move\+Test(), Tests2\+::make\+Doodles\+Test(), and step().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classDoodlebug_af88c6c6331094b012597ac2c688018d7}} 
+\index{Doodlebug@{Doodlebug}!breed@{breed}}
+\index{breed@{breed}!Doodlebug@{Doodlebug}}
+\subsubsection{breed()}
+{\footnotesize\ttfamily bool Doodlebug\+::breed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_a0336595710b1b4e7996852596d8be619}.
+
+\mbox{\label{classDoodlebug_a43bd72741f99da0044319d379475a2fb}} 
+\index{Doodlebug@{Doodlebug}!breed\+Doodle@{breed\+Doodle}}
+\index{breed\+Doodle@{breed\+Doodle}!Doodlebug@{Doodlebug}}
+\subsubsection{breed\+Doodle()}
+{\footnotesize\ttfamily bool Doodlebug\+::breed\+Doodle (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::breed()}{p.}{classDoodlebug_af88c6c6331094b012597ac2c688018d7}, finds a random unoccupied neighboring cell and creates a new doodlebug inside it. Breeding does N\+OT take precidence over death 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool returns true if the bug was able to breed 
+\end{DoxyReturn}
+
+
+References Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, doodlebug, Doodlebug(), g, Grid\+::get\+Num\+Doodle(), Organism\+::get\+Rand\+Cell(), row, set\+Breed\+Cnt(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and Grid\+::set\+Num\+Doodle().
+
+
+
+Referenced by Tests2\+::doodle\+Breed\+Test(), and step().
+
+\mbox{\label{classDoodlebug_a6c35a8891356525e644330339690ccc6}} 
+\index{Doodlebug@{Doodlebug}!eat@{eat}}
+\index{eat@{eat}!Doodlebug@{Doodlebug}}
+\subsubsection{eat()}
+{\footnotesize\ttfamily bool Doodlebug\+::eat (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::eat()}{p.}{classDoodlebug_a6c35a8891356525e644330339690ccc6} finds a neighboring cell that contains an ant and resets the doodlebug\textquotesingle{}s starve counter, also destructs the ant Eating takes precedence over the majority of other actions 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool returns true if the bug was able to eat 
+\end{DoxyReturn}
+
+
+References Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, doodlebug, empty, g, Grid\+::get\+Cell\+Organism(), Grid\+::get\+Num\+Ant(), get\+Rand\+Cell(), row, Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Grid\+::set\+Num\+Ant(), set\+Row\+And\+Col(), set\+Starve\+Cnt(), and Ant\+::$\sim$\+Ant().
+
+
+
+Referenced by Tests2\+::doodle\+Eat\+Test(), and step().
+
+\mbox{\label{classDoodlebug_a4e8a8ced92f0624cb6ca8e1103f5c435}} 
+\index{Doodlebug@{Doodlebug}!get\+Rand\+Cell@{get\+Rand\+Cell}}
+\index{get\+Rand\+Cell@{get\+Rand\+Cell}!Doodlebug@{Doodlebug}}
+\subsubsection{get\+Rand\+Cell()}
+{\footnotesize\ttfamily struct \textbf{ Doodlebug\+::\+Coordinates} Doodlebug\+::get\+Rand\+Cell (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{\textbf{ Grid} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Get\+Rand\+Cell takes an array of pointers to cells and returns a pseudo-\/random cell that neighbors the input row column pair. 
+\begin{DoxyParams}{Parameters}
+{\em int} & row, the row that this cell is on \\
+\hline
+{\em int} & col, the column that this cell is on \\
+\hline
+{\em \doxyref{Grid}{p.}{classGrid}} & g is the grid of cells \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+output, a struct Coordinates which represents the row and column of the randomly chosen cell 
+\end{DoxyReturn}
+
+
+Reimplemented from \textbf{ Organism} \doxyref{}{p.}{classOrganism_a52ff86e2ef1b525ffc5a473cfee8080e}.
+
+
+
+References ant, Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, g, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Num\+Cells(), num\+Poss\+Cells(), and row.
+
+
+
+Referenced by eat().
+
+\mbox{\label{classDoodlebug_aa9199700a6c3cbb46b527aa8c2428bf5}} 
+\index{Doodlebug@{Doodlebug}!get\+Starve\+Cnt@{get\+Starve\+Cnt}}
+\index{get\+Starve\+Cnt@{get\+Starve\+Cnt}!Doodlebug@{Doodlebug}}
+\subsubsection{get\+Starve\+Cnt()}
+{\footnotesize\ttfamily int Doodlebug\+::get\+Starve\+Cnt (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::get\+Starve\+Cnt()}{p.}{classDoodlebug_aa9199700a6c3cbb46b527aa8c2428bf5} gets the starve count 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the starve count 
+\end{DoxyReturn}
+
+
+References starve\+Cnt.
+
+\mbox{\label{classDoodlebug_a056eb9f7d8c7f298341a6d2c98a5c46b}} 
+\index{Doodlebug@{Doodlebug}!increm@{increm}}
+\index{increm@{increm}!Doodlebug@{Doodlebug}}
+\subsubsection{increm()}
+{\footnotesize\ttfamily bool Doodlebug\+::increm (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::increm}{p.}{classDoodlebug_a056eb9f7d8c7f298341a6d2c98a5c46b} used to increment the starve and breed counters 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool result on if the function ran properly 
+\end{DoxyReturn}
+
+
+References breed\+Cnt, and starve\+Cnt.
+
+
+
+Referenced by step().
+
+\mbox{\label{classDoodlebug_a4afc8c16ffb84af86ae512109bda9823}} 
+\index{Doodlebug@{Doodlebug}!move@{move}}
+\index{move@{move}!Doodlebug@{Doodlebug}}
+\subsubsection{move()}
+{\footnotesize\ttfamily bool Doodlebug\+::move (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Doodlebug\+::move()}{p.}{classDoodlebug_a4afc8c16ffb84af86ae512109bda9823} this function used finds are random neighboring unoccupied cell and moves the doodlebug form its current cell to the neighboring 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool returns true if the bug was able to move 
+\end{DoxyReturn}
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_a9b6a5dadbe12711fa252bbfbfb988545}.
+
+
+
+References Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, col, doodlebug, empty, g, Grid\+::get\+Cell\+Organism(), Organism\+::get\+Rand\+Cell(), row, Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), and set\+Row\+And\+Col().
+
+
+
+Referenced by Tests2\+::doodle\+Move\+Test(), and step().
+
+\mbox{\label{classDoodlebug_a20b30de62e78f4c27f36eaa28703b000}} 
+\index{Doodlebug@{Doodlebug}!num\+Poss\+Cells@{num\+Poss\+Cells}}
+\index{num\+Poss\+Cells@{num\+Poss\+Cells}!Doodlebug@{Doodlebug}}
+\subsubsection{num\+Poss\+Cells()}
+{\footnotesize\ttfamily int Doodlebug\+::num\+Poss\+Cells (\begin{DoxyParamCaption}\item[{int}]{row,  }\item[{int}]{col,  }\item[{\textbf{ Grid} $\ast$}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Doodlebug\+::\+Get\+Neighbors() checks how many cells next to a doodlebug contain ants and then increments a value depending on how many neighbors are ants 
+\begin{DoxyParams}{Parameters}
+{\em int} & row, the row that this cell is on \\
+\hline
+{\em int} & col, the column that this cell is on \\
+\hline
+{\em \doxyref{Grid}{p.}{classGrid}} & g is the grid of cells \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+num\+Neighbors is the number of neighbors with ants 
+\end{DoxyReturn}
+
+
+Reimplemented from \textbf{ Organism} \doxyref{}{p.}{classOrganism_a00f925605ee32d2e872480e878a8848a}.
+
+
+
+References ant, Grid\+::get\+Cell\+Occupant(), and Grid\+::get\+Num\+Cells().
+
+
+
+Referenced by get\+Rand\+Cell(), and step().
+
+\mbox{\label{classDoodlebug_ace60d2561a17666824675ac1745a2e3b}} 
+\index{Doodlebug@{Doodlebug}!set\+Breed\+Cnt@{set\+Breed\+Cnt}}
+\index{set\+Breed\+Cnt@{set\+Breed\+Cnt}!Doodlebug@{Doodlebug}}
+\subsubsection{set\+Breed\+Cnt()}
+{\footnotesize\ttfamily bool Doodlebug\+::set\+Breed\+Cnt (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::set\+Breed\+Cnt}{p.}{classDoodlebug_ace60d2561a17666824675ac1745a2e3b} Sets Breed Count 
+\begin{DoxyParams}{Parameters}
+{\em int} & i sets the count to i \\
+\hline
+{\em bool} & result true if the function worked \\
+\hline
+\end{DoxyParams}
+
+
+References breed\+Cnt.
+
+
+
+Referenced by breed\+Doodle().
+
+\mbox{\label{classDoodlebug_abbb60ae7719009b5be7504a4de89a578}} 
+\index{Doodlebug@{Doodlebug}!set\+Grid\+Ptr@{set\+Grid\+Ptr}}
+\index{set\+Grid\+Ptr@{set\+Grid\+Ptr}!Doodlebug@{Doodlebug}}
+\subsubsection{set\+Grid\+Ptr()}
+{\footnotesize\ttfamily bool Doodlebug\+::set\+Grid\+Ptr (\begin{DoxyParamCaption}\item[{\textbf{ Grid} $\ast$}]{a }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::set\+Grid\+Ptr}{p.}{classDoodlebug_abbb60ae7719009b5be7504a4de89a578} Sets the grid pointer 
+\begin{DoxyParams}{Parameters}
+{\em Grid$\ast$} & a, the new grid \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool of if the function worked 
+\end{DoxyReturn}
+
+
+References g.
+
+
+
+Referenced by $\sim$\+Doodlebug().
+
+\mbox{\label{classDoodlebug_a190438d65c27a66202d53105ae6d638d}} 
+\index{Doodlebug@{Doodlebug}!set\+Row\+And\+Col@{set\+Row\+And\+Col}}
+\index{set\+Row\+And\+Col@{set\+Row\+And\+Col}!Doodlebug@{Doodlebug}}
+\subsubsection{set\+Row\+And\+Col()}
+{\footnotesize\ttfamily bool Doodlebug\+::set\+Row\+And\+Col (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{int}]{j }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::set\+Row\+And\+Col}{p.}{classDoodlebug_a190438d65c27a66202d53105ae6d638d} sets the row and column function 
+\begin{DoxyParams}{Parameters}
+{\em int} & i sets the row \\
+\hline
+{\em int} & j sets the col \\
+\hline
+{\em bool} & result true if the function worked \\
+\hline
+\end{DoxyParams}
+
+
+References col, and row.
+
+
+
+Referenced by eat(), and move().
+
+\mbox{\label{classDoodlebug_ac03acf7d24a9edae6c54bebcd0897591}} 
+\index{Doodlebug@{Doodlebug}!set\+Starve\+Cnt@{set\+Starve\+Cnt}}
+\index{set\+Starve\+Cnt@{set\+Starve\+Cnt}!Doodlebug@{Doodlebug}}
+\subsubsection{set\+Starve\+Cnt()}
+{\footnotesize\ttfamily bool Doodlebug\+::set\+Starve\+Cnt (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+\doxyref{Doodlebug\+::set\+Starve\+Cnt()}{p.}{classDoodlebug_ac03acf7d24a9edae6c54bebcd0897591} sets the starve count 
+\begin{DoxyParams}{Parameters}
+{\em int} & s, the desired starve count \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the starve count 
+\end{DoxyReturn}
+
+
+References starve\+Cnt.
+
+
+
+Referenced by eat().
+
+\mbox{\label{classDoodlebug_ac6d2bbf5abc5262896a31f5b93c3a887}} 
+\index{Doodlebug@{Doodlebug}!step@{step}}
+\index{step@{step}!Doodlebug@{Doodlebug}}
+\subsubsection{step()}
+{\footnotesize\ttfamily bool Doodlebug\+::step (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Doodlebug\+::step()}{p.}{classDoodlebug_ac6d2bbf5abc5262896a31f5b93c3a887} tries to get the doodlebug to move or eat, then checks if the doodlebug has starved to death, then attempts to breed 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool if the step worked 
+\end{DoxyReturn}
+
+
+Implements \textbf{ Organism} \doxyref{}{p.}{classOrganism_ae889d5671066bccdfbc15c7f16eab20e}.
+
+
+
+References breed\+Cnt, breed\+Doodle(), col, eat(), g, Grid\+::get\+Cell\+Organism(), Grid\+::get\+Num\+Doodle(), increm(), move(), Organism\+::num\+Poss\+Cells(), num\+Poss\+Cells(), row, Grid\+::set\+Num\+Doodle(), starve\+Cnt, and $\sim$\+Doodlebug().
+
+
+
+\subsection{Field Documentation}
+\mbox{\label{classDoodlebug_a6b6562eaadd83c09714319127a5e38ba}} 
+\index{Doodlebug@{Doodlebug}!breed\+Cnt@{breed\+Cnt}}
+\index{breed\+Cnt@{breed\+Cnt}!Doodlebug@{Doodlebug}}
+\subsubsection{breed\+Cnt}
+{\footnotesize\ttfamily int Doodlebug\+::breed\+Cnt = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by increm(), set\+Breed\+Cnt(), and step().
+
+\mbox{\label{classDoodlebug_a6f748f20fbbac04546be634f4b14ff35}} 
+\index{Doodlebug@{Doodlebug}!col@{col}}
+\index{col@{col}!Doodlebug@{Doodlebug}}
+\subsubsection{col}
+{\footnotesize\ttfamily int Doodlebug\+::col = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by breed\+Doodle(), Doodlebug(), eat(), get\+Rand\+Cell(), move(), set\+Row\+And\+Col(), step(), and $\sim$\+Doodlebug().
+
+\mbox{\label{classDoodlebug_aae0f439d788e387329f7b8affe35023a}} 
+\index{Doodlebug@{Doodlebug}!g@{g}}
+\index{g@{g}!Doodlebug@{Doodlebug}}
+\subsubsection{g}
+{\footnotesize\ttfamily \textbf{ Grid}$\ast$ Doodlebug\+::g = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by breed\+Doodle(), Doodlebug(), eat(), get\+Rand\+Cell(), move(), set\+Grid\+Ptr(), step(), and $\sim$\+Doodlebug().
+
+\mbox{\label{classDoodlebug_a4ab3657542999f3f83988ff1e113d477}} 
+\index{Doodlebug@{Doodlebug}!row@{row}}
+\index{row@{row}!Doodlebug@{Doodlebug}}
+\subsubsection{row}
+{\footnotesize\ttfamily int Doodlebug\+::row = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by breed\+Doodle(), Doodlebug(), eat(), get\+Rand\+Cell(), move(), set\+Row\+And\+Col(), step(), and $\sim$\+Doodlebug().
+
+\mbox{\label{classDoodlebug_aa269597d0129174f3d1c91f45a568a36}} 
+\index{Doodlebug@{Doodlebug}!starve\+Cnt@{starve\+Cnt}}
+\index{starve\+Cnt@{starve\+Cnt}!Doodlebug@{Doodlebug}}
+\subsubsection{starve\+Cnt}
+{\footnotesize\ttfamily int Doodlebug\+::starve\+Cnt = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by get\+Starve\+Cnt(), increm(), set\+Starve\+Cnt(), and step().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Doodlebug.\+h}\item 
+\textbf{ Doodlebug.\+cpp}\end{DoxyCompactItemize}

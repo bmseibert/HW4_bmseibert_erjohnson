@@ -1,0 +1,138 @@
+\section{Production Class Reference}
+\label{classProduction}\index{Production@{Production}}
+
+
+{\ttfamily \#include $<$Production.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Production} (int argc, char $\ast$argv[$\,$])
+\item 
+bool \textbf{ run\+Production} ()
+\item 
+virtual \textbf{ $\sim$\+Production} ()
+\item 
+\textbf{ Grid} $\ast$ \textbf{ get\+Grid} ()
+\end{DoxyCompactItemize}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Grid} $\ast$ \textbf{ g} = nullptr
+\item 
+int \textbf{ time\+Steps\+Left} = 100
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classProduction_a24439558b7672feaea80dc0ab1b53ff2}} 
+\index{Production@{Production}!Production@{Production}}
+\index{Production@{Production}!Production@{Production}}
+\subsubsection{Production()}
+{\footnotesize\ttfamily Production\+::\+Production (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv[$\,$] }\end{DoxyParamCaption})}
+
+\doxyref{Production}{p.}{classProduction} Constructor 
+\begin{DoxyParams}{Parameters}
+{\em int} & argc is the number of parameters for the production \\
+\hline
+{\em char$\ast$} & argv[] is all of the arguments that we get from the console \\
+\hline
+\end{DoxyParams}
+
+
+References ant, doodlebug, empty, g, Grid\+::print\+Grid(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Grid\+::set\+Num\+Ant(), Grid\+::set\+Num\+Doodle(), Grid\+::set\+Pause(), and time\+Steps\+Left.
+
+
+
+Referenced by main().
+
+\mbox{\label{classProduction_ab5b3060f9e0a2bc189844e426d693dab}} 
+\index{Production@{Production}!````~Production@{$\sim$\+Production}}
+\index{````~Production@{$\sim$\+Production}!Production@{Production}}
+\subsubsection{$\sim$\+Production()}
+{\footnotesize\ttfamily Production\+::$\sim$\+Production (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Production\+::$\sim$\+Production}{p.}{classProduction_ab5b3060f9e0a2bc189844e426d693dab} Destrcutor 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Referenced by main().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classProduction_a9ece57591258ca076cc9d53549dc21db}} 
+\index{Production@{Production}!get\+Grid@{get\+Grid}}
+\index{get\+Grid@{get\+Grid}!Production@{Production}}
+\subsubsection{get\+Grid()}
+{\footnotesize\ttfamily \textbf{ Grid} $\ast$ Production\+::get\+Grid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Production\+::get\+Grid()}{p.}{classProduction_a9ece57591258ca076cc9d53549dc21db} Gets the \doxyref{Grid}{p.}{classGrid} from the \textbackslash{} \doxyref{Production}{p.}{classProduction} Object 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the grid object 
+\end{DoxyReturn}
+
+
+References g.
+
+\mbox{\label{classProduction_a1d66853eafae2580089eff44f12f07ba}} 
+\index{Production@{Production}!run\+Production@{run\+Production}}
+\index{run\+Production@{run\+Production}!Production@{Production}}
+\subsubsection{run\+Production()}
+{\footnotesize\ttfamily bool Production\+::run\+Production (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Production\+::run\+Production()}{p.}{classProduction_a1d66853eafae2580089eff44f12f07ba} runs the simulation 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool whether the function worked 
+\end{DoxyReturn}
+
+
+References ant, doodlebug, empty, g, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Cell\+Organism(), Grid\+::get\+Num\+Ant(), Grid\+::get\+Num\+Cells(), Grid\+::get\+Num\+Doodle(), Grid\+::get\+Pause(), Grid\+::print\+Grid(), Organism\+::step(), and time\+Steps\+Left.
+
+
+
+Referenced by main().
+
+
+
+\subsection{Field Documentation}
+\mbox{\label{classProduction_ac9df298c3d4156c81eef83147ca03e83}} 
+\index{Production@{Production}!g@{g}}
+\index{g@{g}!Production@{Production}}
+\subsubsection{g}
+{\footnotesize\ttfamily \textbf{ Grid}$\ast$ Production\+::g = nullptr}
+
+
+
+Referenced by get\+Grid(), Production(), run\+Production(), and Cell\+::set\+Occupant().
+
+\mbox{\label{classProduction_a294328eae7f8c8a99ce441567f49bf2e}} 
+\index{Production@{Production}!time\+Steps\+Left@{time\+Steps\+Left}}
+\index{time\+Steps\+Left@{time\+Steps\+Left}!Production@{Production}}
+\subsubsection{time\+Steps\+Left}
+{\footnotesize\ttfamily int Production\+::time\+Steps\+Left = 100}
+
+
+
+Referenced by Production(), and run\+Production().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Production.\+h}\item 
+\textbf{ Production.\+cpp}\end{DoxyCompactItemize}
