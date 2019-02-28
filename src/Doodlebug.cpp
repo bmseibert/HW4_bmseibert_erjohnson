@@ -124,15 +124,18 @@ bool Doodlebug::eat()
 		// eat (destruct) the ant in the cell
 		Ant* deadAnt = (Ant*) g->getCellOrganism(b[0], b[1]);
 		deadAnt->~Ant();
+
+		g->setNumAnt(g->getNumAnt() - 1);
 		/* gets the doodlebug from the current cell and moves it to the
 		 * cell that the ant it is eating is in
 		 */
+		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
+		g->setCellOccupant(b[0], b[1], doodlebug);
 
 		g->setCellOrganism(row, col, nullptr);
 		g->setCellOccupant(row, col, empty);
 
-		g->setCellOrganism(b[0], b[1], g->getCellOrganism(row, col));
-		g->setCellOccupant(b[0], b[1], doodlebug);
+
 
 		setRowAndCol(b[0],b[1]);
 
@@ -161,7 +164,7 @@ bool Doodlebug::step(){
 	// FIRST
 	// Move or Eat
 	if(Doodlebug::numPossCells(row, col, g) > 0) {
-		//eat();
+		eat();
 
 	}else if (Organism::numPossCells(row, col, g) > 0 ){
 		move();
@@ -173,6 +176,7 @@ bool Doodlebug::step(){
 		//DELETE DOODLE BUG
 		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
 		db->~Doodlebug();
+		g->setNumDoodle(g->getNumDoodle() - 1);
 
 	}
 	// THIRD
@@ -345,12 +349,6 @@ bool Doodlebug::setRowAndCol(int i, int j){
 	row = i;
 	col = j;
 	return result;
-}
-int Doodlebug::getRow(){
-	return row;
-}
-int Doodlebug::getCol(){
-	return col;
 }
 
 /* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
