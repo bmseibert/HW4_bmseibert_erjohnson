@@ -134,7 +134,7 @@ bool Grid::printGrid() {
 		for(int c=0; c < nCells; c++)
 		{
 			if(myGridCells_ptr_array[r][c].getOccupant() == empty){
-				printf("-");
+				printf(" ");
 			}
 			if(myGridCells_ptr_array[r][c].getOccupant() == ant){
 				printf("o");

@@ -95,6 +95,26 @@ with all of the specified data above.
 Once all of the necessary arguments are specified, press Apply and then Run. 
 
 
+TWO TEST CASES:
+
+Here are the two test cases we made for you:
+
+./HW4_bmseibert_erjohnson 9 5 5 10 3 y
+
+OUTPUT:
+
+The Total Number of Doodlebugs Left: 2 
+The Total Number of Ants Left: 65 
+The Total Number of Steps Simulated is: 11 
+
+
+./HW4_bmseibert_erjohnson 9 6 10 4 5 y
+
+OUTPUT:
+
+The Total Number of Doodlebugs Left: 1 
+The Total Number of Ants Left: 28 
+The Total Number of Steps Simulated is: 5 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
