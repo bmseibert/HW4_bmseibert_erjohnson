@@ -1,0 +1,178 @@
+\section{Cell Class Reference}
+\label{classCell}\index{Cell@{Cell}}
+
+
+{\ttfamily \#include $<$Cell.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Cell} ()
+\item 
+bool \textbf{ set\+Occupant} (\textbf{ occupation\+Status} g)
+\item 
+\textbf{ occupation\+Status} \textbf{ get\+Occupant} ()
+\item 
+bool \textbf{ set\+Organism} (\textbf{ Organism} $\ast$o)
+\item 
+\textbf{ Organism} $\ast$ \textbf{ get\+Organism} ()
+\item 
+virtual \textbf{ $\sim$\+Cell} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ occupation\+Status} \textbf{ guest} = \textbf{ empty}
+\item 
+\textbf{ Organism} $\ast$ \textbf{ p} = nullptr
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classCell_a394510643e8664cf12b5efaf5cb99f71}} 
+\index{Cell@{Cell}!Cell@{Cell}}
+\index{Cell@{Cell}!Cell@{Cell}}
+\subsubsection{Cell()}
+{\footnotesize\ttfamily Cell\+::\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Cell\+::\+Cell()}{p.}{classCell_a394510643e8664cf12b5efaf5cb99f71} is a constructor of a cell 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+\mbox{\label{classCell_a9fa559f7a28e2b4336c6879ca09304d8}} 
+\index{Cell@{Cell}!````~Cell@{$\sim$\+Cell}}
+\index{````~Cell@{$\sim$\+Cell}!Cell@{Cell}}
+\subsubsection{$\sim$\+Cell()}
+{\footnotesize\ttfamily Cell\+::$\sim$\+Cell (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\doxyref{Cell\+::$\sim$\+Cell}{p.}{classCell_a9fa559f7a28e2b4336c6879ca09304d8} is the destructor for a cell  none \begin{DoxyReturn}{Returns}
+none 
+\end{DoxyReturn}
+
+
+Referenced by Grid\+::$\sim$\+Grid().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classCell_a7dcb8bc75a2e2591b3fd52b5f7c28ab1}} 
+\index{Cell@{Cell}!get\+Occupant@{get\+Occupant}}
+\index{get\+Occupant@{get\+Occupant}!Cell@{Cell}}
+\subsubsection{get\+Occupant()}
+{\footnotesize\ttfamily \textbf{ occupation\+Status} Cell\+::get\+Occupant (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cell\+::qet\+Occupant gets the occupant\+Status of the cell 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the occupation\+Status of a cell which is an enumeration that can be empty, ant or doodlebug and represents what organism is in the cell 
+\end{DoxyReturn}
+
+
+References guest.
+
+
+
+Referenced by Grid\+::get\+Cell\+Occupant().
+
+\mbox{\label{classCell_acea25bbe9675482cf4ad8f3596c78300}} 
+\index{Cell@{Cell}!get\+Organism@{get\+Organism}}
+\index{get\+Organism@{get\+Organism}!Cell@{Cell}}
+\subsubsection{get\+Organism()}
+{\footnotesize\ttfamily \textbf{ Organism} $\ast$ Cell\+::get\+Organism (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\doxyref{Cell\+::get\+Organism}{p.}{classCell_acea25bbe9675482cf4ad8f3596c78300} gets the field p which is the pointer to the organism that is currently in the cell 
+\begin{DoxyParams}{Parameters}
+{\em none} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Organism$\ast$ p, The pointer to the organism in the current cell 
+\end{DoxyReturn}
+
+
+References p.
+
+
+
+Referenced by Grid\+::get\+Cell\+Organism().
+
+\mbox{\label{classCell_a2346933316b45d87264d50e563c2f895}} 
+\index{Cell@{Cell}!set\+Occupant@{set\+Occupant}}
+\index{set\+Occupant@{set\+Occupant}!Cell@{Cell}}
+\subsubsection{set\+Occupant()}
+{\footnotesize\ttfamily bool Cell\+::set\+Occupant (\begin{DoxyParamCaption}\item[{\textbf{ occupation\+Status}}]{g }\end{DoxyParamCaption})}
+
+\doxyref{Cell\+::set\+Occupant}{p.}{classCell_a2346933316b45d87264d50e563c2f895} sets the occupation\+Status of cell 
+\begin{DoxyParams}{Parameters}
+{\em occupation\+Status} & g, is an enumeration that can be empty, ant or doodlebug and represents what organism is in the cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool result of if this worked 
+\end{DoxyReturn}
+
+
+References Production\+::g, and guest.
+
+
+
+Referenced by Grid\+::set\+Cell\+Occupant().
+
+\mbox{\label{classCell_a4e3175ebd6973bb590d38e9325002f4f}} 
+\index{Cell@{Cell}!set\+Organism@{set\+Organism}}
+\index{set\+Organism@{set\+Organism}!Cell@{Cell}}
+\subsubsection{set\+Organism()}
+{\footnotesize\ttfamily bool Cell\+::set\+Organism (\begin{DoxyParamCaption}\item[{\textbf{ Organism} $\ast$}]{o }\end{DoxyParamCaption})}
+
+\doxyref{Cell\+::set\+Organism}{p.}{classCell_a4e3175ebd6973bb590d38e9325002f4f} sets the field p which is the pointer to the organism that is currently in the cell 
+\begin{DoxyParams}{Parameters}
+{\em Organism$\ast$} & o, The pointer to the organism that you want to put in the current cell \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool if the function was successful 
+\end{DoxyReturn}
+
+
+References p.
+
+
+
+Referenced by Grid\+::set\+Cell\+Organism().
+
+
+
+\subsection{Field Documentation}
+\mbox{\label{classCell_aafc273a5125cf29742a8df6f5a5a881c}} 
+\index{Cell@{Cell}!guest@{guest}}
+\index{guest@{guest}!Cell@{Cell}}
+\subsubsection{guest}
+{\footnotesize\ttfamily \textbf{ occupation\+Status} Cell\+::guest = \textbf{ empty}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by get\+Occupant(), and set\+Occupant().
+
+\mbox{\label{classCell_a8ce33921a2a925d8ad057b08c8fc0671}} 
+\index{Cell@{Cell}!p@{p}}
+\index{p@{p}!Cell@{Cell}}
+\subsubsection{p}
+{\footnotesize\ttfamily \textbf{ Organism}$\ast$ Cell\+::p = nullptr\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Referenced by get\+Organism(), and set\+Organism().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Cell.\+h}\item 
+\textbf{ Cell.\+cpp}\end{DoxyCompactItemize}

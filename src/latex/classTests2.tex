@@ -1,0 +1,267 @@
+\section{Tests2 Class Reference}
+\label{classTests2}\index{Tests2@{Tests2}}
+
+
+{\ttfamily \#include $<$Tests2.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\textbf{ Tests2} ()
+\item 
+bool \textbf{ do\+Tests} ()
+\item 
+bool \textbf{ grid\+Test} ()
+\item 
+bool \textbf{ make\+Ants\+Test} ()
+\item 
+bool \textbf{ Organism\+Test} ()
+\item 
+bool \textbf{ ants\+Move\+Test} ()
+\item 
+bool \textbf{ ants\+Breed\+Test} ()
+\item 
+bool \textbf{ ants\+Die\+Test} ()
+\item 
+bool \textbf{ make\+Doodles\+Test} ()
+\item 
+bool \textbf{ doodle\+Move\+Test} ()
+\item 
+bool \textbf{ doodle\+Breed\+Test} ()
+\item 
+bool \textbf{ doodle\+Eat\+Test} ()
+\item 
+bool \textbf{ doodle\+Dietest} ()
+\item 
+bool \textbf{ organism\+Neighbor\+Test} ()
+\item 
+bool \textbf{ organism\+Rand\+Cell\+Test} ()
+\item 
+virtual \textbf{ $\sim$\+Tests2} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\label{classTests2_a6d7d8d248dd3d544199769baa1face60}} 
+\index{Tests2@{Tests2}!Tests2@{Tests2}}
+\index{Tests2@{Tests2}!Tests2@{Tests2}}
+\subsubsection{Tests2()}
+{\footnotesize\ttfamily Tests2\+::\+Tests2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\label{classTests2_abed1a850ef511b7c06ae418cb3bbd5d9}} 
+\index{Tests2@{Tests2}!````~Tests2@{$\sim$\+Tests2}}
+\index{````~Tests2@{$\sim$\+Tests2}!Tests2@{Tests2}}
+\subsubsection{$\sim$\+Tests2()}
+{\footnotesize\ttfamily Tests2\+::$\sim$\+Tests2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Referenced by main().
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\label{classTests2_a21e7692afbdfb694caf370670cbeb7d4}} 
+\index{Tests2@{Tests2}!ants\+Breed\+Test@{ants\+Breed\+Test}}
+\index{ants\+Breed\+Test@{ants\+Breed\+Test}!Tests2@{Tests2}}
+\subsubsection{ants\+Breed\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::ants\+Breed\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, Ant\+::breed(), Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Num\+Ant(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Ant\+::$\sim$\+Ant(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a045d58417814d72bcf4c97b2ebb51461}} 
+\index{Tests2@{Tests2}!ants\+Die\+Test@{ants\+Die\+Test}}
+\index{ants\+Die\+Test@{ants\+Die\+Test}!Tests2@{Tests2}}
+\subsubsection{ants\+Die\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::ants\+Die\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, Grid\+::get\+Cell\+Organism(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Ant\+::$\sim$\+Ant(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a7694d2797eba6fadc40234d527f6afbe}} 
+\index{Tests2@{Tests2}!ants\+Move\+Test@{ants\+Move\+Test}}
+\index{ants\+Move\+Test@{ants\+Move\+Test}!Tests2@{Tests2}}
+\subsubsection{ants\+Move\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::ants\+Move\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, doodlebug, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Cell\+Organism(), Ant\+::move(), Grid\+::print\+Grid(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Ant\+::$\sim$\+Ant(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a317dc926bf93038f188c999df7a85682}} 
+\index{Tests2@{Tests2}!doodle\+Breed\+Test@{doodle\+Breed\+Test}}
+\index{doodle\+Breed\+Test@{doodle\+Breed\+Test}!Tests2@{Tests2}}
+\subsubsection{doodle\+Breed\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::doodle\+Breed\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References Doodlebug\+::breed\+Doodle(), doodlebug, Grid\+::get\+Cell\+Occupant(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_aaf403f9bb7338771173e2053ea4f95fc}} 
+\index{Tests2@{Tests2}!doodle\+Dietest@{doodle\+Dietest}}
+\index{doodle\+Dietest@{doodle\+Dietest}!Tests2@{Tests2}}
+\subsubsection{doodle\+Dietest()}
+{\footnotesize\ttfamily bool Tests2\+::doodle\+Dietest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References doodlebug, Grid\+::get\+Cell\+Organism(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_ae35f30e7d95e581cc4ce1316409c71ac}} 
+\index{Tests2@{Tests2}!doodle\+Eat\+Test@{doodle\+Eat\+Test}}
+\index{doodle\+Eat\+Test@{doodle\+Eat\+Test}!Tests2@{Tests2}}
+\subsubsection{doodle\+Eat\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::doodle\+Eat\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, doodlebug, Doodlebug\+::eat(), empty, Grid\+::get\+Cell\+Occupant(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a2143f2192836626e7214d37b504df381}} 
+\index{Tests2@{Tests2}!doodle\+Move\+Test@{doodle\+Move\+Test}}
+\index{doodle\+Move\+Test@{doodle\+Move\+Test}!Tests2@{Tests2}}
+\subsubsection{doodle\+Move\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::doodle\+Move\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References doodlebug, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Cell\+Organism(), Doodlebug\+::move(), Grid\+::print\+Grid(), Grid\+::set\+Cell\+Occupant(), Grid\+::set\+Cell\+Organism(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a7392382310966597d685c8aa3a4a2f88}} 
+\index{Tests2@{Tests2}!do\+Tests@{do\+Tests}}
+\index{do\+Tests@{do\+Tests}!Tests2@{Tests2}}
+\subsubsection{do\+Tests()}
+{\footnotesize\ttfamily bool Tests2\+::do\+Tests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ants\+Breed\+Test(), ants\+Die\+Test(), ants\+Move\+Test(), doodle\+Breed\+Test(), doodle\+Dietest(), doodle\+Eat\+Test(), doodle\+Move\+Test(), grid\+Test(), make\+Ants\+Test(), make\+Doodles\+Test(), organism\+Neighbor\+Test(), and organism\+Rand\+Cell\+Test().
+
+
+
+Referenced by main().
+
+\mbox{\label{classTests2_afe90de3a79c4105e63205cb8f019bbb2}} 
+\index{Tests2@{Tests2}!grid\+Test@{grid\+Test}}
+\index{grid\+Test@{grid\+Test}!Tests2@{Tests2}}
+\subsubsection{grid\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::grid\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Test the \doxyref{Grid}{p.}{classGrid} class by constructing a grid object and calling the get\+Cell\+Occupant() method on a random cell, then using the set\+Cell\+Occupant to ant, and checking if the get\+Cell\+Occupant returns ant, then destructs the grid \begin{DoxyReturn}{Returns}
+true if the initialized grid does not have a occupant in a random cell and if once you use the setter method, the occupant status changes to the set enumeration (empty, ant or doodlebug) 
+\end{DoxyReturn}
+
+
+References ant, empty, Grid\+::get\+Cell\+Occupant(), Grid\+::set\+Cell\+Occupant(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_aa4d40396194cf770aa82dc11b449ea62}} 
+\index{Tests2@{Tests2}!make\+Ants\+Test@{make\+Ants\+Test}}
+\index{make\+Ants\+Test@{make\+Ants\+Test}!Tests2@{Tests2}}
+\subsubsection{make\+Ants\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::make\+Ants\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Test the \doxyref{Ant}{p.}{classAnt} class by constructing a grid object and setting a cell occupant to ant, then it creates an ant object \begin{DoxyReturn}{Returns}
+true if the initialized grid does not have a occupant in a random cell and if once you use the setter method, the occupant status changes to the set enumeration (empty, ant or doodlebug) 
+\end{DoxyReturn}
+
+
+References ant, doodlebug, empty, Grid\+::get\+Cell\+Occupant(), Grid\+::set\+Cell\+Occupant(), and Ant\+::$\sim$\+Ant().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a0c6c7e5d60e7c6dc8799fa14e2b997b4}} 
+\index{Tests2@{Tests2}!make\+Doodles\+Test@{make\+Doodles\+Test}}
+\index{make\+Doodles\+Test@{make\+Doodles\+Test}!Tests2@{Tests2}}
+\subsubsection{make\+Doodles\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::make\+Doodles\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References doodlebug, empty, Grid\+::get\+Cell\+Occupant(), Grid\+::set\+Cell\+Occupant(), Doodlebug\+::$\sim$\+Doodlebug(), and Grid\+::$\sim$\+Grid().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a90596465639d148c48a629a00df6fec5}} 
+\index{Tests2@{Tests2}!organism\+Neighbor\+Test@{organism\+Neighbor\+Test}}
+\index{organism\+Neighbor\+Test@{organism\+Neighbor\+Test}!Tests2@{Tests2}}
+\subsubsection{organism\+Neighbor\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::organism\+Neighbor\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, Organism\+::num\+Poss\+Cells(), Grid\+::set\+Cell\+Occupant(), and Grid\+::set\+Cell\+Organism().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a21837e3bc1c24819ce67bff0ed5523b9}} 
+\index{Tests2@{Tests2}!organism\+Rand\+Cell\+Test@{organism\+Rand\+Cell\+Test}}
+\index{organism\+Rand\+Cell\+Test@{organism\+Rand\+Cell\+Test}!Tests2@{Tests2}}
+\subsubsection{organism\+Rand\+Cell\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::organism\+Rand\+Cell\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, Ant\+::\+Ant(), Organism\+::\+Coordinates\+::cell\+Col, Organism\+::\+Coordinates\+::cell\+Row, Ant\+::get\+Rand\+Cell(), Grid\+::set\+Cell\+Occupant(), and Grid\+::set\+Cell\+Organism().
+
+
+
+Referenced by do\+Tests().
+
+\mbox{\label{classTests2_a60ee731c9808abf3722e0e15e6037ac2}} 
+\index{Tests2@{Tests2}!Organism\+Test@{Organism\+Test}}
+\index{Organism\+Test@{Organism\+Test}!Tests2@{Tests2}}
+\subsubsection{Organism\+Test()}
+{\footnotesize\ttfamily bool Tests2\+::\+Organism\+Test (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+References ant, empty, Grid\+::get\+Cell\+Occupant(), Grid\+::get\+Num\+Cells(), Organism\+::num\+Poss\+Cells(), Grid\+::set\+Cell\+Occupant(), Ant\+::$\sim$\+Ant(), and Grid\+::$\sim$\+Grid().
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\textbf{ Tests2.\+h}\item 
+\textbf{ Tests2.\+cpp}\end{DoxyCompactItemize}
