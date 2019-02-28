@@ -112,7 +112,9 @@ bool Ant::breed()
 	return status;
 }
 
-/** Ant::Step() performs all the acts
+/** Ant::Step() performs a move and breed if the conditions
+ * for moving and breeding are met.
+ * @param none
  * @return bool if the step worked
  */
 bool Ant::step(){
@@ -134,8 +136,9 @@ bool Ant::step(){
 
 	return ok1;
 }
-/*
- * Ant Increment Function- used to increment the breed counters
+/**
+ * Ant::increm()- used to increment the breed counters
+ * inside of the ant.
  * @return bool result on if the function ran properly
  */
 bool Ant::increm(){
