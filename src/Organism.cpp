@@ -41,10 +41,13 @@ void Organism::setAmAnt(bool b)
 
 
 /** Organism::GetRandCell() takes a grid and a row column pair, and
- *
- * @param int row,
- * @param int col, is the number of elements in the unoccupiedCells parameter
- * @return output, a random pointer to cell from the input array
+ * returns a randomly picked neighboring cell with neighbors being defined as
+ * 4-connected
+ * @param int row, the row of the cell to a get random neighboring cell from
+ * @param int col, the row of the cell to a get random neighboring cell from
+ * @param Grid* g, the grid on which you are getting the random cell
+ * @return output, a Coordinate struct, which contains the row, column coordinates
+ * of the random neighboring cell
  */
 struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
 
