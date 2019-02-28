@@ -147,7 +147,7 @@ bool Production::runProduction()
 	bool result = true;
 
 
-	while(timeStepsLeft-- > 0 ) //&& g->getNumAnt() > 0 && g->getNumDoodle() > 0
+	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
 		for(int r = 0; r < g->getNumCells(); r++){
 			for(int c = 0; c < g->getNumCells(); c++){
