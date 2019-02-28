@@ -68,7 +68,8 @@ bool Doodlebug::move()
 bool Doodlebug::breed(){
 	return true;
 }
-/** Doodlebug::breed() Function, used to make a doodlebug breed
+/** Doodlebug::breed(), finds a random unoccupied neighboring cell
+ * and creates a new doodlebug inside it.
  * Breeding does NOT take precidence over death
  * @param none
  * @return bool returns true if the bug was able to breed
@@ -103,7 +104,8 @@ bool Doodlebug::breedDoodle()
 	return status;
 }
 
-/* Doodlebug::eat() Function, used to make a doodlebug eat, also kills an ant
+/** Doodlebug::eat() finds a neighboring cell that contains an ant and
+ * resets the doodlebug's starve counter, also destructs the ant
  * Eating takes precedence over the majority of other actions
  * @param none
  * @return bool returns true if the bug was able to eat
@@ -144,18 +146,26 @@ bool Doodlebug::eat()
 	return status;
 }
 
-/* Doodlebug::getStarveCnt() is a Function that gets the starve count
+/** Doodlebug::getStarveCnt() gets the starve count
+ * @param none
  * @return the starve count
  */
 int Doodlebug::getStarveCnt(){
 	return starveCnt;
 }
+
+/** Doodlebug::setStarveCnt() sets the starve count
+ * @param int s, the desired starve count
+ * @return the starve count
+ */
 bool Doodlebug::setStarveCnt(int s){
 	bool result = true;
 	starveCnt = s;
 	return result;
 }
-/* Doodlebug Step Function
+/** Doodlebug::step() tries to get the doodlebug to move or eat, then checks if
+ * the doodlebug has starved to death, then attempts to breed
+ * @param none
  * @return bool if the step worked
  */
 bool Doodlebug::step(){
@@ -193,8 +203,8 @@ bool Doodlebug::step(){
 
 	return ok1;
 }
-/*
- * Doodlebug Increment Function- used to increment the starve and breed counters
+/**Doodlebug::increm used to increment the starve and breed counters
+ * @param none
  * @return bool result on if the function ran properly
  */
 bool Doodlebug::increm(){
@@ -207,9 +217,9 @@ bool Doodlebug::increm(){
 	return result;
 }
 
-/* Set Breed Count
+/** Doodlebug::setBreedCnt Sets Breed Count
  * @param int i sets the count to i
- * @param bool result true if worked
+ * @param bool result true if the function worked
  */
 bool Doodlebug::setBreedCnt(int i){
 	bool result = true;
@@ -218,12 +228,12 @@ bool Doodlebug::setBreedCnt(int i){
 }
 
 /**
- * GetNeighbors checks how many cells next to a doodlebug contain ants
+ * Doodlebug::GetNeighbors() checks how many cells next to a doodlebug contain ants
  * and then increments a value depending on how many neighbors are ants
  * @param int row, the row that this cell is on
  * @param int col, the column that this cell is on
  * @param Grid g is the grid of cells
- * @return numNeighbors is an int the
+ * @return numNeighbors is the number of neighbors with ants
  */
 int Doodlebug::numPossCells(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
@@ -261,10 +271,12 @@ int Doodlebug::numPossCells(int row, int col, Grid* g) {
 }
 
 /** GetRandCell takes an array of pointers to cells and returns
- * a pseudo-random cell pointer from that array
- * @param int row,
- * @param int col, is the number of elements in the unoccupiedCells parameter
- * @return output, a random pointer to cell from the input array
+ * a pseudo-random cell that neighbors the input row column pair.
+ * @param int row, the row that this cell is on
+ * @param int col, the column that this cell is on
+ * @param Grid g is the grid of cells
+ * @return output, a struct Coordinates which represents the row and column of
+ * the randomly chosen cell
  */
 struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
@@ -332,7 +344,8 @@ struct Doodlebug::Coordinates Doodlebug::getRandCell(int row, int col, Grid* g){
 
 }
 
-/* Set grid pointer function
+/** Doodlebug::setGridPtr Sets the grid pointer
+ * @param Grid* a, the new grid
  * @return bool of if the function worked
  */
 bool Doodlebug::setGridPtr(Grid * a){
@@ -340,10 +353,10 @@ bool Doodlebug::setGridPtr(Grid * a){
 	g = a;
 	return result;
 }
-/* set the row and column function
+/** Doodlebug::setRowAndCol sets the row and column function
  * @param int i sets the row
  * @param int j sets the col
- * @param bool result true if worked
+ * @param bool result true if the function worked
  */
 bool Doodlebug::setRowAndCol(int i, int j){
 	bool result = true;
@@ -352,8 +365,9 @@ bool Doodlebug::setRowAndCol(int i, int j){
 	return result;
 }
 
-/* Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
- *
+/** Doodlebug::~Doodlebug() Destructor, used to remove a pointer to a doodlebug
+ *  @param none
+ *  @return none
  */
 Doodlebug::~Doodlebug() {
 

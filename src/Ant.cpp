@@ -139,7 +139,8 @@ bool Ant::step(){
 /**
  * Ant::increm()- used to increment the breed counters
  * inside of the ant.
- * @return bool result on if the function ran properly
+ * @param none
+ * @return bool result true if the function ran properly
  */
 bool Ant::increm(){
 	bool result = true;
@@ -150,9 +151,9 @@ bool Ant::increm(){
 	return result;
 }
 
-/* Set Breed Count
- * @param int i sets the count to i
- * @param bool result true if worked
+/** Ant::setBreedCnt Sets the Breed Count inside of the ant
+ * @param int i the new count to i
+ * @param bool result true if the function worked
  */
 bool Ant::setBreedCnt(int i){
 	bool result = true;
@@ -160,10 +161,10 @@ bool Ant::setBreedCnt(int i){
 	return result;
 }
 
-/* set the row and column function
- * @param int i sets the row
- * @param int j sets the col
- * @param bool result true if worked
+/** Ant::setRowAndCol set the row and column of the Ant
+ * @param int i the new row
+ * @param int j the new column
+ * @param bool result true if function worked
  */
 bool Ant::setRowAndCol(int i, int j){
 	bool result = true;
@@ -172,11 +173,14 @@ bool Ant::setRowAndCol(int i, int j){
 	return result;
 }
 
-/** GetRandCell takes an array of pointers to cells and returns
- * a pseudo-random cell pointer from that array
- * @param int row,
- * @param int col, is the number of elements in the unoccupiedCells parameter
- * @return output, a random pointer to cell from the input array
+
+/** Ant::GetRandCell takes an array of pointers to cells and returns
+ * a pseudo-random cell that is a neighbor of the input cell (row and cel)..
+ * @param int row, the row that this cell is on
+ * @param int col, the column that this cell is on
+ * @param Grid g is the grid of cells
+ * @return output, a struct Coordinates which represents the row and column of
+ * the randomly chosen cell
  */
 struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 
@@ -246,8 +250,9 @@ struct Ant::Coordinates Ant::getRandCell(int row, int col, Grid* g){
 	return output;
 
 }
-/* Set grid pointer function
- * @return bool of if the function worked
+/** Ant::setGridPtr Sets the grid pointer for the ant
+ * @param none
+ * @return bool true if the function worked
  */
 bool Ant::setGridPtr(Grid * a){
 	bool result = true;
@@ -257,6 +262,7 @@ bool Ant::setGridPtr(Grid * a){
 
 
 /** Ant::~Ant is a destructor for the ant class
+ * @param none
  * indicating that a ant object has died
  *
  */

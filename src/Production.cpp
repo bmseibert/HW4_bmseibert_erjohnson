@@ -17,7 +17,7 @@
 #include "Ant.h"
 
 
-/* Production Constructor
+/** Production Constructor
  * @param int argc is the number of parameters for the production
  * @param char* argv[] is all of the arguments that we get from the console
  */
@@ -139,7 +139,8 @@ Production::Production(int argc, char* argv[]) {
 	}
 	g->printGrid();
 }
-/* Run Production Function
+/** Production::runProduction() runs the simulation
+ * @param none
  * @return bool whether the function worked
  */
 bool Production::runProduction()
@@ -195,14 +196,18 @@ bool Production::runProduction()
 	return result;
 }
 
-/* Get Grid from the Production Object
+/** Production::getGrid() Gets the Grid from the \
+ * Production Object
+ * @param none
  * @returns the grid object
  */
 Grid* Production::getGrid(){
 	return g;
 }
 
-/* Production Destrcutor
+/** Production::~Production Destrcutor
+ * @param none
+ * @return none
  */
 Production::~Production() {
 	// TODO Auto-generated destructor stub
