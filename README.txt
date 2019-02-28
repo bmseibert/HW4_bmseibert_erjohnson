@@ -61,7 +61,7 @@ result, that ant is dead and can no longer do either.
 
 In order to run my program, the user needs to put arguments for the function
 
-./PA5 gridSize #doodlebugs #ants #time_steps seed pause
+./HW4_bmseibert_erjohnson gridSize #doodlebugs #ants #time_steps seed pause
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 What each variable does is specified below: 

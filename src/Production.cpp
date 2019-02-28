@@ -145,7 +145,7 @@ Production::Production(int argc, char* argv[]) {
 bool Production::runProduction()
 {
 	bool result = true;
-
+	int timeSteps = timeStepsLeft;
 
 	while(timeStepsLeft-- > 0 && g->getNumAnt() > 0 && g->getNumDoodle() > 0)
 	{
@@ -192,6 +192,9 @@ bool Production::runProduction()
 		g->printGrid();
 
 	}
+	printf("The Total Number of Doodlebugs Left: %d \n", g->getNumDoodle());
+	printf("The Total Number of Ants Left: %d \n", g->getNumAnt());
+	printf("The Total Number of Steps Simulated is: %d \n", timeSteps - timeStepsLeft);
 	return result;
 }
 
