@@ -174,9 +174,10 @@ bool Doodlebug::step(){
 	// starve check
 	if (starveCnt > 2){
 		//DELETE DOODLE BUG
+		g->setNumDoodle(g->getNumDoodle() - 1);
 		Doodlebug* db = (Doodlebug*) g->getCellOrganism(row, col);
 		db->~Doodlebug();
-		g->setNumDoodle(g->getNumDoodle() - 1);
+
 
 	}
 	// THIRD
