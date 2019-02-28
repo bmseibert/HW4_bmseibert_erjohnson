@@ -28,8 +28,7 @@ Ant::Ant() : Organism(true)
  * @param int c, the column where the ant will be constructed
  * @param int life, the amount of ticks the ant object has
  * been alive on the board
- * @return
- *
+ * @return none
  */
 Ant::Ant(int r, int c, Grid * ptr) : Organism(true)
 {
@@ -40,7 +39,7 @@ Ant::Ant(int r, int c, Grid * ptr) : Organism(true)
 }
 /** Ant::move() should move an ant object to a neighboring
  * cell
- * @param
+ * @param none
  * @return status, true if the ant object moved
  */
 bool Ant::move()
@@ -78,7 +77,7 @@ bool Ant::move()
  * object and if another ant in is a neighboring cell,
  * then they will produce a new ant object in a free space
  * @param Grid* g grid we are on
- * @return status
+ * @return status true if ant breed
  */
 bool Ant::breed()
 {
@@ -104,12 +103,16 @@ bool Ant::breed()
 		// Reset the Counter of breed to 0
 		setBreedCnt(0);
 
+		int numAnt = g->getNumAnt();
+		numAnt++;
+		g->setNumAnt(numAnt);
+
 		increm();
 	}
 	return status;
 }
 
-/* Ant Step Function
+/** Ant::Step() performs all the acts
  * @return bool if the step worked
  */
 bool Ant::step(){

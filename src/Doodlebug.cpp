@@ -68,9 +68,9 @@ bool Doodlebug::move()
 bool Doodlebug::breed(){
 	return true;
 }
-/* Doodlebug::breed() Function, used to make a doodlebug breed
+/** Doodlebug::breed() Function, used to make a doodlebug breed
  * Breeding does NOT take precidence over death
- * @param
+ * @param none
  * @return bool returns true if the bug was able to breed
  */
 bool Doodlebug::breedDoodle()

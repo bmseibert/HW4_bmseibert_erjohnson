@@ -116,12 +116,12 @@ struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
 
 }
 /**
- * GetNeighbors checks how many cells next to a given organism are empty and then
- * add all the unoccupied neighbors to an array
+ * Organism::numPossCells checks how many cells neighboring a
+ * cell are empty and returns the count of all the empty neighbors
  * @param int row, the row that this cell is on
  * @param int col, the column that this cell is on
- * @param Grid g is the grid of cells
- * @return unocc_arr is an array of pointers to cells
+ * @param Grid* g,  is the grid of cells
+ * @return int the number of empty neighbors
  */
 int Organism::numPossCells(int row, int col, Grid* g) {
 	// gets the number of cells in a grid
@@ -160,8 +160,9 @@ int Organism::numPossCells(int row, int col, Grid* g) {
 
 
 
-/* Organism::~Organism is the destructor
- *
+/** Organism::~Organism is the destructor
+ * @param none
+ * @return none
  */
 Organism::~Organism() {
 
