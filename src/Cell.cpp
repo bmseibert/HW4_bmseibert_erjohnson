@@ -9,7 +9,8 @@
 #include "Organism.h"
 
 /** Cell::Cell() is a constructor of a cell
- *
+ * @param none
+ * @return none
  */
 Cell::Cell() {
 
@@ -65,7 +66,7 @@ Organism* Cell::getOrganism(){
 
 /** Cell::~Cell is the destructor for a cell
  * @oaram none
- *@return none
+ * @return none
  */
 Cell::~Cell() {
 	// TODO Auto-generated destructor stub

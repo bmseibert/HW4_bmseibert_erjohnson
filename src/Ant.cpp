@@ -13,7 +13,8 @@
 
 /** Ant::Ant() is the basic constructor for the
  * ant class
- *
+ * @param none
+ * @return none
  */
 Ant::Ant() : Organism(true)
 {
@@ -136,8 +137,7 @@ bool Ant::step(){
 
 	return ok1;
 }
-/**
- * Ant::increm()- used to increment the breed counters
+/** Ant::increm()- used to increment the breed counters
  * inside of the ant.
  * @param none
  * @return bool result true if the function ran properly

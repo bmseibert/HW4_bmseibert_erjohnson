@@ -11,7 +11,8 @@
 #include <stdlib.h>
 
 /** Organism::Organism() is default constructor for a Organism
- *
+ * @param none
+ * @return none
  */
 Organism::Organism() {
 
@@ -19,12 +20,14 @@ Organism::Organism() {
 }
 /** Organism::Organism() is the Secondary Constructor
  * @param bool b is whether the organism is an ant
+ * @return none
  */
 Organism::Organism(bool b) {
 	amAnt = b;
 
 }
 /** Organism::isPrey() is a function used to tell if an organism is prey
+ * @param none
  * @return bool returns if the organism is an ant
  */
 bool Organism::isPrey()
@@ -32,6 +35,7 @@ bool Organism::isPrey()
 	return amAnt;
 }
 /** Organism::setAmAnt() is a function used to set if an organism is an ant
+ * @param bool b, the status of the organism, true if ant false otherwise
  * @return void
  */
 void Organism::setAmAnt(bool b)
@@ -115,8 +119,7 @@ struct Organism::Coordinates Organism::getRandCell(int row, int col, Grid* g){
 	return output;
 
 }
-/**
- * Organism::numPossCells checks how many cells neighboring a
+/** Organism::numPossCells checks how many cells neighboring a
  * cell are empty and returns the count of all the empty neighbors
  * @param int row, the row that this cell is on
  * @param int col, the column that this cell is on

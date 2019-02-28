@@ -104,6 +104,7 @@ bool Grid::setNumAnt(int num)
 }
 
 /** Grid::getNumAnt() Function gets the number of ants
+ * @param none
  * @return is the number of ants on the grid
  */
 int Grid::getNumAnt()
@@ -111,7 +112,8 @@ int Grid::getNumAnt()
 	return numAnt;
 }
 
-/* Grid::getNumDoodle() Function sets the number of doodlebugs
+/** Grid::getNumDoodle() Function sets the number of doodlebugs
+ * @param int num, the total number of doodlebugs
  * @return a bool on if this function ran or not
  */
 bool Grid::setNumDoodle(int num)

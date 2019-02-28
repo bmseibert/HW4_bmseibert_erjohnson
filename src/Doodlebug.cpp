@@ -36,8 +36,7 @@ Doodlebug::Doodlebug(int r, int c, Grid * ptr):Organism(false) {
 }
 /** Doodlebug::move() this function used finds are random neighboring unoccupied cell
  * and moves the doodlebug form its current cell to the neighboring
- * @param
- *
+ * @param none
  * @return bool returns true if the bug was able to move
  */
 bool Doodlebug::move()
@@ -64,7 +63,11 @@ bool Doodlebug::move()
 
 	return status;
 }
-
+/*The is a random error that occurs with the breed function so we made a
+ * a second one below called breed doodle and it solves the error.
+ * we couldn't find a better solution and we asked the professors but couldn't
+ * figure it out
+*/
 bool Doodlebug::breed(){
 	return true;
 }
@@ -227,8 +230,7 @@ bool Doodlebug::setBreedCnt(int i){
 	return result;
 }
 
-/**
- * Doodlebug::GetNeighbors() checks how many cells next to a doodlebug contain ants
+/** Doodlebug::GetNeighbors() checks how many cells next to a doodlebug contain ants
  * and then increments a value depending on how many neighbors are ants
  * @param int row, the row that this cell is on
  * @param int col, the column that this cell is on
